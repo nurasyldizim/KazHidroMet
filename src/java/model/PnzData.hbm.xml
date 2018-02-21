@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21.02.2018 13:40:03 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.PnzData" table="pnz_data" catalog="kazgidrodb" optimistic-lock="version">
+        <id name="pnzDataId" type="java.lang.Integer">
+            <column name="pnz_dataID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="pnz" class="model.Pnz" fetch="select">
+            <column name="pnzID" not-null="true" />
+        </many-to-one>
+        <property name="pnzDateTime" type="timestamp">
+            <column name="pnzDateTime" length="19" not-null="true" />
+        </property>
+        <property name="bsh" type="double">
+            <column name="bSh" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="ds" type="double">
+            <column name="dS" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="sr" type="double">
+            <column name="sR" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="ou" type="double">
+            <column name="oU" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="do_" type="double">
+            <column name="dO" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="oa" type="double">
+            <column name="oA" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="ozon" type="double">
+            <column name="ozon" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="serovodorod" type="double">
+            <column name="serovodorod" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="fenol" type="double">
+            <column name="fenol" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="fv" type="double">
+            <column name="fV" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="hlor" type="double">
+            <column name="hlor" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="hv" type="double">
+            <column name="hV" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="ammiak" type="double">
+            <column name="ammiak" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="skIs" type="double">
+            <column name="skIs" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="formaldigid" type="double">
+            <column name="formaldigid" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="nsm" type="double">
+            <column name="nSM" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="hromSh" type="double">
+            <column name="hromSh" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="sumU" type="double">
+            <column name="sumU" precision="22" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
