@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -13,5 +14,7 @@ and open the template in the editor.
     <body>
         <div>TODO write content</div>
         <a href="jsp/pnzdata.jsp">link</a>
+        <a href="jsp/pnzdata.jsp?pnzId=1&pnzName=ПНЗ1">link2</a>
+
     </body>
 </html>

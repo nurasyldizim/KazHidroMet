@@ -35,7 +35,8 @@ public class PnzData  implements java.io.Serializable {
     public PnzData() {
     }
 
-    public PnzData(Pnz pnz, Date pnzDateTime, double bsh, double ds, double sr, double ou, double do_, double oa, double ozon, double serovodorod, double fenol, double fv, double hlor, double hv, double ammiak, double skIs, double formaldigid, double nsm, double hromSh, double sumU) {
+    public PnzData(int pnzDataId, Pnz pnz, Date pnzDateTime, double bsh, double ds, double sr, double ou, double do_, double oa, double ozon, double serovodorod, double fenol, double fv, double hlor, double hv, double ammiak, double skIs, double formaldigid, double nsm, double hromSh, double sumU) {
+       this.pnzDataId = pnzDataId;
        this.pnz = pnz;
        this.pnzDateTime = pnzDateTime;
        this.bsh = bsh;
@@ -58,6 +59,29 @@ public class PnzData  implements java.io.Serializable {
        this.sumU = sumU;
     }
    
+    public PnzData(Pnz pnz, Date pnzDateTime, double bsh, double ds, double sr, double ou, double do_, double oa, double ozon, double serovodorod, double fenol, double fv, double hlor, double hv, double ammiak, double skIs, double formaldigid, double nsm, double hromSh, double sumU) {
+       this.pnz = pnz;
+       this.pnzDateTime = pnzDateTime;
+       this.bsh = bsh;
+       this.ds = ds;
+       this.sr = sr;
+       this.ou = ou;
+       this.do_ = do_;
+       this.oa = oa;
+       this.ozon = ozon;
+       this.serovodorod = serovodorod;
+       this.fenol = fenol;
+       this.fv = fv;
+       this.hlor = hlor;
+       this.hv = hv;
+       this.ammiak = ammiak;
+       this.skIs = skIs;
+       this.formaldigid = formaldigid;
+       this.nsm = nsm;
+       this.hromSh = hromSh;
+       this.sumU = sumU;
+    }
+    
     public Integer getPnzDataId() {
         return this.pnzDataId;
     }

@@ -23,15 +23,31 @@ public class PnzDataDao {
   Session session;
 
    /* Method to CREATE an employee in the database */
-   public void addOrUpdatePnzData(Pnz pnz, Date pnzDateTime, double bsh, double ds, double sr, double ou, double do_, double oa, double ozon, double serovodorod, double fenol, double fv, double hlor, double hv, double ammiak, double skIs, double formaldigid, double nsm, double hromSh, double sumU){
+   public void addPnzData(Pnz pnz, Date pnzDateTime, double bsh, double ds, double sr, double ou, double do_, double oa, double ozon, double serovodorod, double fenol, double fv, double hlor, double hv, double ammiak, double skIs, double formaldigid, double nsm, double hromSh, double sumU){
       Session session = sessionFactory.openSession();
       Transaction tx = null;
       
       try {
          tx = session.beginTransaction();
          PnzData pnzData = new PnzData( pnz, pnzDateTime, bsh, ds, sr, ou, do_, oa, ozon, serovodorod, fenol, fv, hlor, hv, ammiak, skIs, formaldigid, nsm, hromSh, sumU);
-         session.update(pnz);
          session.save(pnzData); 
+         tx.commit();
+      } catch (HibernateException e) {
+         if (tx!=null) tx.rollback();
+         e.printStackTrace(); 
+      } finally {
+         session.close(); 
+      }
+   }
+   
+   public void updatePnzData(int pnzDataId, Pnz pnz, Date pnzDateTime, double bsh, double ds, double sr, double ou, double do_, double oa, double ozon, double serovodorod, double fenol, double fv, double hlor, double hv, double ammiak, double skIs, double formaldigid, double nsm, double hromSh, double sumU){
+      Session session = sessionFactory.openSession();
+      Transaction tx = null;
+      
+      try {
+         tx = session.beginTransaction();
+         PnzData pnzData = new PnzData(pnzDataId, pnz, pnzDateTime, bsh, ds, sr, ou, do_, oa, ozon, serovodorod, fenol, fv, hlor, hv, ammiak, skIs, formaldigid, nsm, hromSh, sumU);
+         session.update(pnzData); 
          tx.commit();
       } catch (HibernateException e) {
          if (tx!=null) tx.rollback();
