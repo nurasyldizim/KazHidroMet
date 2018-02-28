@@ -73,40 +73,34 @@ public class PnzDataController extends HttpServlet {
                 e.printStackTrace();
             }
             }else if(action.equals("Edit")){
-                //String pnzName =request.getParameter("pnzNamej");
-                String pnzName = "ПНЗ3";
-                System.out.println(pnzName);
-                int pnzId = Integer.parseInt(request.getParameter("pnzIdj"));
+                String pnzName =request.getParameter("pnzName");
+                int pnzId = Integer.parseInt(request.getParameter("pnzId"));
                 String pnzDataId = request.getParameter("id");
                 Pnz pnz = new Pnz(pnzId,pnzName);
-                SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");  
-                Date pnzDateTime = (Date)formatter.parse(request.getParameter("pnzDateTimej"));
-                double bsh = Double.valueOf(request.getParameter("bshj"));
-                System.out.println(bsh);
-                double ds = Double.valueOf(request.getParameter("dsj"));
-                double sr = Double.valueOf(request.getParameter("srj"));
-                double ou = Double.valueOf(request.getParameter("ouj"));
-                double do_ = Double.valueOf(request.getParameter("do_j"));
-                double oa = Double.valueOf(request.getParameter("oaj"));
-                double ozon = Double.valueOf(request.getParameter("ozonj"));
-                double serovodorod = Double.valueOf(request.getParameter("serovodorodj"));
-                double fenol = Double.valueOf(request.getParameter("fenolj"));
-                double fv = Double.valueOf(request.getParameter("fvj"));
-                double hlor = Double.valueOf(request.getParameter("hlorj"));
-                double hv = Double.valueOf(request.getParameter("hvj"));
-                double ammiak = Double.valueOf(request.getParameter("ammiakj"));
-                double skIs = Double.valueOf(request.getParameter("skIsj"));
-                double formaldigid = Double.valueOf(request.getParameter("formaldigidj"));
-                double nsm = Double.valueOf(request.getParameter("nsmj"));
-                double hromSh = Double.valueOf(request.getParameter("hromShj"));
-                double sumU = Double.valueOf(request.getParameter("sumUj"));
+                SimpleDateFormat formatter=new SimpleDateFormat("MM/dd/yyyy HH:mm");  
+                Date pnzDateTime = (Date)formatter.parse(request.getParameter("dateWithoutTime"+pnzDataId)+" "+request.getParameter("time"+pnzDataId));
+                double bsh = Double.valueOf(request.getParameter("bsh"+pnzDataId));
+                double ds = Double.valueOf(request.getParameter("ds"+pnzDataId));
+                double sr = Double.valueOf(request.getParameter("sr"+pnzDataId));
+                double ou = Double.valueOf(request.getParameter("ou"+pnzDataId));
+                double do_ = Double.valueOf(request.getParameter("do_"+pnzDataId));
+                double oa = Double.valueOf(request.getParameter("oa"+pnzDataId));
+                double ozon = Double.valueOf(request.getParameter("ozon"+pnzDataId));
+                double serovodorod = Double.valueOf(request.getParameter("serovodorod"+pnzDataId));
+                double fenol = Double.valueOf(request.getParameter("fenol"+pnzDataId));
+                double fv = Double.valueOf(request.getParameter("fv"+pnzDataId));
+                double hlor = Double.valueOf(request.getParameter("hlor"+pnzDataId));
+                double hv = Double.valueOf(request.getParameter("hv"+pnzDataId));
+                double ammiak = Double.valueOf(request.getParameter("ammiak"+pnzDataId));
+                double skIs = Double.valueOf(request.getParameter("skIs"+pnzDataId));
+                double formaldigid = Double.valueOf(request.getParameter("formaldigid"+pnzDataId));
+                double nsm = Double.valueOf(request.getParameter("nsm"+pnzDataId));
+                double hromSh = Double.valueOf(request.getParameter("hromSh"+pnzDataId));
+                double sumU = Double.valueOf(request.getParameter("sumU"+pnzDataId));
 
             try {
-                System.out.println("ORRRRKRKRKRRKRKRK");
                 PnzDataDao pnzDataDao = new PnzDataDao();
-                System.out.println("ORRRRKRKRKRRKRKRK2");
                 pnzDataDao.updatePnzData(Integer.parseInt(pnzDataId), pnz, pnzDateTime, bsh, ds, sr, ou, do_, oa, ozon, serovodorod, fenol, fv, hlor, hv, ammiak, skIs, formaldigid, nsm, hromSh, sumU);
-                System.out.println("ORRRRKRKRKRRKRKRK23");
                 response.sendRedirect("jsp/pnzdata.jsp?pnzId="+pnzId+"&pnzName="+pnzName);
             } catch (Exception e) {
                 
