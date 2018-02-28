@@ -79,41 +79,39 @@
             <%
             List<PnzData> pnzDatalist =  pnzDataDao.listPnzDatas(Integer.parseInt(pnzId));  
             for(PnzData pd : pnzDatalist){
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
                 Date dateWithoutTime = sdf.parse(sdf.format(pd.getPnzDateTime()));
                 SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm:ss");
-                String time = localDateFormat.format(pd.getPnzDateTime());
-            
+                String time = localDateFormat.format(pd.getPnzDateTime());       
             %>
-           
+            <h3><%=sdf.format(dateWithoutTime)%></h3>
             <tr>
                 
                 <td style="display: none"><input type="hidden" id="pnzName" name="pnzName" value=<%=pnzName%>/></td>
                 <td style="display: none"><input type="hidden" id="pnzId" name="pnzId" value="<%=pnzId%>"/></td>
                 <td style="display:none"><input type="hidden" name="pnzDataId" value="<%=pd.getPnzDataId()%>"/></td>
-                <td style="display:none"><input type="hidden" name="pnzDateTime" value="<%=pd.getPnzDateTime()%>"/></td>
-                <td><input type="datetime" value="<%=dateWithoutTime%>"/></td>
-                <td><input type="time" value="<%=time%>"/></td>
-                <td><input name="bsh" value="<%=pd.getBsh()%>"/></td>
-                <td><input name="ds" value="<%=pd.getDs()%>"/></td>
-                <td><input name="sr" value="<%=pd.getSr()%>"/></td>
-                <td><input name="ou" value="<%=pd.getOu()%>"/></td>
-                <td><input name="do_" value="<%=pd.getDo_()%>"/></td>
-                <td><input name="oa" value="<%=pd.getOa()%>"/></td>
-                <td><input name="ozon" value="<%=pd.getOzon()%>"/></td>
-                <td><input name="serovodorod" value="<%=pd.getSerovodorod()%>"/></td>
-                <td><input name="fenol" value="<%=pd.getFenol()%>"/></td>
-                <td><input name="fv" value="<%=pd.getFv()%>"/></td>
-                <td><input name="hlor" value="<%=pd.getHlor()%>"/></td>
-                <td><input name="hv" value="<%=pd.getHv()%>"/></td>
-                <td><input name="ammiak" value="<%=pd.getAmmiak()%>"/></td>
-                <td><input name="skIs" value="<%=pd.getSkIs()%>"/></td>
-                <td><input name="formaldigid" value="<%=pd.getFormaldigid()%>"/></td>
-                <td><input name="nsm" value="<%=pd.getNsm()%>"/></td>
-                <td><input name="hromSh" value="<%=pd.getHromSh()%>"/></td>
-                <td><input name="sumU" value="<%=pd.getSumU()%>"/></td>  
-                <td><input type="submit" name="ACTION" value="Edit" onclick="getEditConfirmation()"/></td>
-                <td><input type="submit" name="ACTION" value="Delete" onclick="getDeleteConfirmation()"/></td>
+                <td><input name="dateWithoutTime<%=pd.getPnzDataId()%>" type="datetime" value="<%=sdf.format(dateWithoutTime)%>"/></td>
+                <td><input name="time<%=pd.getPnzDataId()%>" type="time" value="<%=time%>"/></td>
+                <td><input name="bsh<%=pd.getPnzDataId()%>" value="<%=pd.getBsh()%>"/></td>
+                <td><input name="ds<%=pd.getPnzDataId()%>" value="<%=pd.getDs()%>"/></td>
+                <td><input name="sr<%=pd.getPnzDataId()%>" value="<%=pd.getSr()%>"/></td>
+                <td><input name="ou<%=pd.getPnzDataId()%>" value="<%=pd.getOu()%>"/></td>
+                <td><input name="do_<%=pd.getPnzDataId()%>" value="<%=pd.getDo_()%>"/></td>
+                <td><input name="oa<%=pd.getPnzDataId()%>" value="<%=pd.getOa()%>"/></td>
+                <td><input name="ozon<%=pd.getPnzDataId()%>" value="<%=pd.getOzon()%>"/></td>
+                <td><input name="serovodorod<%=pd.getPnzDataId()%>" value="<%=pd.getSerovodorod()%>"/></td>
+                <td><input name="fenol<%=pd.getPnzDataId()%>" value="<%=pd.getFenol()%>"/></td>
+                <td><input name="fv<%=pd.getPnzDataId()%>" value="<%=pd.getFv()%>"/></td>
+                <td><input name="hlor<%=pd.getPnzDataId()%>" value="<%=pd.getHlor()%>"/></td>
+                <td><input name="hv<%=pd.getPnzDataId()%>" value="<%=pd.getHv()%>"/></td>
+                <td><input name="ammiak<%=pd.getPnzDataId()%>" value="<%=pd.getAmmiak()%>"/></td>
+                <td><input name="skIs<%=pd.getPnzDataId()%>" value="<%=pd.getSkIs()%>"/></td>
+                <td><input name="formaldigid<%=pd.getPnzDataId()%>" value="<%=pd.getFormaldigid()%>"/></td>
+                <td><input name="nsm<%=pd.getPnzDataId()%>" value="<%=pd.getNsm()%>"/></td>
+                <td><input name="hromSh<%=pd.getPnzDataId()%>" value="<%=pd.getHromSh()%>"/></td>
+                <td><input name="sumU<%=pd.getPnzDataId()%>" value="<%=pd.getSumU()%>"/></td>  
+                <td><input type="submit" name="ACTION" value="Edit" onclick="getEditConfirmation(<%=pd.getPnzDataId()%>)"/></td>
+                <td><input type="submit" name="ACTION" value="Delete" onclick="getDeleteConfirmation(<%=pd.getPnzDataId()%>)"/></td>
             </tr>
             <% }%>
         </table>

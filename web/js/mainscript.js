@@ -6,14 +6,16 @@
 
 function refreshFunction() {
     var pnzList = document.getElementById("pnzList");
-    location.href =encodeURI("pnzdata.jsp?pnzId=" + pnzList.options[pnzList.selectedIndex].value +"&pnzName=" + pnzList.options[pnzList.selectedIndex].text);
+    location.href ="pnzdata.jsp?pnzId=" + pnzList.options[pnzList.selectedIndex].value +"&pnzName=" + pnzList.options[pnzList.selectedIndex].text;
 }
 
-function getDeleteConfirmation(){
-    var retVal = confirm("Вы действительно хотите удалить этот запись?");
+function getEditConfirmation(id){
+    var retVal = confirm("Вы действительно хотите изменить этот запись?");
     if( retVal == true ){
-        document.frm.action="../PnzDataController";
-        document.frm.submit();
+        var f=document.frm;
+         f.method="post";
+         f.action='../PnzDataController?id='+id;
+         f.submit();
        return true;
     }
     else{
@@ -21,11 +23,13 @@ function getDeleteConfirmation(){
     }
  }
  
- function getEditConfirmation(){
-    var retVal = confirm("Вы действительно хотите изменить этот запись?");
+ function getDeleteConfirmation(id){
+    var retVal = confirm("Вы действительно хотите удалить этот запись?");
     if( retVal == true ){
-        document.frm.action="../PnzDataController";
-        document.frm.submit();
+         var f=document.frm;
+         f.method="post";
+         f.action='../PnzDataController?id='+id;
+         f.submit();
        return true;
     }
     else{
