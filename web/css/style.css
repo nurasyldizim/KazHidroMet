@@ -1,0 +1,13 @@
+a:active { 
+    background-color: yellow;
+}
+li
+{
+display: inline;
+list-style-type: none;
+padding-right: 20px;
+}
+
+li a:hover {
+    text-decoration: none;
+}

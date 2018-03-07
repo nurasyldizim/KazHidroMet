@@ -57,7 +57,7 @@ public class PnzDataDao {
       }
    }
    
-    public List<PnzData> listPnzDatas(int pnzId ){
+    public List<PnzData> listPnzDatas(int pnzId, int month ){
       List<PnzData> pnzData = new ArrayList<PnzData>();
       Session session = sessionFactory.openSession();
       Transaction tx = null;
@@ -65,8 +65,9 @@ public class PnzDataDao {
       try {
          System.out.println("fsdafsdafsadfdsfdfklajfdkslafjdsaklfj");
          tx = session.beginTransaction();
-         Query query = session.createQuery("FROM PnzData WHERE pnzID = :pnzId ");
+         Query query = session.createQuery("FROM PnzData WHERE pnzID = :pnzId AND MONTH(pnzDateTime)= :month AND YEAR(pnzDateTime)='2016'");
          query.setParameter("pnzId", pnzId);
+         query.setParameter("month", month);
          pnzData = query.list();
          tx.commit();
       } catch (HibernateException e) {

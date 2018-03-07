@@ -4,6 +4,7 @@
     Author     : Nurasyl Dizim
 --%>
 
+<%@page import="java.net.URLEncoder"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="dao.PnzDataDao"%>
@@ -18,12 +19,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>PNZ Data</title>
         <script src="../js/mainscript.js" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
     </head>
     <body>
         <h1>Hello World!</h1>
         <%
             String pnzName = request.getParameter("pnzName");
             String pnzId = request.getParameter("pnzId");
+            String month = request.getParameter("month");
         %>
         <select id="pnzList" onchange="refreshFunction()">
         <%
@@ -40,8 +43,9 @@
           <option value="<%=p.getPnzId()%>"><%=p.getPnzName()%></option>
           <%       
                 }
-                }%>
-        </select>    
+          }%>
+        </select>   
+        
         <form method="POST" action="../PnzDataController">
             <table width="220" border="1">
             <tr><th>Дата</th><th>Взвешенные частицы(пыль)</th><th>Диоксид серы</th><th>Сульфаты растворимые</th><th>Оксид углерода</th><th>Диоксид азота</th><th>Оксид азота</th><th>Озон</th><th>Сероводород</th><th>Фенол</th><th>Фтористый водород</th><th>Хлор</th><th>Хлористый водород</th><th>Аммиак</th><th>Серная кислота и сульфаты</th><th>Формальдегид</th><th>Неорганические соединения мышьяк</th><th>Хром шестивалентный</th><th>Суммарные углеводороды</th></tr>   
@@ -49,6 +53,7 @@
                 
                 <td style="display: none"><input type="hidden" id="pnzName" name="pnzName" value=<%=pnzName%>/></td>
                 <td style="display: none"><input type="hidden" id="pnzId" name="pnzId" value="<%=pnzId%>"/></td>
+                <td style="display: none"><input type="hidden" id="month" name="month" value="<%=month%>"/></td>
                 <td><input type="datetime-local" min="2015-01-01 00:00" max="2030-01-01 00:00" step="3600"  name="pnzDateTime" required/></td>
                 <td><input type="number" name="bsh"/></td>
                 <td><input type="number" name="ds"/></td>
@@ -73,22 +78,37 @@
             </table>
         </form>
         
+           <ul>
+               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=1">Январь</a></li>
+               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=2">Февраль</a></li>
+               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=3">Март</a></li>
+               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=4">Апрель</a></li>
+               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=5">Май</a></li>
+               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=6">Июнь</a></li>
+               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=7">Июль</a></li>
+               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=8">Август</a></li>
+               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=9">Сентябрь</a></li>
+               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=10">Октябрь</a></li>
+               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=11">Ноябрь</a></li>
+               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=12">Декабрь</a></li>
+           </ul>
+               
                 <form name=frm method="POST">
         <table width="220" border="1">
             <tr><th>Дата</th><th>Срок</th><th>Взвешенные частицы(пыль)</th><th>Диоксид серы</th><th>Сульфаты растворимые</th><th>Оксид углерода</th><th>Диоксид азота</th><th>Оксид азота</th><th>Озон</th><th>Сероводород</th><th>Фенол</th><th>Фтористый водород</th><th>Хлор</th><th>Хлористый водород</th><th>Аммиак</th><th>Серная кислота и сульфаты</th><th>Формальдегид</th><th>Неорганические соединения мышьяк</th><th>Хром шестивалентный</th><th>Суммарные углеводороды</th></tr>   
             <%
-            List<PnzData> pnzDatalist =  pnzDataDao.listPnzDatas(Integer.parseInt(pnzId));  
+            List<PnzData> pnzDatalist =  pnzDataDao.listPnzDatas(Integer.parseInt(pnzId),Integer.parseInt(month));  
             for(PnzData pd : pnzDatalist){
                 SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
                 Date dateWithoutTime = sdf.parse(sdf.format(pd.getPnzDateTime()));
                 SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm:ss");
                 String time = localDateFormat.format(pd.getPnzDateTime());       
             %>
-            <h3><%=sdf.format(dateWithoutTime)%></h3>
             <tr>
                 
                 <td style="display: none"><input type="hidden" id="pnzName" name="pnzName" value=<%=pnzName%>/></td>
                 <td style="display: none"><input type="hidden" id="pnzId" name="pnzId" value="<%=pnzId%>"/></td>
+                <td style="display: none"><input type="hidden" id="month" name="month" value="<%=month%>"/></td>
                 <td style="display:none"><input type="hidden" name="pnzDataId" value="<%=pd.getPnzDataId()%>"/></td>
                 <td><input name="dateWithoutTime<%=pd.getPnzDataId()%>" type="datetime" value="<%=sdf.format(dateWithoutTime)%>"/></td>
                 <td><input name="time<%=pd.getPnzDataId()%>" type="time" value="<%=time%>"/></td>
