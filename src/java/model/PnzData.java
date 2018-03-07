@@ -34,6 +34,27 @@ public class PnzData  implements java.io.Serializable {
 
     public PnzData() {
     }
+    
+    public PnzData(double bsh, double ds, double sr, double ou, double do_, double oa, double ozon, double serovodorod, double fenol, double fv, double hlor, double hv, double ammiak, double skIs, double formaldigid, double nsm, double hromSh, double sumU) {
+       this.bsh = bsh;
+       this.ds = ds;
+       this.sr = sr;
+       this.ou = ou;
+       this.do_ = do_;
+       this.oa = oa;
+       this.ozon = ozon;
+       this.serovodorod = serovodorod;
+       this.fenol = fenol;
+       this.fv = fv;
+       this.hlor = hlor;
+       this.hv = hv;
+       this.ammiak = ammiak;
+       this.skIs = skIs;
+       this.formaldigid = formaldigid;
+       this.nsm = nsm;
+       this.hromSh = hromSh;
+       this.sumU = sumU;
+    }
 
     public PnzData(int pnzDataId, Pnz pnz, Date pnzDateTime, double bsh, double ds, double sr, double ou, double do_, double oa, double ozon, double serovodorod, double fenol, double fv, double hlor, double hv, double ammiak, double skIs, double formaldigid, double nsm, double hromSh, double sumU) {
        this.pnzDataId = pnzDataId;
