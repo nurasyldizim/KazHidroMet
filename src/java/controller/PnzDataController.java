@@ -28,7 +28,8 @@ public class PnzDataController extends HttpServlet {
             String action = request.getParameter("ACTION");
             if(action.equals("Save")){
             request.setCharacterEncoding("UTF-8");
-            String pnzName = request.getParameter("pnzName");
+            String pnzName = URLDecoder.decode(request.getParameter("pnzName"), "UTF-16");
+            System.out.println(pnzName);
             int pnzId = Integer.parseInt(request.getParameter("pnzId"));
             int month = Integer.parseInt(request.getParameter("month"));
             Pnz pnz = new Pnz(pnzId,pnzName);
@@ -56,26 +57,26 @@ public class PnzDataController extends HttpServlet {
             try {
                 PnzDataDao pnzDataDao = new PnzDataDao();
                 pnzDataDao.addPnzData(pnz, pnzDateTime, bsh, ds, sr, ou, do_, oa, ozon, serovodorod, fenol, fv, hlor, hv, ammiak, skIs, formaldigid, nsm, hromSh, sumU);
-                response.sendRedirect("jsp/pnzdata.jsp?pnzId="+pnzId+"&pnzName="+URLEncoder.encode(pnzName, "UTF-8")+"&month="+month);
+                response.sendRedirect("jsp/pnzdata.jsp?pnzId="+pnzId+"&pnzName="+URLEncoder.encode(pnzName, "UTF-16")+"&month="+month);
             } catch (Exception e) {
                 
                 e.printStackTrace();
             }
             }else if(action.equals("Delete")){
-                String pnzName = request.getParameter("pnzName");
+                String pnzName = URLDecoder.decode(request.getParameter("pnzName"), "UTF-16");
                 int pnzId = Integer.parseInt(request.getParameter("pnzId"));
                 int month = Integer.parseInt(request.getParameter("month"));
                 String pnzDataId = request.getParameter("id");
                 try {
                 PnzDataDao pnzDataDao = new PnzDataDao();
                 pnzDataDao.deletePnzData(Integer.parseInt(pnzDataId));
-                response.sendRedirect("jsp/pnzdata.jsp?pnzId="+pnzId+"&pnzName="+URLEncoder.encode(pnzName, "UTF-8")+"&month="+month);
+                response.sendRedirect("jsp/pnzdata.jsp?pnzId="+pnzId+"&pnzName="+URLEncoder.encode(pnzName, "UTF-16")+"&month="+month);
             } catch (Exception e) {
                 
                 e.printStackTrace();
             }
             }else if(action.equals("Edit")){
-                String pnzName =request.getParameter("pnzName");
+                String pnzName = URLDecoder.decode(request.getParameter("pnzName"), "UTF-16");
                 int pnzId = Integer.parseInt(request.getParameter("pnzId"));
                 int month = Integer.parseInt(request.getParameter("month"));
                 String pnzDataId = request.getParameter("id");
@@ -104,7 +105,7 @@ public class PnzDataController extends HttpServlet {
             try {
                 PnzDataDao pnzDataDao = new PnzDataDao();
                 pnzDataDao.updatePnzData(Integer.parseInt(pnzDataId), pnz, pnzDateTime, bsh, ds, sr, ou, do_, oa, ozon, serovodorod, fenol, fv, hlor, hv, ammiak, skIs, formaldigid, nsm, hromSh, sumU);
-                response.sendRedirect("jsp/pnzdata.jsp?pnzId="+pnzId+"&pnzName="+URLEncoder.encode(pnzName, "UTF-8")+"&month="+month);
+                response.sendRedirect("jsp/pnzdata.jsp?pnzId="+pnzId+"&pnzName="+URLEncoder.encode(pnzName, "UTF-16")+"&month="+month);
             } catch (Exception e) {
                 
                 e.printStackTrace();

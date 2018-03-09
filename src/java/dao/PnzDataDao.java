@@ -66,7 +66,7 @@ public class PnzDataDao {
       Transaction tx = null;
       Date date = new Date();
       int year = Year.now().getValue();
-      int monthCurrent = date.getMonth();
+      int monthCurrent = date.getMonth()+1;
       if(month > monthCurrent){
           year = year-1;
       }
@@ -109,10 +109,13 @@ public class PnzDataDao {
       Transaction tx = null;
       Date date = new Date();
       int year = Year.now().getValue();
-      int monthCurrent = date.getMonth();
+      int monthCurrent = date.getMonth()+ 1;
+      System.out.println(month + "  " + monthCurrent );
+      System.out.println(year);
       if(month > monthCurrent){
           year = year-1;
       }
+      System.out.println(year);
       try {
          tx = session.beginTransaction();
          Query query = session.createQuery("SELECT min(pnzdata.bsh), min(pnzdata.ds), min(pnzdata.sr), min(pnzdata.ou), min(pnzdata.do_), min(pnzdata.oa), min(pnzdata.ozon), min(pnzdata.serovodorod), min(pnzdata.fenol), min(pnzdata.fv), min(pnzdata.hlor), min(pnzdata.hv), min(pnzdata.ammiak), min(pnzdata.skIs), min(pnzdata.formaldigid), min(pnzdata.nsm), min(pnzdata.hromSh), min(pnzdata.sumU) FROM PnzData pnzdata WHERE pnzID = :pnzId AND MONTH(pnzDateTime)= :month AND YEAR(pnzDateTime)= :year");
@@ -135,7 +138,7 @@ public class PnzDataDao {
       Transaction tx = null;
       Date date = new Date();
       int year = Year.now().getValue();
-      int monthCurrent = date.getMonth();
+      int monthCurrent = date.getMonth()+1;
       if(month > monthCurrent){
           year = year-1;
       }
@@ -162,10 +165,31 @@ public class PnzDataDao {
       Transaction tx = null;
       Date date = new Date();
       int year = Year.now().getValue();
-      int monthCurrent = date.getMonth();
+      int monthCurrent = date.getMonth()+1;
       if(month > monthCurrent){
           year = year-1;
       }
+      try {
+         tx = session.beginTransaction();
+         Query query = session.createQuery("SELECT avg(pnzdata.bsh), avg(pnzdata.ds), avg(pnzdata.sr), avg(pnzdata.ou), avg(pnzdata.do_), avg(pnzdata.oa), avg(pnzdata.ozon), avg(pnzdata.serovodorod), avg(pnzdata.fenol), avg(pnzdata.fv), avg(pnzdata.hlor), avg(pnzdata.hv), avg(pnzdata.ammiak), avg(pnzdata.skIs), avg(pnzdata.formaldigid), avg(pnzdata.nsm), avg(pnzdata.hromSh), avg(pnzdata.sumU) FROM PnzData pnzdata WHERE pnzID = :pnzId AND MONTH(pnzDateTime)= :month AND YEAR(pnzDateTime)= :year");
+         query.setParameter("pnzId", pnzId);
+         query.setParameter("month", month);
+         query.setParameter("year", year);
+         pnzData = query.list();
+         tx.commit();
+      } catch (HibernateException e) {
+         if (tx!=null) tx.rollback();
+         e.printStackTrace(); 
+      } finally {
+         session.close(); 
+      }
+      return pnzData;
+   }
+      
+   public List<PnzData> listPnzDatasByMonth(int pnzId, int month, int year ){
+      List<PnzData> pnzData = new ArrayList<PnzData>();
+      Session session = sessionFactory.openSession();
+      Transaction tx = null;
       try {
          tx = session.beginTransaction();
          Query query = session.createQuery("SELECT avg(pnzdata.bsh), avg(pnzdata.ds), avg(pnzdata.sr), avg(pnzdata.ou), avg(pnzdata.do_), avg(pnzdata.oa), avg(pnzdata.ozon), avg(pnzdata.serovodorod), avg(pnzdata.fenol), avg(pnzdata.fv), avg(pnzdata.hlor), avg(pnzdata.hv), avg(pnzdata.ammiak), avg(pnzdata.skIs), avg(pnzdata.formaldigid), avg(pnzdata.nsm), avg(pnzdata.hromSh), avg(pnzdata.sumU) FROM PnzData pnzdata WHERE pnzID = :pnzId AND MONTH(pnzDateTime)= :month AND YEAR(pnzDateTime)= :year");

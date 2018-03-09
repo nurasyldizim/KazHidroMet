@@ -4,6 +4,7 @@
     Author     : Nurasyl Dizim
 --%>
 
+<%@page import="java.net.URLDecoder"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="java.util.Date"%>
@@ -25,15 +26,13 @@
     <body>
         <h1>Hello World!</h1>
         <%
-            String pnzName = request.getParameter("pnzName");
+            String pnzName = URLDecoder.decode(request.getParameter("pnzName"), "UTF-8");
             String pnzId = request.getParameter("pnzId");
             String month = request.getParameter("month");
         %>
-        <select id="pnzList" onchange="refreshFunction()">
+        <select id="pnzList" onchange="refreshFunction">
         <%
-            PnzDataDao pnzDataDao = new PnzDataDao();
-            //List<PnzData> pnzDatalist =  pnzDataDao.listPnzDatas(1);
-                    
+            PnzDataDao pnzDataDao = new PnzDataDao();               
             PnzDao pnzDao = new PnzDao();
             List<Pnz> list = pnzDao.listPnzs();
             for (Pnz p : list) {
@@ -46,13 +45,12 @@
                 }
           }%>
         </select>   
-       
         <form method="POST" action="../PnzDataController">
             <table width="220" border="1">
             <tr><th>Дата</th><th>Взвешенные частицы(пыль)</th><th>Диоксид серы</th><th>Сульфаты растворимые</th><th>Оксид углерода</th><th>Диоксид азота</th><th>Оксид азота</th><th>Озон</th><th>Сероводород</th><th>Фенол</th><th>Фтористый водород</th><th>Хлор</th><th>Хлористый водород</th><th>Аммиак</th><th>Серная кислота и сульфаты</th><th>Формальдегид</th><th>Неорганические соединения мышьяк</th><th>Хром шестивалентный</th><th>Суммарные углеводороды</th></tr>   
             <tr>
                 
-                <td style="display: none"><input type="hidden" id="pnzName" name="pnzName" value=<%=pnzName%>/></td>
+                <td style="display: none"><input type="hidden" id="pnzName" name="pnzName" value="<%=pnzName%>"/></td>
                 <td style="display: none"><input type="hidden" id="pnzId" name="pnzId" value="<%=pnzId%>"/></td>
                 <td style="display: none"><input type="hidden" id="month" name="month" value="<%=month%>"/></td>
                 <td><input type="datetime-local" min="2015-01-01 00:00" max="2030-01-01 00:00" step="3600"  name="pnzDateTime" required/></td>
@@ -80,9 +78,9 @@
         </form>
         
            <ul>
-               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-16")%>&month=1">Январь</a></li>
-               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-16")%>&month=2">Февраль</a></li>
-               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-16")%>&month=3">Март</a></li>
+               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=1">Январь</a></li>
+               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=2">Февраль</a></li>
+               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=3">Март</a></li>
                <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-16")%>&month=4">Апрель</a></li>
                <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-16")%>&month=5">Май</a></li>
                <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-16")%>&month=6">Июнь</a></li>
@@ -92,7 +90,7 @@
                <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-16")%>&month=10">Октябрь</a></li>
                <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-16")%>&month=11">Ноябрь</a></li>
                <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-16")%>&month=12">Декабрь</a></li>
-               <li><a href="datamonth.jsp">Расчеты</a></li>
+               <li><a href="datamonth.jsp?month=1&name=<%=URLEncoder.encode("Январь", "UTF-16")%>">Расчеты</a></li>
            </ul>
                
                 <form name=frm method="POST">

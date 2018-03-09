@@ -7,7 +7,7 @@
 
 function refreshFunction() {
     var pnzList = document.getElementById("pnzList");
-    location.href ="pnzdata.jsp?pnzId=" + pnzList.options[pnzList.selectedIndex].value +"&pnzName=" + pnzList.options[pnzList.selectedIndex].text + "&month=1";
+    location.href ="pnzdata.jsp?pnzId=" + pnzList.options[pnzList.selectedIndex].value +"&pnzName=" + URLEncoder.encode(pnzList.options[pnzList.selectedIndex].text, "UTF-16") + "&month=1";
 }
 
 function getEditConfirmation(id){
