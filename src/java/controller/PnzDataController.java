@@ -30,7 +30,6 @@ public class PnzDataController extends HttpServlet {
             if(action.equals("Save")){
             request.setCharacterEncoding("UTF-8");
             String pnzName = URLDecoder.decode(request.getParameter("pnzName"), "UTF-8");
-            System.out.println(pnzName);
             int pnzId = Integer.parseInt(request.getParameter("pnzId"));
             int month = Integer.parseInt(request.getParameter("month"));
             Pnz pnz = new Pnz(pnzId,pnzName);

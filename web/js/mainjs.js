@@ -4,8 +4,20 @@
  * and open the template in the editor.
  */
 
+function calculateAvgAll(cell){
+    var table = document.getElementById("table"), sumVal = 0, rowCount = table.rows.length - 2;
+        for(var i = 1; i < table.rows.length-1; i++){
+            sumVal = sumVal + parseFloat(table.rows[i].cells[cell].innerHTML);
+        }
+        if(isNaN(parseFloat(sumVal / rowCount))){
+            document.getElementById(cell+"id").innerHTML = "";
+        }else{
+            document.getElementById(cell+"id").innerHTML = parseFloat(sumVal / rowCount);
+        }
+ }
+
  function calculateAvg(cell, pnz){
-    var table = document.getElementById("table"+pnz), sumVal = 0, rowCount = table.rows.length - 2;// minus the header  
+    var table = document.getElementById("table"+pnz), sumVal = 0, rowCount = table.rows.length - 2;
         for(var i = 1; i < table.rows.length-1; i++){
             sumVal = sumVal + parseFloat(table.rows[i].cells[cell].innerHTML);
         }
@@ -15,11 +27,18 @@
             document.getElementById(cell+"id"+pnz).innerHTML = parseFloat(sumVal / rowCount);
         }
  }
+ 
 function refreshFunction() {
     var pnzList = document.getElementById("pnzListId");
     var pnzId = pnzList.options[pnzList.selectedIndex].value;
     var pnzName = encodeURIComponent(pnzList.options[pnzList.selectedIndex].text);
     location.href = "pnzdata.jsp?pnzId=" + pnzId +"&pnzName=" + pnzName + "&month=1";
+    }
+
+function refreshFunctionMonth() {
+    var monthList = document.getElementById("monthListId");
+    var month = monthList.options[monthList.selectedIndex].value;
+    location.href = "qaverage.jsp?month="+month;
     }
 
 function getEditConfirmation(id){
