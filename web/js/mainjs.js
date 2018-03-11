@@ -4,7 +4,17 @@
  * and open the template in the editor.
  */
 
-
+ function calculateAvg(cell, pnz){
+    var table = document.getElementById("table"+pnz), sumVal = 0, rowCount = table.rows.length - 2;// minus the header  
+        for(var i = 1; i < table.rows.length-1; i++){
+            sumVal = sumVal + parseFloat(table.rows[i].cells[cell].innerHTML);
+        }
+        if(isNaN(parseFloat(sumVal / rowCount))){
+            document.getElementById(cell+"id"+pnz).innerHTML = "";
+        }else{
+            document.getElementById(cell+"id"+pnz).innerHTML = parseFloat(sumVal / rowCount);
+        }
+ }
 function refreshFunction() {
     var pnzList = document.getElementById("pnzListId");
     var pnzId = pnzList.options[pnzList.selectedIndex].value;
@@ -40,20 +50,3 @@ function getEditConfirmation(id){
     }
  }
  
- function calculateAvg(cell){
-             alert("fasdfds");
-    var table = document.getElementById("table"), sumVal = 0, rowCount = table.rows.length - 2;// minus the header  
-        for(var i = 1; i < table.rows.length-1; i++){
-            sumVal = sumVal + parseFloat(table.rows[i].cells[cell].innerHTML);
-        }
-        document.getElementById("ПНЗ1id"+cell).innerHTML = parseFloat(sumVal / rowCount);
- }
- 
- function calculatAaa(cell){
-     alert("fasdfds");
-    var table = document.getElementById("table"), sumVal = 0, rowCount = table.rows.length - 2;// minus the header  
-        for(var i = 1; i < table.rows.length-1; i++){
-            sumVal = sumVal + parseFloat(table.rows[i].cells[cell].innerHTML);
-        }
-        document.getElementById("ПНЗ1id"+cell).innerHTML = parseFloat(sumVal / rowCount);
- }

@@ -1,7 +1,7 @@
 <%-- 
     Document   : datamonth
     Created on : 07.03.2018, 22:07:55
-    Author     : user-22112
+    Author     : Dizim Nurasyl
 --%>
 
 <%@page import="java.net.URLDecoder"%>
@@ -17,6 +17,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <script type="text/javascript" src="../js/mainjs.js"></script>
         <title>Расчеты</title>
         
     </head>
@@ -43,10 +44,11 @@
             PnzDao pnzDao = new PnzDao();
             List<Pnz> list = pnzDao.listPnzs();
             for (Pnz p : list) {
+                String pnzName = p.getPnzName();
         %>
     <center><h3><%=monthName%></h3></center>
-        <table width="220" border="1">
-            <tr><th><%=p.getPnzName()%></th><th>Взвешенные частицы(пыль)</th><th>Диоксид серы</th><th>Сульфаты растворимые</th><th>Оксид углерода</th><th>Диоксид азота</th><th>Оксид азота</th><th>Озон</th><th>Сероводород</th><th>Фенол</th><th>Фтористый водород</th><th>Хлор</th><th>Хлористый водород</th><th>Аммиак</th><th>Серная кислота и сульфаты</th><th>Формальдегид</th><th>Неорганические соединения мышьяк</th><th>Хром шестивалентный</th><th>Суммарные углеводороды</th></tr>   
+    <table id="table<%=pnzName%>" width="220" border="1">
+            <tr><th><%=pnzName%></th><th>Взвешенные частицы(пыль)</th><th>Диоксид серы</th><th>Сульфаты растворимые</th><th>Оксид углерода</th><th>Диоксид азота</th><th>Оксид азота</th><th>Озон</th><th>Сероводород</th><th>Фенол</th><th>Фтористый водород</th><th>Хлор</th><th>Хлористый водород</th><th>Аммиак</th><th>Серная кислота и сульфаты</th><th>Формальдегид</th><th>Неорганические соединения мышьяк</th><th>Хром шестивалентный</th><th>Суммарные углеводороды</th></tr>   
             <%
                 for(int i = 2012; i<2026; i++){
                     List pnzAvglistByYear =  pnzDataDao.listPnzDatasByMonth(p.getPnzId(),Integer.parseInt(month), i);
@@ -78,10 +80,25 @@
             <%}}%>
             <tr>
                 <td>q ср.м</td>
-                  
+                <td id="1id<%=pnzName%>"><script>calculateAvg(1, "<%=pnzName%>");</script></td>
+                <td id="2id<%=pnzName%>"><script>calculateAvg(2, "<%=pnzName%>");</script></td>
+                <td id="3id<%=pnzName%>"><script>calculateAvg(3, "<%=pnzName%>");</script></td>
+                <td id="4id<%=pnzName%>"><script>calculateAvg(4, "<%=pnzName%>");</script></td>
+                <td id="5id<%=pnzName%>"><script>calculateAvg(5, "<%=pnzName%>");</script></td>
+                <td id="6id<%=pnzName%>"><script>calculateAvg(6, "<%=pnzName%>");</script></td>
+                <td id="7id<%=pnzName%>"><script>calculateAvg(7, "<%=pnzName%>");</script></td>
+                <td id="8id<%=pnzName%>"><script>calculateAvg(8, "<%=pnzName%>");</script></td>
+                <td id="9id<%=pnzName%>"><script>calculateAvg(9, "<%=pnzName%>");</script></td>
+                <td id="10id<%=pnzName%>"><script>calculateAvg(10, "<%=pnzName%>");</script></td>
+                <td id="11id<%=pnzName%>"><script>calculateAvg(11, "<%=pnzName%>");</script></td>
+                <td id="12id<%=pnzName%>"><script>calculateAvg(12, "<%=pnzName%>");</script></td>
+                <td id="13id<%=pnzName%>"><script>calculateAvg(13, "<%=pnzName%>");</script></td>
+                <td id="14id<%=pnzName%>"><script>calculateAvg(14, "<%=pnzName%>");</script></td>
+                <td id="15id<%=pnzName%>"><script>calculateAvg(15, "<%=pnzName%>");</script></td>
+                <td id="16id<%=pnzName%>"><script>calculateAvg(16, "<%=pnzName%>");</script></td>
+                <td id="17id<%=pnzName%>"><script>calculateAvg(17, "<%=pnzName%>");</script></td>     
             </tr>
             </table>
-        
         <%  }%>
     </body>
 </html>
