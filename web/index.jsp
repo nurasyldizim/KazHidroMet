@@ -16,7 +16,6 @@ and open the template in the editor.
         <div>TODO write content</div>
         <a href="jsp/pnzdata.jsp">link</a>
         <% String pnz = URLEncoder.encode("ПНЗ1", "UTF-8"); %>
-        <h1><%=pnz%></h1>
         <a href="jsp/pnzdata.jsp?pnzId=1&pnzName=<%=pnz%>&month=1">link2</a>
 
     </body>

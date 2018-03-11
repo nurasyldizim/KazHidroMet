@@ -6,9 +6,11 @@
 
 
 function refreshFunction() {
-    var pnzList = document.getElementById("pnzList");
-    location.href ="pnzdata.jsp?pnzId=" + pnzList.options[pnzList.selectedIndex].value +"&pnzName=" + URLEncoder.encode(pnzList.options[pnzList.selectedIndex].text, "UTF-16") + "&month=1";
-}
+    var pnzList = document.getElementById("pnzListId");
+    var pnzId = pnzList.options[pnzList.selectedIndex].value;
+    var pnzName = encodeURIComponent(pnzList.options[pnzList.selectedIndex].text);
+    location.href = "pnzdata.jsp?pnzId=" + pnzId +"&pnzName=" + pnzName + "&month=1";
+    }
 
 function getEditConfirmation(id){
     var retVal = confirm("Вы действительно хотите изменить этот запись?");

@@ -22,20 +22,21 @@
     </head>
     <body>
       <ul>
-               <li><a href="datamonth.jsp?month=1&name=<%=URLEncoder.encode("Январь", "UTF-16")%>">Январь</a></li>
-               <li><a href="datamonth.jsp?month=2&name=<%=URLEncoder.encode("Февраль", "UTF-16")%>">Февраль</a></li>
-               <li><a href="datamonth.jsp?month=3&name=<%=URLEncoder.encode("Март", "UTF-16")%>">Март</a></li>
-               <li><a href="datamonth.jsp?month=4&name=<%=URLEncoder.encode("Апрель", "UTF-16")%>">Апрель</a></li>
-               <li><a href="datamonth.jsp?month=5&name=<%=URLEncoder.encode("Май", "UTF-16")%>">Май</a></li>
-               <li><a href="datamonth.jsp?month=6&name=<%=URLEncoder.encode("Июнь", "UTF-16")%>">Июнь</a></li>
-               <li><a href="datamonth.jsp?month=7&name=<%=URLEncoder.encode("Июль", "UTF-16")%>">Июль</a></li>
-               <li><a href="datamonth.jsp?month=8&name=<%=URLEncoder.encode("Август", "UTF-16")%>">Август</a></li>
-               <li><a href="datamonth.jsp?month=9&name=<%=URLEncoder.encode("Сентябрь", "UTF-16")%>">Сентябрь</a></li>
-               <li><a href="datamonth.jsp?month=10&name=<%=URLEncoder.encode("Октябрь", "UTF-16")%>">Октябрь</a></li>
-               <li><a href="datamonth.jsp?month=11&name=<%=URLEncoder.encode("Ноябрь", "UTF-16")%>">Ноябрь</a></li>
-               <li><a href="datamonth.jsp?month=12&name=<%=URLEncoder.encode("Декабрь", "UTF-16")%>">Декабрь</a></li>
+               <li><a href="datamonth.jsp?month=1&name=<%=URLEncoder.encode("Январь", "UTF-8")%>">Январь</a></li>
+               <li><a href="datamonth.jsp?month=2&name=<%=URLEncoder.encode("Февраль", "UTF-8")%>">Февраль</a></li>
+               <li><a href="datamonth.jsp?month=3&name=<%=URLEncoder.encode("Март", "UTF-8")%>">Март</a></li>
+               <li><a href="datamonth.jsp?month=4&name=<%=URLEncoder.encode("Апрель", "UTF-8")%>">Апрель</a></li>
+               <li><a href="datamonth.jsp?month=5&name=<%=URLEncoder.encode("Май", "UTF-8")%>">Май</a></li>
+               <li><a href="datamonth.jsp?month=6&name=<%=URLEncoder.encode("Июнь", "UTF-8")%>">Июнь</a></li>
+               <li><a href="datamonth.jsp?month=7&name=<%=URLEncoder.encode("Июль", "UTF-8")%>">Июль</a></li>
+               <li><a href="datamonth.jsp?month=8&name=<%=URLEncoder.encode("Август", "UTF-8")%>">Август</a></li>
+               <li><a href="datamonth.jsp?month=9&name=<%=URLEncoder.encode("Сентябрь", "UTF-8")%>">Сентябрь</a></li>
+               <li><a href="datamonth.jsp?month=10&name=<%=URLEncoder.encode("Октябрь", "UTF-8")%>">Октябрь</a></li>
+               <li><a href="datamonth.jsp?month=11&name=<%=URLEncoder.encode("Ноябрь", "UTF-8")%>">Ноябрь</a></li>
+               <li><a href="datamonth.jsp?month=12&name=<%=URLEncoder.encode("Декабрь", "UTF-8")%>">Декабрь</a></li>
            </ul>
         <%  
+            request.setCharacterEncoding("UTF-8");
             String month = request.getParameter("month");
             String monthName = request.getParameter("name");
             PnzDataDao pnzDataDao = new PnzDataDao();
@@ -43,7 +44,7 @@
             List<Pnz> list = pnzDao.listPnzs();
             for (Pnz p : list) {
         %>
-    <center><h3><%=URLDecoder.decode(monthName, "UTF-16")%>></h3></center>
+    <center><h3><%=monthName%></h3></center>
         <table width="220" border="1">
             <tr><th><%=p.getPnzName()%></th><th>Взвешенные частицы(пыль)</th><th>Диоксид серы</th><th>Сульфаты растворимые</th><th>Оксид углерода</th><th>Диоксид азота</th><th>Оксид азота</th><th>Озон</th><th>Сероводород</th><th>Фенол</th><th>Фтористый водород</th><th>Хлор</th><th>Хлористый водород</th><th>Аммиак</th><th>Серная кислота и сульфаты</th><th>Формальдегид</th><th>Неорганические соединения мышьяк</th><th>Хром шестивалентный</th><th>Суммарные углеводороды</th></tr>   
             <%
