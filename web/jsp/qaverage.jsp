@@ -43,6 +43,7 @@
             map.put("12", "Декабрь");
     request.setAttribute("MyMap", map);
 %>
+<a href="pprognoz.jsp?month=1">Прогностический P</a>
 <select id="monthListId" onchange="refreshFunctionMonth()">
          <c:forEach items="${MyMap}" var="mapItem">
              <option value="${mapItem.key}" ${mapItem.key eq monthId ? "selected": ""}>${mapItem.value}</option>

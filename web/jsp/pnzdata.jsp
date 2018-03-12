@@ -117,7 +117,7 @@
                 <td style="display: none"><input type="hidden" id="month" name="month" value="<%=month%>"></td>
                 <td style="display:none"><input type="hidden" name="pnzDataId" value="<%=pd.getPnzDataId()%>"></td>
                 <td><input name="dateWithoutTime<%=pd.getPnzDataId()%>" type="datetime" value="<%=sdf.format(dateWithoutTime)%>"></td>
-                <td><input name="time<%=pd.getPnzDataId()%>" type="time" value="<%=time%>"></td>
+                <td><input id="time" name="time<%=pd.getPnzDataId()%>" type="time" value="<%=time%>"></td>
                 <td><input name="bsh<%=pd.getPnzDataId()%>" value="<%=pd.getBsh()%>"></td>
                 <td><input name="ds<%=pd.getPnzDataId()%>" value="<%=pd.getDs()%>"></td>
                 <td><input name="sr<%=pd.getPnzDataId()%>" value="<%=pd.getSr()%>"></td>

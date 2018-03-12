@@ -33,7 +33,7 @@ public class PnzDataController extends HttpServlet {
             int pnzId = Integer.parseInt(request.getParameter("pnzId"));
             int month = Integer.parseInt(request.getParameter("month"));
             Pnz pnz = new Pnz(pnzId,pnzName);
-            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm"); 
+            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm"); 
             Date pnzDateTime = (Date)formatter.parse(request.getParameter("pnzDateTime"));
             double bsh = Double.valueOf(request.getParameter("bsh"));
             double ds = Double.valueOf(request.getParameter("ds"));
