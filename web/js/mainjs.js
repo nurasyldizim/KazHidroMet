@@ -4,6 +4,18 @@
  * and open the template in the editor.
  */
 
+ function calculateQAvg(cell){
+    var table = document.getElementById("table"), sumVal = 0, rowCount = table.rows.length - 2;
+        for(var i = 1; i < table.rows.length-1; i++){
+            sumVal = sumVal + parseFloat(table.rows[i].cells[cell].innerHTML);
+        }
+        if(isNaN(parseFloat(sumVal / rowCount))){
+            document.getElementById(cell+"id").innerHTML = "";
+        }else{
+            document.getElementById(cell+"id").innerHTML = parseFloat(sumVal / rowCount);
+        }
+ }
+
 function calculateAvgAll(cell){
     var table = document.getElementById("table"), sumVal = 0, rowCount = table.rows.length - 2;
         for(var i = 1; i < table.rows.length-1; i++){
@@ -68,4 +80,6 @@ function getEditConfirmation(id){
        return false;
     }
  }
+ 
+ 
  
