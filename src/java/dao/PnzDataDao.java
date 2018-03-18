@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package dao;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -21,11 +23,40 @@ import org.hibernate.Transaction;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+/**
+ *
+ * @author user-22112
+ */
 public class PnzDataDao {
   SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();
   Session session;
 
    /* Method to CREATE an employee in the database */
+
+    /**
+     *
+     * @param pnz
+     * @param pnzDateTime
+     * @param bsh
+     * @param ds
+     * @param sr
+     * @param ou
+     * @param do_
+     * @param oa
+     * @param ozon
+     * @param serovodorod
+     * @param fenol
+     * @param fv
+     * @param hlor
+     * @param hv
+     * @param ammiak
+     * @param skIs
+     * @param formaldigid
+     * @param nsm
+     * @param hromSh
+     * @param sumU
+     */
+    
    public void addPnzData(Pnz pnz, Date pnzDateTime, double bsh, double ds, double sr, double ou, double do_, double oa, double ozon, double serovodorod, double fenol, double fv, double hlor, double hv, double ammiak, double skIs, double formaldigid, double nsm, double hromSh, double sumU){
       Session session = sessionFactory.openSession();
       Transaction tx = null;
@@ -43,7 +74,31 @@ public class PnzDataDao {
       }
    }
    
-   public void updatePnzData(int pnzDataId, Pnz pnz, Date pnzDateTime, double bsh, double ds, double sr, double ou, double do_, double oa, double ozon, double serovodorod, double fenol, double fv, double hlor, double hv, double ammiak, double skIs, double formaldigid, double nsm, double hromSh, double sumU){
+    /**
+     *
+     * @param pnzDataId
+     * @param pnz
+     * @param pnzDateTime
+     * @param bsh
+     * @param ds
+     * @param sr
+     * @param ou
+     * @param do_
+     * @param oa
+     * @param ozon
+     * @param serovodorod
+     * @param fenol
+     * @param fv
+     * @param hlor
+     * @param hv
+     * @param ammiak
+     * @param skIs
+     * @param formaldigid
+     * @param nsm
+     * @param hromSh
+     * @param sumU
+     */
+    public void updatePnzData(int pnzDataId, Pnz pnz, Date pnzDateTime, double bsh, double ds, double sr, double ou, double do_, double oa, double ozon, double serovodorod, double fenol, double fv, double hlor, double hv, double ammiak, double skIs, double formaldigid, double nsm, double hromSh, double sumU){
       Session session = sessionFactory.openSession();
       Transaction tx = null;
       
@@ -60,6 +115,12 @@ public class PnzDataDao {
       }
    }
    
+    /**
+     *
+     * @param pnzId
+     * @param month
+     * @return
+     */
     public List<PnzData> listPnzDatas(int pnzId, int month ){
       List<PnzData> pnzData = new ArrayList<PnzData>();
       Session session = sessionFactory.openSession();
@@ -87,6 +148,10 @@ public class PnzDataDao {
       return pnzData;
    }
    
+    /**
+     *
+     * @param PnzDataID
+     */
     public void deletePnzData(Integer PnzDataID){
       Session session = sessionFactory.openSession();
       Transaction tx = null;
@@ -103,7 +168,14 @@ public class PnzDataDao {
          session.close(); 
       }
    }
-      public List minPnzDatas(int pnzId, int month ){
+
+    /**
+     *
+     * @param pnzId
+     * @param month
+     * @return
+     */
+    public List minPnzDatas(int pnzId, int month ){
       List pnzData = new ArrayList();
       Session session = sessionFactory.openSession();
       Transaction tx = null;
@@ -129,7 +201,14 @@ public class PnzDataDao {
       }
       return pnzData;
    }
-      public List maxPnzDatas(int pnzId, int month ){
+
+    /**
+     *
+     * @param pnzId
+     * @param month
+     * @return
+     */
+    public List maxPnzDatas(int pnzId, int month ){
       List pnzData = new ArrayList();
       Session session = sessionFactory.openSession();
       Transaction tx = null;
@@ -156,7 +235,13 @@ public class PnzDataDao {
       return pnzData;
    }
       
-      public List avgPnzDatas(int pnzId, int month ){
+    /**
+     *
+     * @param pnzId
+     * @param month
+     * @return
+     */
+    public List avgPnzDatas(int pnzId, int month ){
       List pnzData = new ArrayList();
       Session session = sessionFactory.openSession();
       Transaction tx = null;
@@ -183,7 +268,14 @@ public class PnzDataDao {
       return pnzData;
    }
       
-   public List<PnzData> listPnzDatasByMonth(int pnzId, int month, int year ){
+    /**
+     *
+     * @param pnzId
+     * @param month
+     * @param year
+     * @return
+     */
+    public List<PnzData> listPnzDatasByMonth(int pnzId, int month, int year ){
       List<PnzData> pnzData = new ArrayList<PnzData>();
       Session session = sessionFactory.openSession();
       Transaction tx = null;
@@ -204,6 +296,12 @@ public class PnzDataDao {
       return pnzData;
    }
    
+    /**
+     *
+     * @param month
+     * @param year
+     * @return
+     */
     public List<PnzData> listAllPnzDatasByMonth(int month, int year ){
       List<PnzData> pnzData = new ArrayList<PnzData>();
       Session session = sessionFactory.openSession();
@@ -224,6 +322,11 @@ public class PnzDataDao {
       return pnzData;
    }
       
+    /**
+     *
+     * @param month
+     * @return
+     */
     public ArrayList<PnzData>[] qAvgPnzDatas( int month ){
       ArrayList<PnzData>[] avgData = (ArrayList<PnzData>[])new ArrayList[4];
       Session session = sessionFactory.openSession();
@@ -286,5 +389,66 @@ public class PnzDataDao {
          session.close(); 
       }
       return avgData;
+   }
+    
+    
+    public ArrayList<PnzData>[] listPnzDatasToPP(int pnzId, String dateStr ) throws ParseException{
+      ArrayList<PnzData>[] pnzData = (ArrayList<PnzData>[])new ArrayList[4];
+      Session session = sessionFactory.openSession();
+      Transaction tx = null;
+      SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+      Date date;
+      String dateTime;
+      Query query;
+      Calendar cal = Calendar.getInstance();
+      try {
+         tx = session.beginTransaction();
+         dateTime = dateStr+" 13:00";
+         date = simpleDateFormat.parse(dateTime);
+         cal.setTime(date);
+         cal.add(Calendar.DAY_OF_MONTH, -1);
+         query = session.createQuery("SELECT pnzdata.bsh, pnzdata.ds, pnzdata.sr, pnzdata.ou, pnzdata.do_, pnzdata.oa, pnzdata.ozon, pnzdata.serovodorod, pnzdata.fenol, pnzdata.fv, pnzdata.hlor, pnzdata.hv, pnzdata.ammiak, pnzdata.skIs, pnzdata.formaldigid, pnzdata.nsm, pnzdata.hromSh, pnzdata.sumU FROM PnzData pnzdata WHERE pnzID = :pnzId AND pnzDateTime= :date ");
+         query.setParameter("pnzId", pnzId);
+         query.setParameter("date", simpleDateFormat.parse(simpleDateFormat.format(cal.getTime())));
+         System.out.println(simpleDateFormat.parse(simpleDateFormat.format(cal.getTime())));
+         pnzData[0] = (ArrayList<PnzData>) query.list();
+         tx.commit();
+         
+         tx = session.beginTransaction();
+         dateTime = dateStr+" 19:00";
+         date = simpleDateFormat.parse(dateTime);
+         cal.setTime(date);
+         cal.add(Calendar.DAY_OF_MONTH, -1);
+         query = session.createQuery("SELECT pnzdata.bsh, pnzdata.ds, pnzdata.sr, pnzdata.ou, pnzdata.do_, pnzdata.oa, pnzdata.ozon, pnzdata.serovodorod, pnzdata.fenol, pnzdata.fv, pnzdata.hlor, pnzdata.hv, pnzdata.ammiak, pnzdata.skIs, pnzdata.formaldigid, pnzdata.nsm, pnzdata.hromSh, pnzdata.sumU FROM PnzData pnzdata WHERE pnzID = :pnzId AND pnzDateTime= :date ");
+         query.setParameter("pnzId", pnzId);
+         query.setParameter("date", cal.getTime());
+         pnzData[1] = (ArrayList<PnzData>) query.list();
+         tx.commit();
+         
+         tx = session.beginTransaction();
+         dateTime = dateStr+" 01:00";
+         date = simpleDateFormat.parse(dateTime);
+         query = session.createQuery("SELECT pnzdata.bsh, pnzdata.ds, pnzdata.sr, pnzdata.ou, pnzdata.do_, pnzdata.oa, pnzdata.ozon, pnzdata.serovodorod, pnzdata.fenol, pnzdata.fv, pnzdata.hlor, pnzdata.hv, pnzdata.ammiak, pnzdata.skIs, pnzdata.formaldigid, pnzdata.nsm, pnzdata.hromSh, pnzdata.sumU FROM PnzData pnzdata WHERE pnzID = :pnzId AND pnzDateTime= :date ");
+         query.setParameter("pnzId", pnzId);
+         query.setParameter("date", date);
+         pnzData[2] = (ArrayList<PnzData>) query.list();
+         tx.commit();
+         
+         tx = session.beginTransaction();
+         dateTime = dateStr+" 07:00";
+         date = simpleDateFormat.parse(dateTime);
+         query = session.createQuery("SELECT pnzdata.bsh, pnzdata.ds, pnzdata.sr, pnzdata.ou, pnzdata.do_, pnzdata.oa, pnzdata.ozon, pnzdata.serovodorod, pnzdata.fenol, pnzdata.fv, pnzdata.hlor, pnzdata.hv, pnzdata.ammiak, pnzdata.skIs, pnzdata.formaldigid, pnzdata.nsm, pnzdata.hromSh, pnzdata.sumU FROM PnzData pnzdata WHERE pnzID = :pnzId AND pnzDateTime= :date ");
+         query.setParameter("pnzId", pnzId);
+         query.setParameter("date", date);
+         pnzData[3] = (ArrayList<PnzData>) query.list();
+         tx.commit();
+         System.out.println("OK");
+      } catch (HibernateException e) {
+         if (tx!=null) tx.rollback();
+         e.printStackTrace(); 
+      } finally {
+         session.close(); 
+      }
+      return pnzData;
    }
 }

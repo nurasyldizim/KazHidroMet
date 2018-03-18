@@ -15,41 +15,86 @@ public class Pnz  implements java.io.Serializable {
      private String pnzName;
      private Set<PnzData> pnzDatas = new HashSet<PnzData>(0);
 
+    /**
+     *
+     */
     public Pnz() {
     }
 
+    /**
+     *
+     * @param pnzName
+     */
     public Pnz(String pnzName) {
         this.pnzName = pnzName;
     }
 	
+    /**
+     *
+     * @param pnzId
+     * @param pnzName
+     */
     public Pnz(int pnzId, String pnzName) {
         this.pnzId = pnzId;
         this.pnzName = pnzName;
     }
+
+    /**
+     *
+     * @param pnzId
+     * @param pnzName
+     * @param pnzDatas
+     */
     public Pnz(int pnzId, String pnzName, Set<PnzData> pnzDatas) {
        this.pnzId = pnzId;
        this.pnzName = pnzName;
        this.pnzDatas = pnzDatas;
     }
    
+    /**
+     *
+     * @return
+     */
     public int getPnzId() {
         return this.pnzId;
     }
     
+    /**
+     *
+     * @param pnzId
+     */
     public void setPnzId(int pnzId) {
         this.pnzId = pnzId;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getPnzName() {
         return this.pnzName;
     }
     
+    /**
+     *
+     * @param pnzName
+     */
     public void setPnzName(String pnzName) {
         this.pnzName = pnzName;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set<PnzData> getPnzDatas() {
         return this.pnzDatas;
     }
     
+    /**
+     *
+     * @param pnzDatas
+     */
     public void setPnzDatas(Set<PnzData> pnzDatas) {
         this.pnzDatas = pnzDatas;
     }

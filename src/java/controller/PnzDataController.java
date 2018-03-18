@@ -18,10 +18,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Pnz;
  
- 
+/**
+ *
+ * @author user-22112
+ */
 public class PnzDataController extends HttpServlet {
     private static final long serialVersionUID = 1L;
  
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         try {

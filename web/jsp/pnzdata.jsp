@@ -21,6 +21,26 @@
         <title>PNZ Data</title>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../js/mainjs.js"></script>
+        <script>
+               function hrefPprognoz() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if(dd<10) {
+        dd = '0'+dd
+    } 
+
+    if(mm<10) {
+        mm = '0'+mm
+    } 
+
+    today = dd + '/' + mm + '/' + yyyy;
+   
+    location.href = "pprognoz.jsp?date="+today;
+    }
+        </script>
     </head>
     <body>
         <h1>Hello World!</h1>
@@ -46,6 +66,8 @@
                 }
           }%>
         </select>   
+        <button onclick="hrefPprognoz()">Прогностический P</button>
+
         <form method="POST" action="../PnzDataController">
             <table width="220" border="1">
             <tr><th>Дата</th><th>Взвешенные частицы(пыль)</th><th>Диоксид серы</th><th>Сульфаты растворимые</th><th>Оксид углерода</th><th>Диоксид азота</th><th>Оксид азота</th><th>Озон</th><th>Сероводород</th><th>Фенол</th><th>Фтористый водород</th><th>Хлор</th><th>Хлористый водород</th><th>Аммиак</th><th>Серная кислота и сульфаты</th><th>Формальдегид</th><th>Неорганические соединения мышьяк</th><th>Хром шестивалентный</th><th>Суммарные углеводороды</th></tr>   

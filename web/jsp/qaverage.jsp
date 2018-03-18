@@ -67,6 +67,7 @@
                 for (int i = 0; i<4; i++) {
                     Iterator iterQAvgList = qAvglist[i].iterator();
                     Object[] objQAvg = (Object[]) iterQAvgList.next();
+                    System.out.println(qAvglist[i].size());
             %>
             <tr>
                 <c:choose>

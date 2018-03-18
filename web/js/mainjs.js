@@ -40,6 +40,7 @@ function calculateAvgAll(cell){
         }
  }
  
+  
 function refreshFunction() {
     var pnzList = document.getElementById("pnzListId");
     var pnzId = pnzList.options[pnzList.selectedIndex].value;
@@ -52,6 +53,7 @@ function refreshFunctionMonth() {
     var month = monthList.options[monthList.selectedIndex].value;
     location.href = "qaverage.jsp?month="+month;
     }
+
 
 function getEditConfirmation(id){
     var retVal = confirm("Вы действительно хотите изменить этот запись?");

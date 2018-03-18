@@ -15,11 +15,21 @@ import org.hibernate.Transaction;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+/**
+ *
+ * @author user-22112
+ */
 public class PnzDao {
   SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();
   Session session;
 
    /* Method to  READ all the employees */
+
+    /**
+     *
+     * @return
+     */
+    
    public List<Pnz> listPnzs( ){
       List<Pnz> pnzData = new ArrayList<Pnz>();
       Session session = sessionFactory.openSession();
