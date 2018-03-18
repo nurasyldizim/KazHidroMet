@@ -4,6 +4,44 @@
  * and open the template in the editor.
  */
 
+function calculateQMinToP(cell){
+    var table = document.getElementById("table"), minVal = parseFloat(table.rows[2].cells[cell].innerHTML);   
+    for(var i = 2; i < table.rows.length-2; i++){
+            if(minVal > parseFloat(table.rows[i].cells[cell].innerHTML))
+            minVal = parseFloat(table.rows[i].cells[cell].innerHTML);
+        }
+        if(isNaN(parseFloat(minVal))){
+            document.getElementById(cell+"min").innerHTML = "";
+        }else{
+            document.getElementById(cell+"min").innerHTML = minVal;
+        }
+ }
+ 
+function calculateQMaxToP(cell){
+    var table = document.getElementById("table"), maxVal = parseFloat(table.rows[2].cells[cell].innerHTML);   
+    for(var i = 2; i < table.rows.length-1; i++){
+            if(maxVal < parseFloat(table.rows[i].cells[cell].innerHTML))
+            maxVal = parseFloat(table.rows[i].cells[cell].innerHTML);
+        }
+        if(isNaN(parseFloat(maxVal))){
+            document.getElementById(cell+"max").innerHTML = "";
+        }else{
+            document.getElementById(cell+"max").innerHTML = maxVal;
+        }
+ }
+
+ function calculateQAvgToP(cell){
+    var table = document.getElementById("table"), sumVal = 0, rowCount = table.rows.length - 5;
+        for(var i = 2; i < table.rows.length-3; i++){
+            sumVal = sumVal + parseFloat(table.rows[i].cells[cell].innerHTML);
+        }
+        if(isNaN(parseFloat(sumVal / rowCount))){
+            document.getElementById(cell+"id").innerHTML = "";
+        }else{
+            document.getElementById(cell+"id").innerHTML = parseFloat(sumVal / rowCount);
+        }
+ }
+
  function calculateQAvg(cell){
     var table = document.getElementById("table"), sumVal = 0, rowCount = table.rows.length - 2;
         for(var i = 1; i < table.rows.length-1; i++){
