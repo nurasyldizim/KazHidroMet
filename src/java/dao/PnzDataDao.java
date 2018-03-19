@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package dao;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Year;
@@ -391,6 +392,72 @@ public class PnzDataDao {
       return avgData;
    }
     
+    public ArrayList<PnzData>[] listQAvgToPP(String dateStr ) throws ParseException{
+      ArrayList<PnzData>[] avgData = (ArrayList<PnzData>[])new ArrayList[4];
+      Session session = sessionFactory.openSession();
+      Transaction tx = null;
+      DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+      Date date = formatter.parse(dateStr);
+      SimpleDateFormat formatYear = new SimpleDateFormat("YYYY");
+      int currentYear = Integer.parseInt(formatYear.format(date));
+      int lastYear = currentYear-1;
+      int monthCurrent = date.getMonth()+1;
+  
+      try {
+         tx = session.beginTransaction();
+         Query query1 = session.createQuery("SELECT avg(pnzdata.bsh), avg(pnzdata.ds), avg(pnzdata.sr), avg(pnzdata.ou), avg(pnzdata.do_), avg(pnzdata.oa), avg(pnzdata.ozon), avg(pnzdata.serovodorod), avg(pnzdata.fenol), avg(pnzdata.fv), avg(pnzdata.hlor), avg(pnzdata.hv), avg(pnzdata.ammiak), avg(pnzdata.skIs), avg(pnzdata.formaldigid), avg(pnzdata.nsm), avg(pnzdata.hromSh), avg(pnzdata.sumU) FROM PnzData pnzdata WHERE MONTH(pnzDateTime)= :month AND YEAR(pnzDateTime)= :year");
+         if(monthCurrent==1){
+            query1.setParameter("month", 12);
+            query1.setParameter("year", lastYear-1);
+         }else{
+            query1.setParameter("month", monthCurrent-1);
+            query1.setParameter("year", lastYear);
+         }
+         avgData[0] = (ArrayList<PnzData>) query1.list();
+         System.out.println(query1.list().size());
+         tx.commit();
+         
+         tx = session.beginTransaction();
+         Query query2 = session.createQuery("SELECT avg(pnzdata.bsh), avg(pnzdata.ds), avg(pnzdata.sr), avg(pnzdata.ou), avg(pnzdata.do_), avg(pnzdata.oa), avg(pnzdata.ozon), avg(pnzdata.serovodorod), avg(pnzdata.fenol), avg(pnzdata.fv), avg(pnzdata.hlor), avg(pnzdata.hv), avg(pnzdata.ammiak), avg(pnzdata.skIs), avg(pnzdata.formaldigid), avg(pnzdata.nsm), avg(pnzdata.hromSh), avg(pnzdata.sumU) FROM PnzData pnzdata WHERE MONTH(pnzDateTime)= :month AND YEAR(pnzDateTime)= :year");
+         query2.setParameter("month", monthCurrent);
+         query2.setParameter("year", lastYear);
+         avgData[1] = (ArrayList<PnzData>) query2.list();
+         System.out.println(query2.list().size());
+         tx.commit();
+         
+         tx = session.beginTransaction();
+         Query query3 = session.createQuery("SELECT avg(pnzdata.bsh), avg(pnzdata.ds), avg(pnzdata.sr), avg(pnzdata.ou), avg(pnzdata.do_), avg(pnzdata.oa), avg(pnzdata.ozon), avg(pnzdata.serovodorod), avg(pnzdata.fenol), avg(pnzdata.fv), avg(pnzdata.hlor), avg(pnzdata.hv), avg(pnzdata.ammiak), avg(pnzdata.skIs), avg(pnzdata.formaldigid), avg(pnzdata.nsm), avg(pnzdata.hromSh), avg(pnzdata.sumU) FROM PnzData pnzdata WHERE MONTH(pnzDateTime)= :month AND YEAR(pnzDateTime)= :year");
+         if(monthCurrent == 12){
+            query3.setParameter("month", 1);
+            query3.setParameter("year", currentYear);
+         }else{
+            query3.setParameter("month", monthCurrent+1);
+            query3.setParameter("year", lastYear);
+         }
+         avgData[2] = (ArrayList<PnzData>) query3.list();
+         System.out.println(query3.list().size());
+         tx.commit();
+         
+         tx = session.beginTransaction();
+         Query query4 = session.createQuery("SELECT avg(pnzdata.bsh), avg(pnzdata.ds), avg(pnzdata.sr), avg(pnzdata.ou), avg(pnzdata.do_), avg(pnzdata.oa), avg(pnzdata.ozon), avg(pnzdata.serovodorod), avg(pnzdata.fenol), avg(pnzdata.fv), avg(pnzdata.hlor), avg(pnzdata.hv), avg(pnzdata.ammiak), avg(pnzdata.skIs), avg(pnzdata.formaldigid), avg(pnzdata.nsm), avg(pnzdata.hromSh), avg(pnzdata.sumU) FROM PnzData pnzdata WHERE MONTH(pnzDateTime)= :month AND YEAR(pnzDateTime)= :year");
+         if(monthCurrent == 1){
+            query4.setParameter("month", 12);
+            query4.setParameter("year", lastYear);
+         }else{
+            query4.setParameter("month", monthCurrent-1);
+            query4.setParameter("year", currentYear);
+         }
+         avgData[3] = (ArrayList<PnzData>) query4.list();
+         System.out.println(query4.list().size());
+         tx.commit();
+      } catch (HibernateException e) {
+         if (tx!=null) tx.rollback();
+         e.printStackTrace(); 
+      } finally {
+         session.close(); 
+      }
+      return avgData;
+   }
     
     public ArrayList<PnzData>[] listPnzDatasToPP(int pnzId, String dateStr ) throws ParseException{
       ArrayList<PnzData>[] pnzData = (ArrayList<PnzData>[])new ArrayList[4];
@@ -410,7 +477,6 @@ public class PnzDataDao {
          query = session.createQuery("SELECT pnzdata.bsh, pnzdata.ds, pnzdata.sr, pnzdata.ou, pnzdata.do_, pnzdata.oa, pnzdata.ozon, pnzdata.serovodorod, pnzdata.fenol, pnzdata.fv, pnzdata.hlor, pnzdata.hv, pnzdata.ammiak, pnzdata.skIs, pnzdata.formaldigid, pnzdata.nsm, pnzdata.hromSh, pnzdata.sumU FROM PnzData pnzdata WHERE pnzID = :pnzId AND pnzDateTime= :date ");
          query.setParameter("pnzId", pnzId);
          query.setParameter("date", simpleDateFormat.parse(simpleDateFormat.format(cal.getTime())));
-         System.out.println(simpleDateFormat.parse(simpleDateFormat.format(cal.getTime())));
          pnzData[0] = (ArrayList<PnzData>) query.list();
          tx.commit();
          
@@ -442,7 +508,6 @@ public class PnzDataDao {
          query.setParameter("date", date);
          pnzData[3] = (ArrayList<PnzData>) query.list();
          tx.commit();
-         System.out.println("OK");
       } catch (HibernateException e) {
          if (tx!=null) tx.rollback();
          e.printStackTrace(); 
