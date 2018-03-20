@@ -1,13 +1,3 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 20.03.2018, 15:15:43
-    Author     : user-22112
-*/
-
 .meter {
   background-color: #222;
   background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/800/bg-noise-white.png"), linear-gradient(to bottom, #222222, #181818);
@@ -177,7 +167,7 @@ and open the template in the editor.
 
 .meter-label:before,
 .meter-label:after {
-  content: '0.21 ';
+  content: '≤ 0.20 пониженный';
   color: #807363;
   font-size: 10px;
   font-weight: normal;
@@ -190,7 +180,7 @@ and open the template in the editor.
 }
 
 .meter-label:after {
-  content: '0.21';
+  content: '0.21-0.35 повышенный';
   right: 46px;
 }
 
@@ -280,6 +270,26 @@ and open the template in the editor.
 .fill-lump--75 .meter-range {
   transform: rotate(-75deg);
 }
+.fill-lump--75.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--75 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+
+.fill-lump--75 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--75 .meter-range {
+  transform: rotate(-75deg);
+}
+.fill-lump--75.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--75 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+
 
 .fill-lump--50 .meter-glass {
   background: radial-gradient(ellipse at center, #e5dda1 0%, #e5dda1 27%, #e5c195 100%);

@@ -9,15 +9,32 @@
 
 // Fill range:
 // -90, -75, -50, -25, 0, 25, 75, 90
-alert("check");
 var table = document.getElementById("table3");
 var fill = table.rows[2].cells[0].innerHTML;
-if(0.005>fill>0)
-    fill=-1;
-if(0.06>fill>0.05)
-    fill=25;
-alert(fill);
+var count90min = 90;
+var count90plus = 0;
+for (i = 0; i < 1; i+=0.0055555556) { 
+    if(fill==0){
+        fill=count90min*-1;
+        break;
+    }else if(fill==1){
+        fill = count90plus;
+        break;
+    }
+    if(count90min>0){
+        count90min--;
+        if(i<fill && fill<i+0.0055555556){
+            fill=count90min*-1;
+            break;
+        }
+    }else if(count90plus<90){
+        if(i<fill && fill<i+0.0055555556){
+            fill=count90plus;
+            break;
+        }
+        count90plus++;
+    }
+}
 var meter = document.getElementById("js-meter");
 
 meter.className = meter.className + " fill-" + fill + " fill-lump-" + fill;
-alert("OK");
