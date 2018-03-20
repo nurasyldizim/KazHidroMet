@@ -3,8 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+function calP(){
+    var table = document.getElementById("table"), rows = parseInt(table.rows.length), p = parseFloat(parseFloat(table.rows[rows-3].cells[1].innerHTML)/parseFloat(table.rows[rows-3].cells[0].innerHTML));
+    if(isNaN(p)){
+            document.getElementById("calP").innerHTML = 0;
+        }else{
+            document.getElementById("calP").innerHTML = p;
+        }
+ }
+ 
+function calSI(){
+    var table = document.getElementById("table2"), columns=parseInt(table.rows[2].cells.length),
+                rows = parseInt(table.rows.length), si = 0;
+        for(var c = 2; c<columns; c++){
+            for(var r = 2; r<rows-3; r++){
+                if(parseFloat(table.rows[r].cells[c].innerHTML)>si){
+                    si = parseFloat(table.rows[r].cells[c].innerHTML);
+                }
+            }
+        }
+    if(isNaN(si)){
+            document.getElementById("calSI").innerHTML = "";
+        }else{
+            document.getElementById("calSI").innerHTML = si;
+        }
+ }
+ 
 function countPdkN(){
-    alert("check");
     var table = document.getElementById("table2"), columns=parseInt(table.rows[2].cells.length),
                 rows = parseInt(table.rows.length), n = 0;
         for(var c = 2; c<columns; c++){

@@ -20,6 +20,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" type="text/css" href="../css/datepicker.css">
+        <link rel="stylesheet" type="text/css" href="../css/indicator.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script type="text/javascript" src="../js/mainjs.js"></script>
         <script type="text/javascript" src="../js/jquery.js"></script>
@@ -38,6 +39,21 @@
 		<button><i class="fa fa-calendar"></i></button>
 	</div>
 	<div class="calendar"></div>
+</div>
+              <div id="js-meter" class="meter">
+  
+  <span class="meter-label">Индикатор P</span>
+  <div class="meter-glass">
+    <div class="meter-display">
+      <div class="meter-range">
+        <div class="meter-range-item meter-range-item--1"></div>
+        <div class="meter-range-item meter-range-item--2"></div>
+        <div class="meter-range-item meter-range-item--3"></div>
+      </div>
+      <div class="meter-needle"></div>
+    </div>
+  </div>
+  
 </div>
                 <table id="table" width="220" border="1">
                     <tr><td colspan="20">Расчетная матрица для "P" </td></tr>
@@ -288,7 +304,8 @@
                 <td></td>
             </tr>
     </table>
-            
+            <br>
+            <br>
             <table id="table2" width="220" border="1">
                 <tr><td colspan="20">Расчетная матрица для "ПДК" </td></tr>
                 <tr><th></th><th>Срок</th><th>Взвешенные частицы(пыль)</th><th>Диоксид серы</th><th>Сульфаты растворимые</th><th>Оксид углерода</th><th>Диоксид азота</th><th>Оксид азота</th><th>Озон</th><th>Сероводород</th><th>Фенол</th><th>Фтористый водород</th><th>Хлор</th><th>Хлористый водород</th><th>Аммиак</th><th>Серная кислота и сульфаты</th><th>Формальдегид</th><th>Неорганические соединения мышьяк</th><th>Хром шестивалентный</th><th>Суммарные углеводороды</th></tr>   
@@ -364,6 +381,18 @@
                 <td id="eachPdkN19"><script>countEachPdkN(19)</script></td>
             </tr>
             </table>
+            <br>
+            <br>
+            <table id="table3" width="220" border="1">
+                <tr><td colspan="2">Расчетная матрица для "ПДК" </td></tr>
+                <tr><th>P</th><th>СИ</th></tr>
+                <tr>
+                    <td id="calP"><script>calP();</script></td>
+                    <td id="calSI"><script>calSI();</script></td>
+                </tr>
+                
+            </table>
+            <script type="text/javascript" src="../js/indicator.js"></script>
 
     </body>
 </html>

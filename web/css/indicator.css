@@ -1,0 +1,1355 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20.03.2018, 15:15:43
+    Author     : user-22112
+*/
+
+.meter {
+  background-color: #222;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/800/bg-noise-white.png"), linear-gradient(to bottom, #222222, #181818);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 12px rgba(0, 0, 0, 0.2);
+  height: 250px;
+  margin: 75px auto;
+  position: relative;
+  width: 330px;
+}
+
+.meter:before,
+.meter:after {
+  background: #303030;
+  border: 1px solid #202020;
+  border-radius: 2px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  content: '';
+  height: 10px;
+  position: absolute;
+  top: 25px;
+  width: 25px;
+}
+
+.meter:before {
+  left: 40px;
+}
+
+.meter:after {
+  right: 40px;
+}
+
+.meter-glass {
+  border-radius: 50% 50% 12px 12px;
+  background: radial-gradient(ellipse at center, #e5d873 0%, #e5d873 27%, #cc9552 100%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2), 0 3px 3px rgba(224, 133, 29, 0.3), 0 -2px 3px rgba(224, 133, 29, 0.3), -2px 0 3px rgba(224, 133, 29, 0.3), 2px 0 3px rgba(224, 133, 29, 0.3), inset 0 3px 8px rgba(17, 17, 17, 0.3);
+  height: 150px;
+  margin: -55px 0 0 -125px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250px;
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.meter-glass:before,
+.meter-glass:after {
+  border-radius: 50%;
+  content: '';
+  position: absolute;
+}
+
+.meter-glass:before {
+  background: #303030;
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2), 0 2px 2px rgba(0, 0, 0, 0.2);
+  height: 1.5em;
+  margin: 0 0 0 -.75em;
+  left: 50%;
+  bottom: 10px;
+  width: 1.5em;
+}
+
+.meter-glass:after {
+  background: #333;
+  border: 1px solid #666;
+  box-shadow: inset 0 2px 1px rgba(255, 255, 255, 0.2);
+  height: .8em;
+  margin: 0 0 0 -.4em;
+  bottom: 62px;
+  left: 50%;
+  width: .8em;
+}
+
+.meter-display {
+  height: 110px;
+  margin: -55px 0 0 -110px;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 220px;
+  z-index: 2;
+}
+
+.meter-range {
+  transform-origin: 110px 110px;
+  transform: rotate(0deg);
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  /*  -webkit-animation: jesse .8s cubic-bezier(0.680, -0.550, 0.265, 1.550) infinite alternate;*/
+}
+
+.meter-range-item {
+  border: 10px solid transparent;
+  border-radius: 50%;
+  height: 200px;
+  position: absolute;
+  top: 0;
+  width: 200px;
+  transform: rotate(-35deg);
+}
+
+.meter-range-item--1 {
+  border-color: #A51818;
+}
+
+.meter-range-item--2 {
+  border-top-color: #fff;
+  border-right-color: #fff;
+  transform: rotate(44deg);
+}
+
+.meter-range-item--3 {
+  border-top-color: #B4A299;
+  border-right-color: #B4A299;
+  transform: rotate(48deg);
+}
+
+.meter-needle {
+  background-color: #A51818;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  height: 75px;
+  margin: 0 -1px 0 0;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 3px;
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform: rotate(0deg);
+  transform-origin: 0 100%;
+  /*  -webkit-animation: jesse .8s cubic-bezier(0.680, -0.550, 0.265, 1.550) infinite alternate;*/
+}
+
+.meter-needle:before,
+.meter-needle:after {
+  border-radius: 50%;
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+}
+
+.meter-needle:before {
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  height: 60px;
+  margin: -31px 0 0 -33px;
+  width: 60px;
+}
+
+.meter-needle:after {
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  height: 142px;
+  margin: -72px 0 0 -74px;
+  width: 142px;
+}
+
+.meter-label {
+  color: #C7B6A5;
+  display: block;
+  font-family: "Lucida Console","Lucida Sans Typewriter",monaco,"Bitstream Vera Sans Mono";
+  font-size: 20px;
+  padding-top: 22px;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.meter-label:before,
+.meter-label:after {
+  content: '0.21 ';
+  color: #807363;
+  font-size: 10px;
+  font-weight: normal;
+  position: absolute;
+  top: 45px;
+}
+
+.meter-label:before {
+  left: 44px;
+}
+
+.meter-label:after {
+  content: '0.21';
+  right: 46px;
+}
+
+@-webkit-keyframes jesse {
+  0% {
+    transform: rotate(-20deg);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(30deg);
+  }
+  75% {
+    transform: rotate(55deg);
+  }
+  100% {
+    transform: rotate(78deg);
+  }
+}
+@-webkit-keyframes blink {
+  0% {
+    background: #333 none;
+  }
+  50% {
+    background: radial-gradient(ellipse at center, #bf3030 23%, #8c2323 100%);
+  }
+  100% {
+    background: radial-gradient(ellipse at center, #bf3030 23%, #8c2323 100%);
+  }
+}
+@-webkit-keyframes blink-2 {
+  0% {
+    background: #303030 none;
+    box-shadow: none;
+  }
+  50% {
+    background: #bf3030;
+  }
+  100% {
+    background: #bf3030;
+  }
+}
+@-webkit-keyframes shake {
+  0% {
+    transform: translate(12px, 1px);
+  }
+  50% {
+    transform: translate(-12px, -1px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@-webkit-keyframes shake-medium {
+  0% {
+    transform: translate(4px, 0);
+  }
+  50% {
+    transform: translate(-4px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@-webkit-keyframes shake-subtle {
+  0% {
+    transform: translate(2px, 0);
+  }
+  50% {
+    transform: translate(-2px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+.fill-lump--90 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e5e5 0%, #e5e5e5 27%, #f2f2f2 100%);
+}
+.fill-lump--90 .meter-range {
+  transform: rotate(-90deg);
+}
+
+.fill-lump--75 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--75 .meter-range {
+  transform: rotate(-75deg);
+}
+
+.fill-lump--50 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5dda1 0%, #e5dda1 27%, #e5c195 100%);
+}
+.fill-lump--50 .meter-range {
+  transform: rotate(-50deg);
+}
+
+.fill-lump--25 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5db8a 0%, #e5db8a 27%, #d9a86c 100%);
+}
+.fill-lump--25 .meter-range {
+  transform: rotate(-25deg);
+}
+
+.fill-lump-25.meter:after {
+  -webkit-animation: blink .8s step-end 0s infinite normal both;
+}
+.fill-lump-25 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffe738 0%, #ffe738 27%, #fe981f 100%);
+}
+.fill-lump-25 .meter-glass:after {
+  -webkit-animation: blink .8s .4s step-end infinite normal both;
+}
+.fill-lump-25 .meter-range {
+  transform: rotate(25deg);
+}
+
+.fill-lump-50.meter {
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump-50.meter:after {
+  -webkit-animation: blink .5s step-end 0s infinite normal both;
+}
+.fill-lump-50 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffe626 0%, #ffe626 27%, #fc720d 100%);
+}
+.fill-lump-50 .meter-glass:after {
+  -webkit-animation: blink .5s .25s step-end infinite normal both;
+}
+.fill-lump-50 .meter-range {
+  transform: rotate(50deg);
+}
+
+.fill-lump-75.meter {
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-75.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump-75 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+}
+.fill-lump-75 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump-75 .meter-range {
+  transform: rotate(75deg);
+}
+
+.fill-lump-90.meter {
+  -webkit-animation: shake .06s linear infinite alternate;
+}
+.fill-lump-90.meter:after {
+  -webkit-animation: blink .1s step-end 0s infinite normal both;
+}
+.fill-lump-90 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffa626 0%, #ffa626 27%, #e04b0b 100%);
+}
+.fill-lump-90 .meter-glass:after {
+  -webkit-animation: blink .1s .05s step-end infinite normal both;
+}
+.fill-lump-90 .meter-range {
+  transform: rotate(87deg);
+}
+
+.fill--90 .meter-needle {
+  transform: rotate(-90deg);
+}
+.fill--90 .meter-needle body {
+  display: none !important;
+}
+
+.fill--89 .meter-needle {
+  transform: rotate(-89deg);
+}
+.fill--89 .meter-needle body {
+  display: none !important;
+}
+
+.fill--88 .meter-needle {
+  transform: rotate(-88deg);
+}
+.fill--88 .meter-needle body {
+  display: none !important;
+}
+
+.fill--87 .meter-needle {
+  transform: rotate(-87deg);
+}
+.fill--87 .meter-needle body {
+  display: none !important;
+}
+
+.fill--86 .meter-needle {
+  transform: rotate(-86deg);
+}
+.fill--86 .meter-needle body {
+  display: none !important;
+}
+
+.fill--85 .meter-needle {
+  transform: rotate(-85deg);
+}
+.fill--85 .meter-needle body {
+  display: none !important;
+}
+
+.fill--84 .meter-needle {
+  transform: rotate(-84deg);
+}
+.fill--84 .meter-needle body {
+  display: none !important;
+}
+
+.fill--83 .meter-needle {
+  transform: rotate(-83deg);
+}
+.fill--83 .meter-needle body {
+  display: none !important;
+}
+
+.fill--82 .meter-needle {
+  transform: rotate(-82deg);
+}
+.fill--82 .meter-needle body {
+  display: none !important;
+}
+
+.fill--81 .meter-needle {
+  transform: rotate(-81deg);
+}
+.fill--81 .meter-needle body {
+  display: none !important;
+}
+
+.fill--80 .meter-needle {
+  transform: rotate(-80deg);
+}
+.fill--80 .meter-needle body {
+  display: none !important;
+}
+
+.fill--79 .meter-needle {
+  transform: rotate(-79deg);
+}
+.fill--79 .meter-needle body {
+  display: none !important;
+}
+
+.fill--78 .meter-needle {
+  transform: rotate(-78deg);
+}
+.fill--78 .meter-needle body {
+  display: none !important;
+}
+
+.fill--77 .meter-needle {
+  transform: rotate(-77deg);
+}
+.fill--77 .meter-needle body {
+  display: none !important;
+}
+
+.fill--76 .meter-needle {
+  transform: rotate(-76deg);
+}
+.fill--76 .meter-needle body {
+  display: none !important;
+}
+
+.fill--75 .meter-needle {
+  transform: rotate(-75deg);
+}
+.fill--75 .meter-needle body {
+  display: none !important;
+}
+
+.fill--74 .meter-needle {
+  transform: rotate(-74deg);
+}
+.fill--74 .meter-needle body {
+  display: none !important;
+}
+
+.fill--73 .meter-needle {
+  transform: rotate(-73deg);
+}
+.fill--73 .meter-needle body {
+  display: none !important;
+}
+
+.fill--72 .meter-needle {
+  transform: rotate(-72deg);
+}
+.fill--72 .meter-needle body {
+  display: none !important;
+}
+
+.fill--71 .meter-needle {
+  transform: rotate(-71deg);
+}
+.fill--71 .meter-needle body {
+  display: none !important;
+}
+
+.fill--70 .meter-needle {
+  transform: rotate(-70deg);
+}
+.fill--70 .meter-needle body {
+  display: none !important;
+}
+
+.fill--69 .meter-needle {
+  transform: rotate(-69deg);
+}
+.fill--69 .meter-needle body {
+  display: none !important;
+}
+
+.fill--68 .meter-needle {
+  transform: rotate(-68deg);
+}
+.fill--68 .meter-needle body {
+  display: none !important;
+}
+
+.fill--67 .meter-needle {
+  transform: rotate(-67deg);
+}
+.fill--67 .meter-needle body {
+  display: none !important;
+}
+
+.fill--66 .meter-needle {
+  transform: rotate(-66deg);
+}
+.fill--66 .meter-needle body {
+  display: none !important;
+}
+
+.fill--65 .meter-needle {
+  transform: rotate(-65deg);
+}
+.fill--65 .meter-needle body {
+  display: none !important;
+}
+
+.fill--64 .meter-needle {
+  transform: rotate(-64deg);
+}
+.fill--64 .meter-needle body {
+  display: none !important;
+}
+
+.fill--63 .meter-needle {
+  transform: rotate(-63deg);
+}
+.fill--63 .meter-needle body {
+  display: none !important;
+}
+
+.fill--62 .meter-needle {
+  transform: rotate(-62deg);
+}
+.fill--62 .meter-needle body {
+  display: none !important;
+}
+
+.fill--61 .meter-needle {
+  transform: rotate(-61deg);
+}
+.fill--61 .meter-needle body {
+  display: none !important;
+}
+
+.fill--60 .meter-needle {
+  transform: rotate(-60deg);
+}
+.fill--60 .meter-needle body {
+  display: none !important;
+}
+
+.fill--59 .meter-needle {
+  transform: rotate(-59deg);
+}
+.fill--59 .meter-needle body {
+  display: none !important;
+}
+
+.fill--58 .meter-needle {
+  transform: rotate(-58deg);
+}
+.fill--58 .meter-needle body {
+  display: none !important;
+}
+
+.fill--57 .meter-needle {
+  transform: rotate(-57deg);
+}
+.fill--57 .meter-needle body {
+  display: none !important;
+}
+
+.fill--56 .meter-needle {
+  transform: rotate(-56deg);
+}
+.fill--56 .meter-needle body {
+  display: none !important;
+}
+
+.fill--55 .meter-needle {
+  transform: rotate(-55deg);
+}
+.fill--55 .meter-needle body {
+  display: none !important;
+}
+
+.fill--54 .meter-needle {
+  transform: rotate(-54deg);
+}
+.fill--54 .meter-needle body {
+  display: none !important;
+}
+
+.fill--53 .meter-needle {
+  transform: rotate(-53deg);
+}
+.fill--53 .meter-needle body {
+  display: none !important;
+}
+
+.fill--52 .meter-needle {
+  transform: rotate(-52deg);
+}
+.fill--52 .meter-needle body {
+  display: none !important;
+}
+
+.fill--51 .meter-needle {
+  transform: rotate(-51deg);
+}
+.fill--51 .meter-needle body {
+  display: none !important;
+}
+
+.fill--50 .meter-needle {
+  transform: rotate(-50deg);
+}
+.fill--50 .meter-needle body {
+  display: none !important;
+}
+
+.fill--49 .meter-needle {
+  transform: rotate(-49deg);
+}
+.fill--49 .meter-needle body {
+  display: none !important;
+}
+
+.fill--48 .meter-needle {
+  transform: rotate(-48deg);
+}
+.fill--48 .meter-needle body {
+  display: none !important;
+}
+
+.fill--47 .meter-needle {
+  transform: rotate(-47deg);
+}
+.fill--47 .meter-needle body {
+  display: none !important;
+}
+
+.fill--46 .meter-needle {
+  transform: rotate(-46deg);
+}
+.fill--46 .meter-needle body {
+  display: none !important;
+}
+
+.fill--45 .meter-needle {
+  transform: rotate(-45deg);
+}
+.fill--45 .meter-needle body {
+  display: none !important;
+}
+
+.fill--44 .meter-needle {
+  transform: rotate(-44deg);
+}
+.fill--44 .meter-needle body {
+  display: none !important;
+}
+
+.fill--43 .meter-needle {
+  transform: rotate(-43deg);
+}
+.fill--43 .meter-needle body {
+  display: none !important;
+}
+
+.fill--42 .meter-needle {
+  transform: rotate(-42deg);
+}
+.fill--42 .meter-needle body {
+  display: none !important;
+}
+
+.fill--41 .meter-needle {
+  transform: rotate(-41deg);
+}
+.fill--41 .meter-needle body {
+  display: none !important;
+}
+
+.fill--40 .meter-needle {
+  transform: rotate(-40deg);
+}
+.fill--40 .meter-needle body {
+  display: none !important;
+}
+
+.fill--39 .meter-needle {
+  transform: rotate(-39deg);
+}
+.fill--39 .meter-needle body {
+  display: none !important;
+}
+
+.fill--38 .meter-needle {
+  transform: rotate(-38deg);
+}
+.fill--38 .meter-needle body {
+  display: none !important;
+}
+
+.fill--37 .meter-needle {
+  transform: rotate(-37deg);
+}
+.fill--37 .meter-needle body {
+  display: none !important;
+}
+
+.fill--36 .meter-needle {
+  transform: rotate(-36deg);
+}
+.fill--36 .meter-needle body {
+  display: none !important;
+}
+
+.fill--35 .meter-needle {
+  transform: rotate(-35deg);
+}
+.fill--35 .meter-needle body {
+  display: none !important;
+}
+
+.fill--34 .meter-needle {
+  transform: rotate(-34deg);
+}
+.fill--34 .meter-needle body {
+  display: none !important;
+}
+
+.fill--33 .meter-needle {
+  transform: rotate(-33deg);
+}
+.fill--33 .meter-needle body {
+  display: none !important;
+}
+
+.fill--32 .meter-needle {
+  transform: rotate(-32deg);
+}
+.fill--32 .meter-needle body {
+  display: none !important;
+}
+
+.fill--31 .meter-needle {
+  transform: rotate(-31deg);
+}
+.fill--31 .meter-needle body {
+  display: none !important;
+}
+
+.fill--30 .meter-needle {
+  transform: rotate(-30deg);
+}
+.fill--30 .meter-needle body {
+  display: none !important;
+}
+
+.fill--29 .meter-needle {
+  transform: rotate(-29deg);
+}
+.fill--29 .meter-needle body {
+  display: none !important;
+}
+
+.fill--28 .meter-needle {
+  transform: rotate(-28deg);
+}
+.fill--28 .meter-needle body {
+  display: none !important;
+}
+
+.fill--27 .meter-needle {
+  transform: rotate(-27deg);
+}
+.fill--27 .meter-needle body {
+  display: none !important;
+}
+
+.fill--26 .meter-needle {
+  transform: rotate(-26deg);
+}
+.fill--26 .meter-needle body {
+  display: none !important;
+}
+
+.fill--25 .meter-needle {
+  transform: rotate(-25deg);
+}
+.fill--25 .meter-needle body {
+  display: none !important;
+}
+
+.fill--24 .meter-needle {
+  transform: rotate(-24deg);
+}
+.fill--24 .meter-needle body {
+  display: none !important;
+}
+
+.fill--23 .meter-needle {
+  transform: rotate(-23deg);
+}
+.fill--23 .meter-needle body {
+  display: none !important;
+}
+
+.fill--22 .meter-needle {
+  transform: rotate(-22deg);
+}
+.fill--22 .meter-needle body {
+  display: none !important;
+}
+
+.fill--21 .meter-needle {
+  transform: rotate(-21deg);
+}
+.fill--21 .meter-needle body {
+  display: none !important;
+}
+
+.fill--20 .meter-needle {
+  transform: rotate(-20deg);
+}
+.fill--20 .meter-needle body {
+  display: none !important;
+}
+
+.fill--19 .meter-needle {
+  transform: rotate(-19deg);
+}
+.fill--19 .meter-needle body {
+  display: none !important;
+}
+
+.fill--18 .meter-needle {
+  transform: rotate(-18deg);
+}
+.fill--18 .meter-needle body {
+  display: none !important;
+}
+
+.fill--17 .meter-needle {
+  transform: rotate(-17deg);
+}
+.fill--17 .meter-needle body {
+  display: none !important;
+}
+
+.fill--16 .meter-needle {
+  transform: rotate(-16deg);
+}
+.fill--16 .meter-needle body {
+  display: none !important;
+}
+
+.fill--15 .meter-needle {
+  transform: rotate(-15deg);
+}
+.fill--15 .meter-needle body {
+  display: none !important;
+}
+
+.fill--14 .meter-needle {
+  transform: rotate(-14deg);
+}
+.fill--14 .meter-needle body {
+  display: none !important;
+}
+
+.fill--13 .meter-needle {
+  transform: rotate(-13deg);
+}
+.fill--13 .meter-needle body {
+  display: none !important;
+}
+
+.fill--12 .meter-needle {
+  transform: rotate(-12deg);
+}
+.fill--12 .meter-needle body {
+  display: none !important;
+}
+
+.fill--11 .meter-needle {
+  transform: rotate(-11deg);
+}
+.fill--11 .meter-needle body {
+  display: none !important;
+}
+
+.fill--10 .meter-needle {
+  transform: rotate(-10deg);
+}
+.fill--10 .meter-needle body {
+  display: none !important;
+}
+
+.fill--9 .meter-needle {
+  transform: rotate(-9deg);
+}
+.fill--9 .meter-needle body {
+  display: none !important;
+}
+
+.fill--8 .meter-needle {
+  transform: rotate(-8deg);
+}
+.fill--8 .meter-needle body {
+  display: none !important;
+}
+
+.fill--7 .meter-needle {
+  transform: rotate(-7deg);
+}
+.fill--7 .meter-needle body {
+  display: none !important;
+}
+
+.fill--6 .meter-needle {
+  transform: rotate(-6deg);
+}
+.fill--6 .meter-needle body {
+  display: none !important;
+}
+
+.fill--5 .meter-needle {
+  transform: rotate(-5deg);
+}
+.fill--5 .meter-needle body {
+  display: none !important;
+}
+
+.fill--4 .meter-needle {
+  transform: rotate(-4deg);
+}
+.fill--4 .meter-needle body {
+  display: none !important;
+}
+
+.fill--3 .meter-needle {
+  transform: rotate(-3deg);
+}
+.fill--3 .meter-needle body {
+  display: none !important;
+}
+
+.fill--2 .meter-needle {
+  transform: rotate(-2deg);
+}
+.fill--2 .meter-needle body {
+  display: none !important;
+}
+
+.fill--1 .meter-needle {
+  transform: rotate(-1deg);
+}
+.fill--1 .meter-needle body {
+  display: none !important;
+}
+
+.fill-0 .meter-needle {
+  transform: rotate(0deg);
+}
+
+.fill-1 .meter-needle {
+  transform: rotate(1deg);
+}
+
+.fill-2 .meter-needle {
+  transform: rotate(2deg);
+}
+
+.fill-3 .meter-needle {
+  transform: rotate(3deg);
+}
+
+.fill-4 .meter-needle {
+  transform: rotate(4deg);
+}
+
+.fill-5 .meter-needle {
+  transform: rotate(5deg);
+}
+
+.fill-6 .meter-needle {
+  transform: rotate(6deg);
+}
+
+.fill-7 .meter-needle {
+  transform: rotate(7deg);
+}
+
+.fill-8 .meter-needle {
+  transform: rotate(8deg);
+}
+
+.fill-9 .meter-needle {
+  transform: rotate(9deg);
+}
+
+.fill-10 .meter-needle {
+  transform: rotate(10deg);
+}
+
+.fill-11 .meter-needle {
+  transform: rotate(11deg);
+}
+
+.fill-12 .meter-needle {
+  transform: rotate(12deg);
+}
+
+.fill-13 .meter-needle {
+  transform: rotate(13deg);
+}
+
+.fill-14 .meter-needle {
+  transform: rotate(14deg);
+}
+
+.fill-15 .meter-needle {
+  transform: rotate(15deg);
+}
+
+.fill-16 .meter-needle {
+  transform: rotate(16deg);
+}
+
+.fill-17 .meter-needle {
+  transform: rotate(17deg);
+}
+
+.fill-18 .meter-needle {
+  transform: rotate(18deg);
+}
+
+.fill-19 .meter-needle {
+  transform: rotate(19deg);
+}
+
+.fill-20 .meter-needle {
+  transform: rotate(20deg);
+}
+
+.fill-21 .meter-needle {
+  transform: rotate(21deg);
+}
+
+.fill-22 .meter-needle {
+  transform: rotate(22deg);
+}
+
+.fill-23 .meter-needle {
+  transform: rotate(23deg);
+}
+
+.fill-24 .meter-needle {
+  transform: rotate(24deg);
+}
+
+.fill-25 .meter-needle {
+  transform: rotate(25deg);
+}
+
+.fill-26 .meter-needle {
+  transform: rotate(26deg);
+}
+
+.fill-27 .meter-needle {
+  transform: rotate(27deg);
+}
+
+.fill-28 .meter-needle {
+  transform: rotate(28deg);
+}
+
+.fill-29 .meter-needle {
+  transform: rotate(29deg);
+}
+
+.fill-30 .meter-needle {
+  transform: rotate(30deg);
+}
+
+.fill-31 .meter-needle {
+  transform: rotate(31deg);
+}
+
+.fill-32 .meter-needle {
+  transform: rotate(32deg);
+}
+
+.fill-33 .meter-needle {
+  transform: rotate(33deg);
+}
+
+.fill-34 .meter-needle {
+  transform: rotate(34deg);
+}
+
+.fill-35 .meter-needle {
+  transform: rotate(35deg);
+}
+
+.fill-36 .meter-needle {
+  transform: rotate(36deg);
+}
+
+.fill-37 .meter-needle {
+  transform: rotate(37deg);
+}
+
+.fill-38 .meter-needle {
+  transform: rotate(38deg);
+}
+
+.fill-39 .meter-needle {
+  transform: rotate(39deg);
+}
+
+.fill-40 .meter-needle {
+  transform: rotate(40deg);
+}
+
+.fill-41 .meter-needle {
+  transform: rotate(41deg);
+}
+
+.fill-42 .meter-needle {
+  transform: rotate(42deg);
+}
+
+.fill-43 .meter-needle {
+  transform: rotate(43deg);
+}
+
+.fill-44 .meter-needle {
+  transform: rotate(44deg);
+}
+
+.fill-45 .meter-needle {
+  transform: rotate(45deg);
+}
+
+.fill-46 .meter-needle {
+  transform: rotate(46deg);
+}
+
+.fill-47 .meter-needle {
+  transform: rotate(47deg);
+}
+
+.fill-48 .meter-needle {
+  transform: rotate(48deg);
+}
+
+.fill-49 .meter-needle {
+  transform: rotate(49deg);
+}
+
+.fill-50 .meter-needle {
+  transform: rotate(50deg);
+}
+
+.fill-51 .meter-needle {
+  transform: rotate(51deg);
+}
+
+.fill-52 .meter-needle {
+  transform: rotate(52deg);
+}
+
+.fill-53 .meter-needle {
+  transform: rotate(53deg);
+}
+
+.fill-54 .meter-needle {
+  transform: rotate(54deg);
+}
+
+.fill-55 .meter-needle {
+  transform: rotate(55deg);
+}
+
+.fill-56 .meter-needle {
+  transform: rotate(56deg);
+}
+
+.fill-57 .meter-needle {
+  transform: rotate(57deg);
+}
+
+.fill-58 .meter-needle {
+  transform: rotate(58deg);
+}
+
+.fill-59 .meter-needle {
+  transform: rotate(59deg);
+}
+
+.fill-60 .meter-needle {
+  transform: rotate(60deg);
+}
+
+.fill-61 .meter-needle {
+  transform: rotate(61deg);
+}
+
+.fill-62 .meter-needle {
+  transform: rotate(62deg);
+}
+
+.fill-63 .meter-needle {
+  transform: rotate(63deg);
+}
+
+.fill-64 .meter-needle {
+  transform: rotate(64deg);
+}
+
+.fill-65 .meter-needle {
+  transform: rotate(65deg);
+}
+
+.fill-66 .meter-needle {
+  transform: rotate(66deg);
+}
+
+.fill-67 .meter-needle {
+  transform: rotate(67deg);
+}
+
+.fill-68 .meter-needle {
+  transform: rotate(68deg);
+}
+
+.fill-69 .meter-needle {
+  transform: rotate(69deg);
+}
+
+.fill-70 .meter-needle {
+  transform: rotate(70deg);
+}
+
+.fill-71 .meter-needle {
+  transform: rotate(71deg);
+}
+
+.fill-72 .meter-needle {
+  transform: rotate(72deg);
+}
+
+.fill-73 .meter-needle {
+  transform: rotate(73deg);
+}
+
+.fill-74 .meter-needle {
+  transform: rotate(74deg);
+}
+
+.fill-75 .meter-needle {
+  transform: rotate(75deg);
+}
+
+.fill-76 .meter-needle {
+  transform: rotate(76deg);
+}
+
+.fill-77 .meter-needle {
+  transform: rotate(77deg);
+}
+
+.fill-78 .meter-needle {
+  transform: rotate(78deg);
+}
+
+.fill-79 .meter-needle {
+  transform: rotate(79deg);
+}
+
+.fill-80 .meter-needle {
+  transform: rotate(80deg);
+}
+
+.fill-81 .meter-needle {
+  transform: rotate(81deg);
+}
+
+.fill-82 .meter-needle {
+  transform: rotate(82deg);
+}
+
+.fill-83 .meter-needle {
+  transform: rotate(83deg);
+}
+
+.fill-84 .meter-needle {
+  transform: rotate(84deg);
+}
+
+.fill-85 .meter-needle {
+  transform: rotate(85deg);
+}
+
+.fill-86 .meter-needle {
+  transform: rotate(86deg);
+}
+
+.fill-87 .meter-needle {
+  transform: rotate(87deg);
+}
+
+.fill-88 .meter-needle {
+  transform: rotate(88deg);
+}
+
+.fill-89 .meter-needle {
+  transform: rotate(89deg);
+}
+
+.fill-90 .meter-needle {
+  transform: rotate(90deg);
+}
+
+.fill-90 .meter-needle {
+  transform: rotate(87deg);
+}
