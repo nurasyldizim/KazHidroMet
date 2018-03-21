@@ -516,4 +516,57 @@ public class PnzDataDao {
       }
       return pnzData;
    }
+    
+    public ArrayList<PnzData>[] listPnzDatasToFP(int pnzId, String dateStr ) throws ParseException{
+      ArrayList<PnzData>[] pnzData = (ArrayList<PnzData>[])new ArrayList[4];
+      Session session = sessionFactory.openSession();
+      Transaction tx = null;
+      SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+      Date date;
+      String dateTime;
+      Query query;
+      try {
+         tx = session.beginTransaction();
+         dateTime = dateStr+" 01:00";
+         date = simpleDateFormat.parse(dateTime);
+         query = session.createQuery("SELECT pnzdata.bsh, pnzdata.ds, pnzdata.sr, pnzdata.ou, pnzdata.do_, pnzdata.oa, pnzdata.ozon, pnzdata.serovodorod, pnzdata.fenol, pnzdata.fv, pnzdata.hlor, pnzdata.hv, pnzdata.ammiak, pnzdata.skIs, pnzdata.formaldigid, pnzdata.nsm, pnzdata.hromSh, pnzdata.sumU FROM PnzData pnzdata WHERE pnzID = :pnzId AND pnzDateTime= :date ");
+         query.setParameter("pnzId", pnzId);
+         query.setParameter("date", date);
+         pnzData[0] = (ArrayList<PnzData>) query.list();
+         tx.commit();
+         
+         tx = session.beginTransaction();
+         dateTime = dateStr+" 07:00";
+         date = simpleDateFormat.parse(dateTime);
+         query = session.createQuery("SELECT pnzdata.bsh, pnzdata.ds, pnzdata.sr, pnzdata.ou, pnzdata.do_, pnzdata.oa, pnzdata.ozon, pnzdata.serovodorod, pnzdata.fenol, pnzdata.fv, pnzdata.hlor, pnzdata.hv, pnzdata.ammiak, pnzdata.skIs, pnzdata.formaldigid, pnzdata.nsm, pnzdata.hromSh, pnzdata.sumU FROM PnzData pnzdata WHERE pnzID = :pnzId AND pnzDateTime= :date ");
+         query.setParameter("pnzId", pnzId);
+         query.setParameter("date", date);
+         pnzData[1] = (ArrayList<PnzData>) query.list();
+         tx.commit();
+         
+         tx = session.beginTransaction();
+         dateTime = dateStr+" 13:00";
+         date = simpleDateFormat.parse(dateTime);
+         query = session.createQuery("SELECT pnzdata.bsh, pnzdata.ds, pnzdata.sr, pnzdata.ou, pnzdata.do_, pnzdata.oa, pnzdata.ozon, pnzdata.serovodorod, pnzdata.fenol, pnzdata.fv, pnzdata.hlor, pnzdata.hv, pnzdata.ammiak, pnzdata.skIs, pnzdata.formaldigid, pnzdata.nsm, pnzdata.hromSh, pnzdata.sumU FROM PnzData pnzdata WHERE pnzID = :pnzId AND pnzDateTime= :date ");
+         query.setParameter("pnzId", pnzId);
+         query.setParameter("date", date);
+         pnzData[2] = (ArrayList<PnzData>) query.list();
+         tx.commit();
+         
+         tx = session.beginTransaction();
+         dateTime = dateStr+" 19:00";
+         date = simpleDateFormat.parse(dateTime);
+         query = session.createQuery("SELECT pnzdata.bsh, pnzdata.ds, pnzdata.sr, pnzdata.ou, pnzdata.do_, pnzdata.oa, pnzdata.ozon, pnzdata.serovodorod, pnzdata.fenol, pnzdata.fv, pnzdata.hlor, pnzdata.hv, pnzdata.ammiak, pnzdata.skIs, pnzdata.formaldigid, pnzdata.nsm, pnzdata.hromSh, pnzdata.sumU FROM PnzData pnzdata WHERE pnzID = :pnzId AND pnzDateTime= :date ");
+         query.setParameter("pnzId", pnzId);
+         query.setParameter("date", date);
+         pnzData[3] = (ArrayList<PnzData>) query.list();
+         tx.commit();
+      } catch (HibernateException e) {
+         if (tx!=null) tx.rollback();
+         e.printStackTrace(); 
+      } finally {
+         session.close(); 
+      }
+      return pnzData;
+   }
 }

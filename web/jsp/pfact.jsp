@@ -21,34 +21,14 @@
         <title>JSP Page</title>
         <link rel="stylesheet" type="text/css" href="../css/datepicker.css">
         <link rel="stylesheet" type="text/css" href="../css/indicator.css">
+        <link rel="stylesheet" type="text/css" href="../css/chart.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script type="text/javascript" src="../js/mainjs.js"></script>
         <script type="text/javascript" src="../js/jquery.js"></script>
         <script type="text/javascript" src="../js/jquery-ui.js"></script>
-        <script type="text/javascript" src="../js/datepicker.js"></script>
-         <script>
-               function hrefPfact() {
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
-    var yyyy = today.getFullYear();
-
-    if(dd<10) {
-        dd = '0'+dd
-    } 
-
-    if(mm<10) {
-        mm = '0'+mm
-    } 
-
-    today = dd + '/' + mm + '/' + yyyy;
-   
-    location.href = "pfact.jsp?date="+today;
-    }
-        </script>
+        <script type="text/javascript" src="../js/datepicker2.js"></script>
     </head>
     <body>
-        <button onclick="hrefPfact()">Фактический P</button>
         <%
             request.setCharacterEncoding("UTF-8");
             String date = request.getParameter("date");
@@ -63,7 +43,7 @@
 </div>
               <div id="js-meter" class="meter">
   
-  <span class="meter-label">Прогноз P на <%= date %></span>
+  <span class="meter-label">Фактический P на <%= date %></span>
   <div class="meter-glass">
     <div class="meter-display">
       <div class="meter-range">
@@ -85,7 +65,7 @@
             PnzDao pnzDao = new PnzDao();
             List<Pnz> list = pnzDao.listPnzs();
             for (Pnz p : list) {   
-                ArrayList<PnzData>[] pnzDatalist = pnzDataDao.listPnzDatasToPP(p.getPnzId(),date); 
+                ArrayList<PnzData>[] pnzDatalist = pnzDataDao.listPnzDatasToFP(p.getPnzId(),date); 
             for (int i = 0; i<4; i++) {
                     Iterator iterDataList = pnzDatalist[i].iterator();
                     if(pnzDatalist[i].size()!=0){
@@ -95,13 +75,13 @@
         <tr>
             <td><%=p.getPnzName()%></td>
                 <%if(i==0){%>
-                <td>13:00</td>
-                <%}if(i==1){%>
-                <td>19:00</td>
-                <%}if(i==2){%>
                 <td>1:00</td>
-                <%}if(i==3){%>
+                <%}if(i==1){%>
                 <td>7:00</td>
+                <%}if(i==2){%>
+                <td>13:00</td>
+                <%}if(i==3){%>
+                <td>19:00</td>
                 <%}%>
             <td><%=objData[0]%></td>
             <td><%=objData[1]%></td>
@@ -197,16 +177,12 @@
             for (int i = 0; i<4; i++) {
                     Iterator iterQAvgList = pnzDatalist[i].iterator();
                     Object[] temp = (Object[]) iterQAvgList.next();
-                    System.out.println(temp.length);
-                    System.out.println("check 1");
                     if(temp[0]!=null){
                         counter++;
                         for(int j =0; j<18; j++){
                         array[j] = array[j] + (Double)temp[j];
-                        System.out.println(array[j]);
                     }
                     }
-                    System.out.println("check 2");
             }
             %>
             <tr>
@@ -410,10 +386,36 @@
                 <tr>
                     <td id="calP"><script>calP();</script></td>
                     <td id="calSI"><script>calSI();</script></td>
-                </tr>
-                
+                </tr>              
             </table>
             <script type="text/javascript" src="../js/indicator.js"></script>
+            <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+            <script type="text/javascript" src="../js/chart.js"></script>
+            <select id="chartSelect" onchange="chartChange()">
+                <option value="2">Взвешенные частицы (пыль)</option>
+                <option value="3">Диоксид серы</option>
+                <option value="4">Сульфаты растворимые</option>
+                <option value="5">Оксид углерода</option>
+                <option value="6">Диоксид азота</option>
+                <option value="7">Оксид азота</option>
+                <option value="8">Озон</option>
+                <option value="9">Сероводород</option>
+                <option value="10">Фенол</option>
+                <option value="11">Фтористый водород</option>
+                <option value="12">Хлор</option>
+                <option value="13">Хлористый водород</option>
+                <option value="14">Аммиак</option>
+                <option value="15">Серная кислота и сульфаты</option>
+                <option value="16">Формальдегид</option>
+                <option value="17">Неорганические соединения мышьяка</option>
+                <option value="18">Хром шестивалентный</option>
+                <option value="19">Суммарные углеводороды</option>
+            </select>
+            <div class="chart">
+                <h2>Beautiful Google Charts</h2>
+                <h5>Daily Page Hits</h5>
+                <div id="bar-chart"></div>
+            </div>
 
     </body>
 </html>

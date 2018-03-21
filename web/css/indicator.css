@@ -1,34 +1,34 @@
 .meter {
-  background-color: #222;
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/800/bg-noise-white.png"), linear-gradient(to bottom, #222222, #181818);
-  border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.35);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 12px rgba(0, 0, 0, 0.2);
-  height: 250px;
-  margin: 75px auto;
+  height: 200px;
+  margin: 10px auto;
   position: relative;
-  width: 330px;
+  width: 400px;
 }
 
-.meter:before,
+.meter:before{
+  background: #303030;
+  border: 1px solid #202020;
+  border-radius: 50%;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  content: '';
+  height: 30px;
+  position: absolute;
+  top: 40px;
+  width: 30px;
+  left: 80px;
+}
+
 .meter:after {
   background: #303030;
   border: 1px solid #202020;
-  border-radius: 2px;
+  border-radius: 50%;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
   content: '';
-  height: 10px;
+  height: 30px;
   position: absolute;
-  top: 25px;
-  width: 25px;
-}
-
-.meter:before {
-  left: 40px;
-}
-
-.meter:after {
-  right: 40px;
+  top: 40px;
+  width: 30px;
+  right: 80px;
 }
 
 .meter-glass {
@@ -47,7 +47,6 @@
 .meter-glass:before,
 .meter-glass:after {
   border-radius: 50%;
-  content: '';
   position: absolute;
 }
 
@@ -159,7 +158,7 @@
   display: block;
   font-family: "Lucida Console","Lucida Sans Typewriter",monaco,"Bitstream Vera Sans Mono";
   font-size: 20px;
-  padding-top: 22px;
+  padding-top: 2px;
   text-align: center;
   text-transform: uppercase;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
@@ -172,16 +171,16 @@
   font-size: 10px;
   font-weight: normal;
   position: absolute;
-  top: 45px;
+  top: 25px;
 }
 
 .meter-label:before {
-  left: 44px;
+  left: 50px;
 }
 
 .meter-label:after {
   content: '0.21-0.35 повышенный';
-  right: 46px;
+  right: 50px;
 }
 
 @-webkit-keyframes jesse {
@@ -206,10 +205,10 @@
     background: #333 none;
   }
   50% {
-    background: radial-gradient(ellipse at center, #bf3030 23%, #8c2323 100%);
+    background: radial-gradient(ellipse at center, #00ff00 23%, #8c2323 100%);
   }
   100% {
-    background: radial-gradient(ellipse at center, #bf3030 23%, #8c2323 100%);
+    background: radial-gradient(ellipse at center, #00ff00 23%, #8c2323 100%);
   }
 }
 @-webkit-keyframes blink-2 {
@@ -264,90 +263,1580 @@
   transform: rotate(-90deg);
 }
 
+.fill-lump--89 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--89 .meter-range {
+  transform: rotate(-89deg);
+}
+.fill-lump--89.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--89 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--88 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--88 .meter-range {
+  transform: rotate(-88deg);
+}
+.fill-lump--88.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--88 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--87 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--87 .meter-range {
+  transform: rotate(-87deg);
+}
+.fill-lump--87.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--87 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--86 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--86 .meter-range {
+  transform: rotate(-86deg);
+}
+.fill-lump--86.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--86 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--85 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--85 .meter-range {
+  transform: rotate(-85deg);
+}
+.fill-lump--85.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--85 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--84 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--84 .meter-range {
+  transform: rotate(-84deg);
+}
+.fill-lump--84.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--84 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--83 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--83 .meter-range {
+  transform: rotate(-83deg);
+}
+.fill-lump--83.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--83 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--82 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--82 .meter-range {
+  transform: rotate(-82deg);
+}
+.fill-lump--82.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--82 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--81 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--81 .meter-range {
+  transform: rotate(-81deg);
+}
+.fill-lump--81.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--81 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--80 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--80 .meter-range {
+  transform: rotate(-80deg);
+}
+.fill-lump--80.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--80 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--79 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--79 .meter-range {
+  transform: rotate(-79deg);
+}
+.fill-lump--79.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--79 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--78 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--78 .meter-range {
+  transform: rotate(-78deg);
+}
+.fill-lump--78.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--78 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--77 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--77 .meter-range {
+  transform: rotate(-77deg);
+}
+.fill-lump--77.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--77 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--76 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--76 .meter-range {
+  transform: rotate(-76deg);
+}
+.fill-lump--76.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--76 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
 .fill-lump--75 .meter-glass {
   background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
 }
 .fill-lump--75 .meter-range {
   transform: rotate(-75deg);
 }
-.fill-lump--75.meter:after {
-  -webkit-animation: blink .3s step-end 0s infinite normal both;
+.fill-lump--75.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
 }
-.fill-lump--75 .meter-glass:after {
-  -webkit-animation: blink .3s .15s step-end infinite normal both;
+.fill-lump--75 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
 }
-
-.fill-lump--75 .meter-glass {
+.fill-lump--74 .meter-glass {
   background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
 }
-.fill-lump--75 .meter-range {
-  transform: rotate(-75deg);
+.fill-lump--74 .meter-range {
+  transform: rotate(-74deg);
 }
-.fill-lump--75.meter:after {
+.fill-lump--74.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--74 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--73 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--73 .meter-range {
+  transform: rotate(-73deg);
+}
+.fill-lump--73.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--73 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--72 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--72 .meter-range {
+  transform: rotate(-72deg);
+}
+.fill-lump--72.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--72 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--71 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--71 .meter-range {
+  transform: rotate(-71deg);
+}
+.fill-lump--71.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--71 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--70 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--70 .meter-range {
+  transform: rotate(-70deg);
+}
+.fill-lump--70.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--70 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--69 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--69 .meter-range {
+  transform: rotate(-69deg);
+}
+.fill-lump--69.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--69 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--68 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--68 .meter-range {
+  transform: rotate(-68deg);
+}
+.fill-lump--68.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--68 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--67 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--67 .meter-range {
+  transform: rotate(-67deg);
+}
+.fill-lump--67.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--67 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--66 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--66 .meter-range {
+  transform: rotate(-66deg);
+}
+.fill-lump--66.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--66 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--65 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--65 .meter-range {
+  transform: rotate(-65deg);
+}
+.fill-lump--65.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--65 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--64 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--64 .meter-range {
+  transform: rotate(-64deg);
+}
+.fill-lump--64.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--64 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--63 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--63 .meter-range {
+  transform: rotate(-63deg);
+}
+.fill-lump--63.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--63 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--62 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--62 .meter-range {
+  transform: rotate(-62deg);
+}
+.fill-lump--62.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--62 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--61 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--61 .meter-range {
+  transform: rotate(-61deg);
+}
+.fill-lump--61.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--61 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--60 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--60 .meter-range {
+  transform: rotate(-60deg);
+}
+.fill-lump--60.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--60 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--59 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--59 .meter-range {
+  transform: rotate(-59deg);
+}
+.fill-lump--59.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--59 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--58 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--58 .meter-range {
+  transform: rotate(-58deg);
+}
+.fill-lump--58.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--58 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--57 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--57 .meter-range {
+  transform: rotate(-57deg);
+}
+.fill-lump--57.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--57 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--56 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--56 .meter-range {
+  transform: rotate(-56deg);
+}
+.fill-lump--56.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--56 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+.fill-lump--55 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--55 .meter-range {
+  transform: rotate(-55deg);
+}
+.fill-lump--55.meter:before {
+  -webkit-animation: blink .9s step-end 0s infinite normal both;
+}
+.fill-lump--55 .meter-glass:before {
+  -webkit-animation: blink .9s .15s step-end infinite normal both;
+}
+
+.fill-lump--54 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--54 .meter-range {
+  transform: rotate(-54deg);
+}
+.fill-lump--54.meter:after {
   -webkit-animation: blink .3s step-end 0s infinite normal both;
 }
-.fill-lump--75 .meter-glass:after {
+.fill-lump--54 .meter-glass:after {
   -webkit-animation: blink .3s .15s step-end infinite normal both;
 }
-
-
+.fill-lump--53 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--53 .meter-range {
+  transform: rotate(-53deg);
+}
+.fill-lump--53.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--53 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--52 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--52 .meter-range {
+  transform: rotate(-52deg);
+}
+.fill-lump--52.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--52 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--51 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--51 .meter-range {
+  transform: rotate(-51deg);
+}
+.fill-lump--51.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--51 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
 .fill-lump--50 .meter-glass {
-  background: radial-gradient(ellipse at center, #e5dda1 0%, #e5dda1 27%, #e5c195 100%);
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
 }
 .fill-lump--50 .meter-range {
   transform: rotate(-50deg);
 }
+.fill-lump--50.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--50 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--49 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--49 .meter-range {
+  transform: rotate(-49deg);
+}
+.fill-lump--49.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--49 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--48 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--48 .meter-range {
+  transform: rotate(-48deg);
+}
+.fill-lump--48.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--48 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--47 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--47 .meter-range {
+  transform: rotate(-47deg);
+}
+.fill-lump--47.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--47 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--46 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--46 .meter-range {
+  transform: rotate(-46deg);
+}
+.fill-lump--46.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--46 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--45 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--45 .meter-range {
+  transform: rotate(-45deg);
+}
+.fill-lump--45.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--45 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--44 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--44 .meter-range {
+  transform: rotate(-44deg);
+}
+.fill-lump--44.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--44 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--43 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--43 .meter-range {
+  transform: rotate(-43deg);
+}
+.fill-lump--43.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--43 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--42 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--42 .meter-range {
+  transform: rotate(-42deg);
+}
+.fill-lump--42.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--42 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--41 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--41 .meter-range {
+  transform: rotate(-41deg);
+}
+.fill-lump--41.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--41 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--40 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--40 .meter-range {
+  transform: rotate(-40deg);
+}
+.fill-lump--40.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--40 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--39 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--39 .meter-range {
+  transform: rotate(-39deg);
+}
+.fill-lump--39.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--39 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--38 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--38 .meter-range {
+  transform: rotate(-38deg);
+}
+.fill-lump--38.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--38 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--37 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--37 .meter-range {
+  transform: rotate(-37deg);
+}
+.fill-lump--37.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--37 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--36 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--36 .meter-range {
+  transform: rotate(-36deg);
+}
+.fill-lump--36.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--36 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--35 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--35 .meter-range {
+  transform: rotate(-35deg);
+}
+.fill-lump--35.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--35 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--34 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--34 .meter-range {
+  transform: rotate(-34deg);
+}
+.fill-lump--34.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--34 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--33 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--33 .meter-range {
+  transform: rotate(-33deg);
+}
+.fill-lump--33.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--33 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--32 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--32 .meter-range {
+  transform: rotate(-32deg);
+}
+.fill-lump--32.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--32 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--31 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--31 .meter-range {
+  transform: rotate(-31deg);
+}
+.fill-lump--31.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--31 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--30 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--30 .meter-range {
+  transform: rotate(-30deg);
+}
+.fill-lump--30.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--30 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--29 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--29 .meter-range {
+  transform: rotate(-29deg);
+}
+.fill-lump--29.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--29 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--28 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--28 .meter-range {
+  transform: rotate(-28deg);
+}
+.fill-lump--28.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--28 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
+.fill-lump--27 .meter-glass {
+  background: radial-gradient(ellipse at center, #e5e1c3 0%, #e5e1c3 27%, #f2e2ce 100%);
+}
+.fill-lump--27 .meter-range {
+  transform: rotate(-27deg);
+}
+.fill-lump--27.meter:after {
+  -webkit-animation: blink .3s step-end 0s infinite normal both;
+}
+.fill-lump--27 .meter-glass:after {
+  -webkit-animation: blink .3s .15s step-end infinite normal both;
+}
 
-.fill-lump--25 .meter-glass {
-  background: radial-gradient(ellipse at center, #e5db8a 0%, #e5db8a 27%, #d9a86c 100%);
-}
-.fill-lump--25 .meter-range {
-  transform: rotate(-25deg);
-}
-
-.fill-lump-25.meter:after {
-  -webkit-animation: blink .8s step-end 0s infinite normal both;
-}
-.fill-lump-25 .meter-glass {
-  background: radial-gradient(ellipse at center, #ffe738 0%, #ffe738 27%, #fe981f 100%);
-}
-.fill-lump-25 .meter-glass:after {
-  -webkit-animation: blink .8s .4s step-end infinite normal both;
-}
-.fill-lump-25 .meter-range {
-  transform: rotate(25deg);
-}
-
-.fill-lump-50.meter {
+.fill-lump--26 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
   -webkit-animation: shake-subtle .06s linear infinite alternate;
 }
-.fill-lump-50.meter:after {
-  -webkit-animation: blink .5s step-end 0s infinite normal both;
+.fill-lump--26 .meter-range {
+   transform: rotate(-26deg);
 }
-.fill-lump-50 .meter-glass {
-  background: radial-gradient(ellipse at center, #ffe626 0%, #ffe626 27%, #fc720d 100%);
+.fill-lump--25 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
 }
-.fill-lump-50 .meter-glass:after {
-  -webkit-animation: blink .5s .25s step-end infinite normal both;
+.fill-lump--25 .meter-range {
+   transform: rotate(-25deg);
 }
-.fill-lump-50 .meter-range {
-  transform: rotate(50deg);
+.fill-lump--24 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--24 .meter-range {
+   transform: rotate(-24deg);
+}
+.fill-lump--23 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--23 .meter-range {
+   transform: rotate(-23deg);
+}
+.fill-lump--22 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--22 .meter-range {
+   transform: rotate(-22deg);
+}
+.fill-lump--21 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--21 .meter-range {
+   transform: rotate(-21deg);
+}
+.fill-lump--20 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--20 .meter-range {
+   transform: rotate(-20deg);
+}
+.fill-lump--19 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--19 .meter-range {
+   transform: rotate(-19deg);
+}
+.fill-lump--18 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--18 .meter-range {
+   transform: rotate(-18deg);
+}
+.fill-lump--17 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--17 .meter-range {
+   transform: rotate(-17deg);
+}
+.fill-lump--16 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--16 .meter-range {
+   transform: rotate(-16deg);
+}
+.fill-lump--15 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--15 .meter-range {
+   transform: rotate(-15deg);
+}
+.fill-lump--14 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--14 .meter-range {
+   transform: rotate(-14deg);
+}
+.fill-lump--13 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--13 .meter-range {
+   transform: rotate(-13deg);
+}
+.fill-lump--12 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--12 .meter-range {
+   transform: rotate(-12deg);
+}
+.fill-lump--11 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--11 .meter-range {
+   transform: rotate(-11deg);
+}
+.fill-lump--10 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--10 .meter-range {
+   transform: rotate(-10deg);
+}
+.fill-lump--9 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--9 .meter-range {
+   transform: rotate(-9deg);
+}
+.fill-lump--8 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--8 .meter-range {
+   transform: rotate(-8deg);
+}
+.fill-lump--7 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--7 .meter-range {
+   transform: rotate(-7deg);
+}
+.fill-lump--6 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--6 .meter-range {
+   transform: rotate(-6deg);
+}
+.fill-lump--5 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--5 .meter-range {
+   transform: rotate(-5deg);
+}
+.fill-lump--4 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--4 .meter-range {
+   transform: rotate(-4deg);
+}
+.fill-lump--3 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--3 .meter-range {
+   transform: rotate(-3deg);
+}
+.fill-lump--2 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--2 .meter-range {
+   transform: rotate(-2deg);
+}
+.fill-lump--1 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump--1 .meter-range {
+   transform: rotate(-1deg);
+}
+.fill-lump-0 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-subtle .06s linear infinite alternate;
+}
+.fill-lump-0 .meter-range {
+   transform: rotate(0deg);
 }
 
-.fill-lump-75.meter {
+
+
+
+
+.fill-lump-1 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
   -webkit-animation: shake-medium .06s linear infinite alternate;
 }
-.fill-lump-75.meter:after {
-  -webkit-animation: blink .3s step-end 0s infinite normal both;
+.fill-lump-1 .meter-range {
+   transform: rotate(1deg);
+}
+.fill-lump-2 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-2 .meter-range {
+   transform: rotate(2deg);
+}
+.fill-lump-3 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-3 .meter-range {
+   transform: rotate(3deg);
+}
+.fill-lump-4 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-4 .meter-range {
+   transform: rotate(4deg);
+}
+.fill-lump-5 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-5 .meter-range {
+   transform: rotate(5deg);
+}
+.fill-lump-6 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-6 .meter-range {
+   transform: rotate(6deg);
+}
+.fill-lump-7 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-7 .meter-range {
+   transform: rotate(7deg);
+}
+.fill-lump-8 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-8 .meter-range {
+   transform: rotate(8deg);
+}
+.fill-lump-9 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-9 .meter-range {
+   transform: rotate(9deg);
+}
+.fill-lump-10 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-10 .meter-range {
+   transform: rotate(10deg);
+}
+.fill-lump-11 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-11 .meter-range {
+   transform: rotate(11deg);
+}
+.fill-lump-12 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-12 .meter-range {
+   transform: rotate(12deg);
+}
+.fill-lump-13 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-13 .meter-range {
+   transform: rotate(13deg);
+}
+.fill-lump-14 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-14 .meter-range {
+   transform: rotate(14deg);
+}
+.fill-lump-15 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-15 .meter-range {
+   transform: rotate(15deg);
+}
+.fill-lump-16 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-16 .meter-range {
+   transform: rotate(16deg);
+}
+.fill-lump-17 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-17 .meter-range {
+   transform: rotate(17deg);
+}
+.fill-lump-18 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-18 .meter-range {
+   transform: rotate(18deg);
+}
+.fill-lump-19 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-19 .meter-range {
+   transform: rotate(19deg);
+}
+.fill-lump-20 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-20 .meter-range {
+   transform: rotate(20deg);
+}
+.fill-lump-21 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-21 .meter-range {
+   transform: rotate(21deg);
+}
+.fill-lump-22 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-22 .meter-range {
+   transform: rotate(22deg);
+}
+.fill-lump-23 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-23 .meter-range {
+   transform: rotate(23deg);
+}
+.fill-lump-24 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-24 .meter-range {
+   transform: rotate(24deg);
+}
+.fill-lump-25 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-25 .meter-range {
+   transform: rotate(25deg);
+}
+.fill-lump-26 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-26 .meter-range {
+   transform: rotate(26deg);
+}
+.fill-lump-27 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-27 .meter-range {
+   transform: rotate(27deg);
+}
+.fill-lump-28 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-28 .meter-range {
+   transform: rotate(28deg);
+}
+.fill-lump-29 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-29 .meter-range {
+   transform: rotate(29deg);
+}
+.fill-lump-30 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-30 .meter-range {
+   transform: rotate(30deg);
+}
+.fill-lump-31 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-31 .meter-range {
+   transform: rotate(31deg);
+}
+.fill-lump-32 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-32 .meter-range {
+   transform: rotate(32deg);
+}
+.fill-lump-33 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-33 .meter-range {
+   transform: rotate(33deg);
+}
+.fill-lump-34 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-34 .meter-range {
+   transform: rotate(34deg);
+}
+.fill-lump-35 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-35 .meter-range {
+   transform: rotate(35deg);
+}
+.fill-lump-36 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-36 .meter-range {
+   transform: rotate(36deg);
+}
+.fill-lump-37 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-37 .meter-range {
+   transform: rotate(37deg);
+}
+.fill-lump-38 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-38 .meter-range {
+   transform: rotate(38deg);
+}
+.fill-lump-39 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-39 .meter-range {
+   transform: rotate(39deg);
+}
+.fill-lump-40 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-40 .meter-range {
+   transform: rotate(40deg);
+}
+.fill-lump-41 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-41 .meter-range {
+   transform: rotate(41deg);
+}
+.fill-lump-42 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-42 .meter-range {
+   transform: rotate(42deg);
+}
+.fill-lump-43 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-43 .meter-range {
+   transform: rotate(43deg);
+}
+.fill-lump-44 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-44 .meter-range {
+   transform: rotate(44deg);
+}
+.fill-lump-45 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-45 .meter-range {
+   transform: rotate(45deg);
+}
+.fill-lump-46 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-46 .meter-range {
+   transform: rotate(46deg);
+}
+.fill-lump-47 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-47 .meter-range {
+   transform: rotate(47deg);
+}
+.fill-lump-48 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-48 .meter-range {
+   transform: rotate(48deg);
+}
+.fill-lump-49 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-49 .meter-range {
+   transform: rotate(49deg);
+}
+.fill-lump-50 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-50 .meter-range {
+   transform: rotate(50deg);
+}
+.fill-lump-51 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-51 .meter-range {
+   transform: rotate(51deg);
+}
+.fill-lump-52 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-52 .meter-range {
+   transform: rotate(52deg);
+}
+.fill-lump-53 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-53 .meter-range {
+   transform: rotate(53deg);
+}
+.fill-lump-54 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-54 .meter-range {
+   transform: rotate(54deg);
+}
+.fill-lump-55 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-55 .meter-range {
+   transform: rotate(55deg);
+}
+.fill-lump-56 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-56 .meter-range {
+   transform: rotate(56deg);
+}
+.fill-lump-57 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-57 .meter-range {
+   transform: rotate(57deg);
+}
+.fill-lump-58 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-58 .meter-range {
+   transform: rotate(58deg);
+}
+.fill-lump-59 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-59 .meter-range {
+   transform: rotate(59deg);
+}
+.fill-lump-60 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-60 .meter-range {
+   transform: rotate(60deg);
+}
+.fill-lump-61 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-61 .meter-range {
+   transform: rotate(61deg);
+}
+.fill-lump-62 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-62 .meter-range {
+   transform: rotate(62deg);
+}
+.fill-lump-63 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-63 .meter-range {
+   transform: rotate(63deg);
+}
+.fill-lump-64 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-64 .meter-range {
+   transform: rotate(64deg);
+}
+.fill-lump-65 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-65 .meter-range {
+   transform: rotate(65deg);
+}
+.fill-lump-66 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-66 .meter-range {
+   transform: rotate(66deg);
+}
+.fill-lump-67 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-67 .meter-range {
+   transform: rotate(67deg);
+}
+.fill-lump-68 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-68 .meter-range {
+   transform: rotate(68deg);
+}
+.fill-lump-69 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-69 .meter-range {
+   transform: rotate(69deg);
+}
+.fill-lump-70 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-70 .meter-range {
+   transform: rotate(70deg);
+}
+.fill-lump-71 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-71 .meter-range {
+   transform: rotate(71deg);
+}
+.fill-lump-72 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-72 .meter-range {
+   transform: rotate(72deg);
+}
+.fill-lump-73 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-73 .meter-range {
+   transform: rotate(73deg);
+}
+.fill-lump-74 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-74 .meter-range {
+   transform: rotate(74deg);
 }
 .fill-lump-75 .meter-glass {
   background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
-}
-.fill-lump-75 .meter-glass:after {
-  -webkit-animation: blink .3s .15s step-end infinite normal both;
+  -webkit-animation: shake-medium .06s linear infinite alternate;
 }
 .fill-lump-75 .meter-range {
-  transform: rotate(75deg);
+   transform: rotate(75deg);
+}
+.fill-lump-76 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-76 .meter-range {
+   transform: rotate(76deg);
+}
+.fill-lump-77 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-77 .meter-range {
+   transform: rotate(77deg);
+}
+.fill-lump-78 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-78 .meter-range {
+   transform: rotate(78deg);
+}
+.fill-lump-79 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-79 .meter-range {
+   transform: rotate(79deg);
+}
+.fill-lump-80 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-80 .meter-range {
+   transform: rotate(80deg);
+}
+.fill-lump-81 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-81 .meter-range {
+   transform: rotate(81deg);
+}
+.fill-lump-82 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-82 .meter-range {
+   transform: rotate(82deg);
+}
+.fill-lump-83 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-83 .meter-range {
+   transform: rotate(83deg);
+}
+.fill-lump-84 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-84 .meter-range {
+   transform: rotate(84deg);
+}
+.fill-lump-85 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-85 .meter-range {
+   transform: rotate(85deg);
+}
+.fill-lump-86 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-86 .meter-range {
+   transform: rotate(86deg);
+}
+.fill-lump-87 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-87 .meter-range {
+   transform: rotate(87deg);
+}
+.fill-lump-88 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-88 .meter-range {
+   transform: rotate(88deg);
+}
+.fill-lump-89 .meter-glass {
+  background: radial-gradient(ellipse at center, #ffce26 0%, #ffce26 27%, #fc670d 100%);
+  -webkit-animation: shake-medium .06s linear infinite alternate;
+}
+.fill-lump-89 .meter-range {
+   transform: rotate(89deg);
 }
 
 .fill-lump-90.meter {

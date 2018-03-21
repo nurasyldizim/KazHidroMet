@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-
 // JS is for prototype examples only, this will not be in the production code
 
 // Fill range:
