@@ -391,7 +391,7 @@
             <script type="text/javascript" src="../js/indicator.js"></script>
             <script type="text/javascript" src="https://www.google.com/jsapi"></script>
             <script type="text/javascript" src="../js/chart.js"></script>
-            <select id="chartSelect" onchange="chartChange()">
+            <select id="chartSelect" onchange="drawCharts()">
                 <option value="2">Взвешенные частицы (пыль)</option>
                 <option value="3">Диоксид серы</option>
                 <option value="4">Сульфаты растворимые</option>
