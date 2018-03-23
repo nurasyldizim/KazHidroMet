@@ -17,8 +17,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+  </script>
+
         <link rel="stylesheet" type="text/css" href="../css/datepicker.css">
         <link rel="stylesheet" type="text/css" href="../css/indicator.css">
         <link rel="stylesheet" type="text/css" href="../css/chart.css">
@@ -27,6 +29,8 @@
         <script type="text/javascript" src="../js/jquery.js"></script>
         <script type="text/javascript" src="../js/jquery-ui.js"></script>
         <script type="text/javascript" src="../js/datepicker2.js"></script>
+        <script type="text/javascript" src="../js/toexcel.js"></script>
+
     </head>
     <body>
         <%
@@ -56,6 +60,9 @@
   </div>
   
 </div>
+  <button onclick="generateExcel()">Export to Excel</button>
+  <br />
+  <br />
                 <table id="table" width="220" border="1">
                     <tr><td colspan="20">Расчетная матрица для "P" </td></tr>
         <tr><th></th><th>Срок</th><th>Взвешенные частицы(пыль)</th><th>Диоксид серы</th><th>Сульфаты растворимые</th><th>Оксид углерода</th><th>Диоксид азота</th><th>Оксид азота</th><th>Озон</th><th>Сероводород</th><th>Фенол</th><th>Фтористый водород</th><th>Хлор</th><th>Хлористый водород</th><th>Аммиак</th><th>Серная кислота и сульфаты</th><th>Формальдегид</th><th>Неорганические соединения мышьяк</th><th>Хром шестивалентный</th><th>Суммарные углеводороды</th></tr>   
