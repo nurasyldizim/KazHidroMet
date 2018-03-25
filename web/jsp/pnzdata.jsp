@@ -4,6 +4,8 @@
     Author     : Nurasyl Dizim
 --%>
 
+<%@page import="java.time.LocalDate"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.net.URLDecoder"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.net.URLEncoder"%>
@@ -19,39 +21,39 @@
 <html>
     <head>
         <title>PNZ Data</title>
-        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <link rel="stylesheet" href="../css/bootstrap.css">
+        <link rel="stylesheet" href="../css/style.css">
         <script type="text/javascript" src="../js/mainjs.js"></script>
-        <script>
-               function hrefPprognoz() {
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
-    var yyyy = today.getFullYear();
-
-    if(dd<10) {
-        dd = '0'+dd
-    } 
-
-    if(mm<10) {
-        mm = '0'+mm
-    } 
-
-    today = dd + '/' + mm + '/' + yyyy;
-   
-    location.href = "pprognoz.jsp?date="+today;
-    }
-        </script>
     </head>
+    <header><%
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    LocalDate localDate = LocalDate.now();
+                %>
+		<div class="container text-center">
+			<div class="fh5co-navbar-brand">
+                            <a class="fh5co-logo" href="../">Qazgidromet</a>
+			</div>
+			<nav id="fh5co-main-nav" role="navigation">
+				<ul>
+                                    <li><a href="../">Главная</a></li>
+					<li><a href="pnzdata.jsp?pnzId=1&pnzName=ПНЗ1&month=1" class="active">Заполнения</a></li>
+					<li><a href="datamonth.jsp?month=1&name=<%=URLEncoder.encode("Январь", "UTF-8")%>">Q ср.м</a></li>
+					<li><a href="qaverage.jsp?month=1">Прогноз q ср.м</a></li>
+                                        <li><a href="pprognoz.jsp?date=<%=dtf.format(localDate)%>">Прогностический P</a></li>
+                                        <li><a href="pfact.jsp?date=<%=dtf.format(localDate)%>">Фактический P</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
     <body>
-        <h1>Hello World!</h1>
         <%
             request.setCharacterEncoding("UTF-8");
             String pnzName = request.getParameter("pnzName");
             String pnzId = request.getParameter("pnzId");
             String month = request.getParameter("month");
         %>
-        <h1><%=pnzName%></h1>
-        <select id="pnzListId" onchange="refreshFunction()">
+    <center>
+        <select class="custom-select" id="pnzListId" onchange="refreshFunction()">
         <%
             PnzDataDao pnzDataDao = new PnzDataDao();               
             PnzDao pnzDao = new PnzDao();
@@ -65,13 +67,13 @@
           <%       
                 }
           }%>
-        </select>   
-        <button onclick="hrefPprognoz()">Прогностический P</button>
-
+        </select> 
+    </center>
+  <div class="table100 ver4 m-b-110">
         <form method="POST" action="../PnzDataController">
-            <table width="220" border="1">
-            <tr><th>Дата</th><th>Взвешенные частицы(пыль)</th><th>Диоксид серы</th><th>Сульфаты растворимые</th><th>Оксид углерода</th><th>Диоксид азота</th><th>Оксид азота</th><th>Озон</th><th>Сероводород</th><th>Фенол</th><th>Фтористый водород</th><th>Хлор</th><th>Хлористый водород</th><th>Аммиак</th><th>Серная кислота и сульфаты</th><th>Формальдегид</th><th>Неорганические соединения мышьяк</th><th>Хром шестивалентный</th><th>Суммарные углеводороды</th></tr>   
-            <tr>
+            <table data-vertable="ver4" border="1">
+            <tr class="row100 head"><th>Дата</th><th>Взвешенные частицы(пыль)</th><th>Диоксид серы</th><th>Сульфаты растворимые</th><th>Оксид углерода</th><th>Диоксид азота</th><th>Оксид азота</th><th>Озон</th><th>Сероводород</th><th>Фенол</th><th>Фтористый водород</th><th>Хлор</th><th>Хлористый водород</th><th>Аммиак</th><th>Серная кислота и сульфаты</th><th>Формальдегид</th><th>Неорганические соединения мышьяк</th><th>Хром шестивалентный</th><th>Суммарные углеводороды</th></tr>   
+            <tr class="row100">
                 
                 <td style="display: none"><input type="hidden" id="pnzName" name="pnzName" value="<%=pnzName%>"></td>
                 <td style="display: none"><input type="hidden" id="pnzId" name="pnzId" value="<%=pnzId%>"></td>
@@ -99,26 +101,40 @@
             </tr>
             </table>
         </form>
-        
-           <ul>
-               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=1">Январь</a></li>
-               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=2">Февраль</a></li>
-               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=3">Март</a></li>
-               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=4">Апрель</a></li>
-               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=5">Май</a></li>
-               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=6">Июнь</a></li>
-               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=7">Июль</a></li>
-               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=8">Август</a></li>
-               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=9">Сентябрь</a></li>
-               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=10">Октябрь</a></li>
-               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=11">Ноябрь</a></li>
-               <li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=12">Декабрь</a></li>
-               <li><a href="datamonth.jsp?month=1&name=<%=URLEncoder.encode("Январь", "UTF-8")%>">Расчеты</a></li>
-           </ul>
-               
+  </div>
+        <div class="month-picker">
+  <fieldset class="month-picker-fieldset">
+    <input type="radio" name="month" value="jan" id="jan" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=1')" <% if(month.equals("1")){%>checked<%}%>>
+    <label for="jan" class="month-picker-label">Jan</label>
+    <input type="radio" name="month" value="feb" id="feb" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=2')" <% if(month.equals("2")){%>checked<%}%>>
+    <label for="feb" class="month-picker-label">Feb</label>
+    <input type="radio" name="month" value="mar" id="mar" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=3')" <% if(month.equals("3")){%>checked<%}%>>
+    <label for="mar" class="month-picker-label">Mar</label>
+    <input type="radio" name="month" value="apr" id="apr" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=4')" <% if(month.equals("4")){%>checked<%}%>>
+    <label for="apr" class="month-picker-label">Apr</label>
+    <input type="radio" name="month" value="may" id="may" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=5')" <% if(month.equals("5")){%>checked<%}%>>
+    <label for="may" class="month-picker-label">May</label>
+    <input type="radio" name="month" value="jun" id="jun" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=6')" <% if(month.equals("6")){%>checked<%}%>>
+    <label for="jun" class="month-picker-label">Jun</label>
+    <input type="radio" name="month" value="jul" id="jul" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=7')" <% if(month.equals("7")){%>checked<%}%>>
+    <label for="jul" class="month-picker-label">Jul</label>
+    <input type="radio" name="month" value="aug" id="aug" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=8')" <% if(month.equals("8")){%>checked<%}%>>
+    <label for="aug" class="month-picker-label">Aug</label>
+    <input type="radio" name="month" value="sep" id="sep" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=9')" <% if(month.equals("9")){%>checked<%}%>>
+    <label for="sep" class="month-picker-label">Sep</label>
+    <input type="radio" name="month" value="oct" id="oct" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=10')" <% if(month.equals("10")){%>checked<%}%>>
+    <label for="oct" class="month-picker-label">Oct</label>
+    <input type="radio" name="month" value="nov" id="nov" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=11')" <% if(month.equals("11")){%>checked<%}%>>
+    <label for="nov" class="month-picker-label">Nov</label>
+    <input type="radio" name="month" value="dec" id="dec" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=12')" <% if(month.equals("12")){%>checked<%}%>>
+    <label for="dec" class="month-picker-label">Dec</label>
+  </fieldset>
+</div>
+           
+               <div class="table100 ver4 m-b-110">
                 <form name=frm method="POST">
-        <table width="220" border="1">
-            <tr><th>Дата</th><th>Срок</th><th>Взвешенные частицы(пыль)</th><th>Диоксид серы</th><th>Сульфаты растворимые</th><th>Оксид углерода</th><th>Диоксид азота</th><th>Оксид азота</th><th>Озон</th><th>Сероводород</th><th>Фенол</th><th>Фтористый водород</th><th>Хлор</th><th>Хлористый водород</th><th>Аммиак</th><th>Серная кислота и сульфаты</th><th>Формальдегид</th><th>Неорганические соединения мышьяк</th><th>Хром шестивалентный</th><th>Суммарные углеводороды</th></tr>   
+        <table data-vertable="ver4" border="1">
+            <tr class="row100 head"><th>Дата</th><th>Срок</th><th>Взвешенные частицы(пыль)</th><th>Диоксид серы</th><th>Сульфаты растворимые</th><th>Оксид углерода</th><th>Диоксид азота</th><th>Оксид азота</th><th>Озон</th><th>Сероводород</th><th>Фенол</th><th>Фтористый водород</th><th>Хлор</th><th>Хлористый водород</th><th>Аммиак</th><th>Серная кислота и сульфаты</th><th>Формальдегид</th><th>Неорганические соединения мышьяк</th><th>Хром шестивалентный</th><th>Суммарные углеводороды</th></tr>   
             <%
             List pnzMinlist =  pnzDataDao.minPnzDatas(Integer.parseInt(pnzId),Integer.parseInt(month));
             List pnzMaxlist =  pnzDataDao.maxPnzDatas(Integer.parseInt(pnzId),Integer.parseInt(month));
@@ -133,12 +149,12 @@
                 SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm:ss");
                 String time = localDateFormat.format(pd.getPnzDateTime());       
             %>
-            <tr>
+            <tr class="row100">
                 <td style="display: none"><input type="hidden" id="pnzName" name="pnzName" value="<%=pnzName%>"></td>
                 <td style="display: none"><input type="hidden" id="pnzId" name="pnzId" value="<%=pnzId%>"></td>
                 <td style="display: none"><input type="hidden" id="month" name="month" value="<%=month%>"></td>
                 <td style="display:none"><input type="hidden" name="pnzDataId" value="<%=pd.getPnzDataId()%>"></td>
-                <td><input name="dateWithoutTime<%=pd.getPnzDataId()%>" type="datetime" value="<%=sdf.format(dateWithoutTime)%>"></td>
+                <td><input style="width: 80px;" name="dateWithoutTime<%=pd.getPnzDataId()%>" type="datetime" value="<%=sdf.format(dateWithoutTime)%>"></td>
                 <td><input id="time" name="time<%=pd.getPnzDataId()%>" type="time" value="<%=time%>"></td>
                 <td><input name="bsh<%=pd.getPnzDataId()%>" value="<%=pd.getBsh()%>"></td>
                 <td><input name="ds<%=pd.getPnzDataId()%>" value="<%=pd.getDs()%>"></td>
@@ -158,8 +174,8 @@
                 <td><input name="nsm<%=pd.getPnzDataId()%>" value="<%=pd.getNsm()%>"></td>
                 <td><input name="hromSh<%=pd.getPnzDataId()%>" value="<%=pd.getHromSh()%>"></td>
                 <td><input name="sumU<%=pd.getPnzDataId()%>" value="<%=pd.getSumU()%>"></td>  
-                <td><input type="submit" name="ACTION" value="Edit" onclick="getEditConfirmation(<%=pd.getPnzDataId()%>)"></td>
-                <td><input type="submit" name="ACTION" value="Delete" onclick="getDeleteConfirmation(<%=pd.getPnzDataId()%>)"></td>
+                <td><input type="submit" name="ACTION" value="Изменить" onclick="getEditConfirmation(<%=pd.getPnzDataId()%>)"></td>
+                <td><input type="submit" name="ACTION" value="Удалить" onclick="getDeleteConfirmation(<%=pd.getPnzDataId()%>)"></td>
             </tr>
             <% }
             Object[] objMin = (Object[]) iterMin.next();
@@ -171,71 +187,74 @@
                <tr>
                 <td></td>
                 <td>Мин</td>
-                <td><input name="bsh<%=objMin[0]%>" value="<%=objMin[0]%>"></td>
-                <td><input name="ds<%=objMin[1]%>" value="<%=objMin[1]%>"></td>
-                <td><input name="sr<%=objMin[2]%>" value="<%=objMin[2]%>"></td>
-                <td><input name="ou<%=objMin[3]%>" value="<%=objMin[3]%>"></td>
-                <td><input name="do_<%=objMin[4]%>" value="<%=objMin[4]%>"></td>
-                <td><input name="oa<%=objMin[5]%>" value="<%=objMin[5]%>"></td>
-                <td><input name="ozon<%=objMin[6]%>" value="<%=objMin[6]%>"></td>
-                <td><input name="serovodorod<%=objMin[7]%>" value="<%=objMin[7]%>"></td>
-                <td><input name="fenol<%=objMin[8]%>" value="<%=objMin[8]%>"></td>
-                <td><input name="fv<%=objMin[9]%>" value="<%=objMin[9]%>"></td>
-                <td><input name="hlor<%=objMin[10]%>" value="<%=objMin[10]%>"></td>
-                <td><input name="hv<%=objMin[11]%>" value="<%=objMin[11]%>"></td>
-                <td><input name="ammiak<%=objMin[12]%>" value="<%=objMin[12]%>"></td>
-                <td><input name="skIs<%=objMin[13]%>" value="<%=objMin[13]%>"></td>
-                <td><input name="formaldigid<%=objMin[14]%>" value="<%=objMin[14]%>"></td>
-                <td><input name="nsm<%=objMin[15]%>" value="<%=objMin[15]%>"></td>
-                <td><input name="hromSh<%=objMin[16]%>" value="<%=objMin[16]%>"></td>
-                <td><input name="sumU<%=objMin[17]%>" value="<%=objMin[17]%>"></td>  
+                <td name="bsh<%=objMin[0]%>"><%=objMin[0]%></td>
+                <td name="ds<%=objMin[1]%>"><%=objMin[1]%></td>
+                <td name="sr<%=objMin[2]%>"><%=objMin[2]%></td>
+                <td name="ou<%=objMin[3]%>"><%=objMin[3]%></td>
+                <td name="do_<%=objMin[4]%>"><%=objMin[4]%></td>
+                <td name="oa<%=objMin[5]%>"><%=objMin[5]%></td>
+                <td name="ozon<%=objMin[6]%>"><%=objMin[6]%></td>
+                <td name="serovodorod<%=objMin[7]%>"><%=objMin[7]%></td>
+                <td name="fenol<%=objMin[8]%>"><%=objMin[8]%></td>
+                <td name="fv<%=objMin[9]%>"><%=objMin[9]%></td>
+                <td name="hlor<%=objMin[10]%>"><%=objMin[10]%></td>
+                <td name="hv<%=objMin[11]%>"><%=objMin[11]%></td>
+                <td name="ammiak<%=objMin[12]%>"><%=objMin[12]%></td>
+                <td name="skIs<%=objMin[13]%>"><%=objMin[13]%></td>
+                <td name="formaldigid<%=objMin[14]%>"><%=objMin[14]%></td>
+                <td name="nsm<%=objMin[15]%>"><%=objMin[15]%></td>
+                <td name="hromSh<%=objMin[16]%>"><%=objMin[16]%></td>
+                <td name="sumU<%=objMin[17]%>"><%=objMin[17]%></td>
             </tr> 
             <tr>
                 <td></td>
                 <td>Макс</td>
-                <td><input name="bsh<%=objMax[0]%>" value="<%=objMax[0]%>"></td>
-                <td><input name="ds<%=objMax[1]%>" value="<%=objMax[1]%>"></td>
-                <td><input name="sr<%=objMax[2]%>" value="<%=objMax[2]%>"></td>
-                <td><input name="ou<%=objMax[3]%>" value="<%=objMax[3]%>"></td>
-                <td><input name="do_<%=objMax[4]%>" value="<%=objMax[4]%>"></td>
-                <td><input name="oa<%=objMax[5]%>" value="<%=objMax[5]%>"></td>
-                <td><input name="ozon<%=objMax[6]%>" value="<%=objMax[6]%>"></td>
-                <td><input name="serovodorod<%=objMax[7]%>" value="<%=objMax[7]%>"></td>
-                <td><input name="fenol<%=objMax[8]%>" value="<%=objMax[8]%>"></td>
-                <td><input name="fv<%=objMax[9]%>" value="<%=objMax[9]%>"></td>
-                <td><input name="hlor<%=objMax[10]%>" value="<%=objMax[10]%>"></td>
-                <td><input name="hv<%=objMax[11]%>" value="<%=objMax[11]%>"></td>
-                <td><input name="ammiak<%=objMax[12]%>" value="<%=objMax[12]%>"></td>
-                <td><input name="skIs<%=objMax[13]%>" value="<%=objMax[13]%>"></td>
-                <td><input name="formaldigid<%=objMax[14]%>" value="<%=objMax[14]%>"></td>
-                <td><input name="nsm<%=objMax[15]%>" value="<%=objMax[15]%>"></td>
-                <td><input name="hromSh<%=objMax[16]%>" value="<%=objMax[16]%>"></td>
-                <td><input name="sumU<%=objMax[17]%>" value="<%=objMax[17]%>"></td>  
+                <td name="bsh<%=objMax[0]%>"><%=objMax[0]%></td>
+                <td name="ds<%=objMax[1]%>"><%=objMax[1]%></td>
+                <td name="sr<%=objMax[2]%>"><%=objMax[2]%></td>
+                <td name="ou<%=objMax[3]%>"><%=objMax[3]%></td>
+                <td name="do_<%=objMax[4]%>"><%=objMax[4]%></td>
+                <td name="oa<%=objMax[5]%>"><%=objMax[5]%></td>
+                <td name="ozon<%=objMax[6]%>"><%=objMax[6]%></td>
+                <td name="serovodorod<%=objMax[7]%>"><%=objMax[7]%></td>
+                <td name="fenol<%=objMax[8]%>"><%=objMax[8]%></td>
+                <td name="fv<%=objMax[9]%>"><%=objMax[9]%></td>
+                <td name="hlor<%=objMax[10]%>"><%=objMax[10]%></td>
+                <td name="hv<%=objMax[11]%>"><%=objMax[11]%></td>
+                <td name="ammiak<%=objMax[12]%>"><%=objMax[12]%></td>
+                <td name="skIs<%=objMax[13]%>"><%=objMax[13]%></td>
+                <td name="formaldigid<%=objMax[14]%>"><%=objMax[14]%></td>
+                <td name="nsm<%=objMax[15]%>"><%=objMax[15]%></td>
+                <td name="hromSh<%=objMax[16]%>"><%=objMax[16]%></td>
+                <td name="sumU<%=objMax[17]%>"><%=objMax[17]%></td>
+            </tr>  
             </tr>     
             <tr>
                 <td></td>
                 <td>Ср</td>
-                <td><input name="bsh<%=objAvg[0]%>" value="<%=objAvg[0]%>"></td>
-                <td><input name="ds<%=objAvg[1]%>" value="<%=objAvg[1]%>"></td>
-                <td><input name="sr<%=objAvg[2]%>" value="<%=objAvg[2]%>"></td>
-                <td><input name="ou<%=objAvg[3]%>" value="<%=objAvg[3]%>"></td>
-                <td><input name="do_<%=objAvg[4]%>" value="<%=objAvg[4]%>"></td>
-                <td><input name="oa<%=objAvg[5]%>" value="<%=objAvg[5]%>"></td>
-                <td><input name="ozon<%=objAvg[6]%>" value="<%=objAvg[6]%>"></td>
-                <td><input name="serovodorod<%=objAvg[7]%>" value="<%=objAvg[7]%>"></td>
-                <td><input name="fenol<%=objAvg[8]%>" value="<%=objAvg[8]%>"></td>
-                <td><input name="fv<%=objAvg[9]%>" value="<%=objAvg[9]%>"></td>
-                <td><input name="hlor<%=objAvg[10]%>" value="<%=objAvg[10]%>"></td>
-                <td><input name="hv<%=objAvg[11]%>" value="<%=objAvg[11]%>"></td>
-                <td><input name="ammiak<%=objAvg[12]%>" value="<%=objAvg[12]%>"></td>
-                <td><input name="skIs<%=objAvg[13]%>" value="<%=objAvg[13]%>"></td>
-                <td><input name="formaldigid<%=objAvg[14]%>" value="<%=objAvg[14]%>"></td>
-                <td><input name="nsm<%=objAvg[15]%>" value="<%=objAvg[15]%>"></td>
-                <td><input name="hromSh<%=objAvg[16]%>" value="<%=objAvg[16]%>"></td>
-                <td><input name="sumU<%=objAvg[17]%>" value="<%=objAvg[17]%>"></td>  
+                <td name="bsh<%=objAvg[0]%>"><%=objAvg[0]%></td>
+                <td name="ds<%=objAvg[1]%>"><%=objAvg[1]%></td>
+                <td name="sr<%=objAvg[2]%>"><%=objAvg[2]%></td>
+                <td name="ou<%=objAvg[3]%>"><%=objAvg[3]%></td>
+                <td name="do_<%=objAvg[4]%>"><%=objAvg[4]%></td>
+                <td name="oa<%=objAvg[5]%>"><%=objAvg[5]%></td>
+                <td name="ozon<%=objAvg[6]%>"><%=objAvg[6]%></td>
+                <td name="serovodorod<%=objAvg[7]%>"><%=objAvg[7]%></td>
+                <td name="fenol<%=objAvg[8]%>"><%=objAvg[8]%></td>
+                <td name="fv<%=objAvg[9]%>"><%=objAvg[9]%></td>
+                <td name="hlor<%=objAvg[10]%>"><%=objAvg[10]%></td>
+                <td name="hv<%=objAvg[11]%>"><%=objAvg[11]%></td>
+                <td name="ammiak<%=objAvg[12]%>"><%=objAvg[12]%></td>
+                <td name="skIs<%=objAvg[13]%>"><%=objAvg[13]%></td>
+                <td name="formaldigid<%=objAvg[14]%>"><%=objAvg[14]%></td>
+                <td name="nsm<%=objAvg[15]%>"><%=objAvg[15]%></td>
+                <td name="hromSh<%=objAvg[16]%>"><%=objAvg[16]%></td>
+                <td name="sumU<%=objAvg[17]%>"><%=objAvg[17]%></td>
+            </tr> 
             </tr> 
             <% } %>
         </table>
             </form>
+               </div>
     </body>
 </html>

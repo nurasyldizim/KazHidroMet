@@ -3,6 +3,9 @@
     Created on : 11.03.2018, 21:42:38
     Author     : Dizim Nurasyl
 --%>
+<%@page import="java.time.LocalDate"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.net.URLEncoder"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.time.Year"%>
@@ -21,7 +24,29 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="../js/mainjs.js"></script>
         <title>JSP Page</title>
+        <link rel="stylesheet" href="../css/bootstrap.css">
+        <link rel="stylesheet" href="../css/style.css">
     </head>
+    <header><%
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    LocalDate localDate = LocalDate.now();
+                %>
+		<div class="container text-center">
+			<div class="fh5co-navbar-brand">
+                            <a class="fh5co-logo" href="../">Qazgidromet</a>
+			</div>
+			<nav id="fh5co-main-nav" role="navigation">
+				<ul>
+                                    <li><a href="../">Главная</a></li>
+					<li><a href="pnzdata.jsp?pnzId=1&pnzName=ПНЗ1&month=1">Заполнения</a></li>
+					<li><a href="datamonth.jsp?month=1&name=<%=URLEncoder.encode("Январь", "UTF-8")%>">Q ср.м</a></li>
+					<li><a href="qaverage.jsp?month=1" class="active">Прогноз q ср.м</a></li>
+                                        <li><a href="pprognoz.jsp?date=<%=dtf.format(localDate)%>">Прогностический P</a></li>
+                                        <li><a href="pfact.jsp?date=<%=dtf.format(localDate)%>">Фактический P</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
     <body>
         <h1>Hello World!</h1>
          <%

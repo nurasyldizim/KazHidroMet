@@ -214,7 +214,10 @@ function refreshFunctionMonth() {
     location.href = "qaverage.jsp?month="+month;
     }
 
-
+ 
+function selectMonth(hrefMonth){
+    location.href = hrefMonth;
+}
 function getEditConfirmation(id){
     var retVal = confirm("Вы действительно хотите изменить этот запись?");
     if( retVal == true ){
@@ -242,6 +245,4 @@ function getEditConfirmation(id){
        return false;
     }
  }
- 
- 
  
