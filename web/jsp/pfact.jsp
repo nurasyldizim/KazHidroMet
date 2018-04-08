@@ -88,6 +88,7 @@
   <button onclick="generateExcel()">Export to Excel</button>
   <br />
   <br />
+  <div class="table100 ver4 m-b-110">
                 <table id="table" width="220" border="1">
                     <tr><td colspan="20">Расчетная матрица для "P" </td></tr>
         <tr><th></th><th>Срок</th><th>Взвешенные частицы(пыль)</th><th>Диоксид серы</th><th>Сульфаты растворимые</th><th>Оксид углерода</th><th>Диоксид азота</th><th>Оксид азота</th><th>Озон</th><th>Сероводород</th><th>Фенол</th><th>Фтористый водород</th><th>Хлор</th><th>Хлористый водород</th><th>Аммиак</th><th>Серная кислота и сульфаты</th><th>Формальдегид</th><th>Неорганические соединения мышьяк</th><th>Хром шестивалентный</th><th>Суммарные углеводороды</th></tr>   
@@ -420,10 +421,11 @@
                     <td id="calSI"><script>calSI();</script></td>
                 </tr>              
             </table>
+  </div>
             <script type="text/javascript" src="../js/indicator.js"></script>
             <script type="text/javascript" src="https://www.google.com/jsapi"></script>
             <script type="text/javascript" src="../js/chart.js"></script>
-            <select id="chartSelect" onchange="drawCharts()">
+    <center> <select style="width: 500px;" class="class-select" id="chartSelect" onchange="drawCharts()">
                 <option value="2">Взвешенные частицы (пыль)</option>
                 <option value="3">Диоксид серы</option>
                 <option value="4">Сульфаты растворимые</option>
@@ -442,7 +444,7 @@
                 <option value="17">Неорганические соединения мышьяка</option>
                 <option value="18">Хром шестивалентный</option>
                 <option value="19">Суммарные углеводороды</option>
-            </select>
+        </select></center>
             <div class="chart">
                 <h2>Beautiful Google Charts</h2>
                 <h5>Daily Page Hits</h5>

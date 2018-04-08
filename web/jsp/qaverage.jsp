@@ -48,7 +48,6 @@
 		</div>
 	</header>
     <body>
-        <h1>Hello World!</h1>
          <%
             request.setCharacterEncoding("UTF-8");
             String month = request.getParameter("month");
@@ -68,15 +67,16 @@
             map.put("12", "Декабрь");
     request.setAttribute("MyMap", map);
 %>
-<a href="pprognoz.jsp?month=1">Прогностический P</a>
-<select id="monthListId" onchange="refreshFunctionMonth()">
+    <center>
+<select class="class-select" id="monthListId" onchange="refreshFunctionMonth()">
          <c:forEach items="${MyMap}" var="mapItem">
              <option value="${mapItem.key}" ${mapItem.key eq monthId ? "selected": ""}>${mapItem.value}</option>
          </c:forEach>
 </select>   
-
- <table id="table" width="220" border="1">
-            <tr><th></th><th>Взвешенные частицы(пыль)</th><th>Диоксид серы</th><th>Сульфаты растворимые</th><th>Оксид углерода</th><th>Диоксид азота</th><th>Оксид азота</th><th>Озон</th><th>Сероводород</th><th>Фенол</th><th>Фтористый водород</th><th>Хлор</th><th>Хлористый водород</th><th>Аммиак</th><th>Серная кислота и сульфаты</th><th>Формальдегид</th><th>Неорганические соединения мышьяк</th><th>Хром шестивалентный</th><th>Суммарные углеводороды</th></tr>   
+    </center>
+<div class="table100 ver4 m-b-110">
+    <table id="table" data border="1">
+            <tr class="row100 head"><th></th><th>Взвешенные частицы(пыль)</th><th>Диоксид серы</th><th>Сульфаты растворимые</th><th>Оксид углерода</th><th>Диоксид азота</th><th>Оксид азота</th><th>Озон</th><th>Сероводород</th><th>Фенол</th><th>Фтористый водород</th><th>Хлор</th><th>Хлористый водород</th><th>Аммиак</th><th>Серная кислота и сульфаты</th><th>Формальдегид</th><th>Неорганические соединения мышьяк</th><th>Хром шестивалентный</th><th>Суммарные углеводороды</th></tr>   
 <%  
             int monthInt = Integer.parseInt(month);
             Date date = new Date();
@@ -94,7 +94,7 @@
                     Object[] objQAvg = (Object[]) iterQAvgList.next();
                     System.out.println(qAvglist[i].size());
             %>
-            <tr>
+            <tr class="row100">
                 <c:choose>
                     <c:when test = "${param.month == 1}">
                         <%if(i==0){%>
@@ -152,7 +152,7 @@
                 <td><%=objQAvg[17]%></td>  
             </tr>
      <%  }%>
-            <tr>
+            <tr class="row100">
                 <td><%=map.get(month)%><%=currentYear%></td>
                 <td id="1id"><script>calculateQAvg(1);</script></td>
                 <td id="2id"><script>calculateQAvg(2);</script></td>
@@ -175,5 +175,6 @@
             </tr>
                 
             </table>
+</div>
     </body>
 </html>

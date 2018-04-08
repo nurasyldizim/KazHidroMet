@@ -73,7 +73,7 @@
 
 .meter-display {
   height: 110px;
-  margin: -55px 0 0 -110px;
+  margin: -70px 0 0 -110px;
   overflow: hidden;
   position: absolute;
   left: 50%;
@@ -83,7 +83,7 @@
 }
 
 .meter-range {
-  transform-origin: 110px 110px;
+  transform-origin: 110px 100px;
   transform: rotate(0deg);
   transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   /*  -webkit-animation: jesse .8s cubic-bezier(0.680, -0.550, 0.265, 1.550) infinite alternate;*/
@@ -112,7 +112,7 @@
 .meter-range-item--3 {
   border-top-color: #B4A299;
   border-right-color: #B4A299;
-  transform: rotate(48deg);
+  transform: rotate(48deg);   
 }
 
 .meter-needle {
@@ -154,7 +154,7 @@
 }
 
 .meter-label {
-  color: #C7B6A5;
+  color: black;
   display: block;
   font-family: "Lucida Console","Lucida Sans Typewriter",monaco,"Bitstream Vera Sans Mono";
   font-size: 20px;

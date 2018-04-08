@@ -53,7 +53,6 @@
 		</div>
 	</header>
     <body>
-        <button onclick="hrefPfact()">Фактический P</button>
         <%
             request.setCharacterEncoding("UTF-8");
             String date = request.getParameter("date");
@@ -81,6 +80,7 @@
   </div>
   
 </div>
+  <div class="table100 ver4 m-b-110">
                 <table id="table" width="220" border="1">
                     <tr><td colspan="20">Расчетная матрица для "P" </td></tr>
         <tr><th></th><th>Срок</th><th>Взвешенные частицы(пыль)</th><th>Диоксид серы</th><th>Сульфаты растворимые</th><th>Оксид углерода</th><th>Диоксид азота</th><th>Оксид азота</th><th>Озон</th><th>Сероводород</th><th>Фенол</th><th>Фтористый водород</th><th>Хлор</th><th>Хлористый водород</th><th>Аммиак</th><th>Серная кислота и сульфаты</th><th>Формальдегид</th><th>Неорганические соединения мышьяк</th><th>Хром шестивалентный</th><th>Суммарные углеводороды</th></tr>   
@@ -418,6 +418,7 @@
                 </tr>
                 
             </table>
+  </div>
             <script type="text/javascript" src="../js/indicator.js"></script>
 
     </body>
