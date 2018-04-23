@@ -446,10 +446,21 @@
                 <option value="19">Суммарные углеводороды</option>
         </select></center>
             <div class="chart">
-                <h2>Beautiful Google Charts</h2>
-                <h5>Daily Page Hits</h5>
+                <h2>Диаграмма по ПНЗ</h2>
+                <h5 id="optionName"></h5>
                 <div id="bar-chart"></div>
             </div>
 
     </body>
+    <footer>
+		<div id="footer" class="fh5co-border-line">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center">
+						<p>IITU 2018 <a href="#">Qazgidromet</a>.<br>Made by students of <a href="http://iitu.kz" target="_blank">IITU</a> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
 </html>

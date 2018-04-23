@@ -263,4 +263,15 @@
             </form>
                </div>
     </body>
+    <footer>
+		<div id="footer" class="fh5co-border-line">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center">
+						<p>IITU 2018 <a href="#">Qazgidromet</a>.<br>Made by students of <a href="http://iitu.kz" target="_blank">IITU</a> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
 </html>

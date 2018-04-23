@@ -15,6 +15,7 @@ function drawCharts() {
   ];
 var selectChart = document.getElementById("chartSelect");
 var columnNumber = selectChart.options[selectChart.selectedIndex].value;
+document.getElementById("optionName").innerHTML = selectChart.options[selectChart.selectedIndex].value;;
 var table = document.getElementById("table"),rows = parseInt(table.rows.length);
             for(var r = 2; r<rows-8; r++){
 
