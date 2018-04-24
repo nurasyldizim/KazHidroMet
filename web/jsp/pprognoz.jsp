@@ -43,11 +43,11 @@
 			<nav id="fh5co-main-nav" role="navigation">
 				<ul>
                                     <li><a href="../">Главная</a></li>
-					<li><a href="pnzdata.jsp?pnzId=1&pnzName=ПНЗ1&month=1">Заполнения</a></li>
-					<li><a href="datamonth.jsp?month=1&name=<%=URLEncoder.encode("Январь", "UTF-8")%>">Q ср.м</a></li>
-					<li><a href="qaverage.jsp?month=1">Прогноз q ср.м</a></li>
-                                        <li><a href="pprognoz.jsp?date=<%=dtf.format(localDate)%>" class="active">Прогностический P</a></li>
-                                        <li><a href="pfact.jsp?date=<%=dtf.format(localDate)%>">Фактический P</a></li>
+					<li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=pnzName%>&month=1&cityId=<%=cityId%>" class="active">Заполнения</a></li>
+					<li><a href="datamonth.jsp?month=1&name=<%=URLEncoder.encode("Январь", "UTF-8")%>&cityId=<%=cityId%>">Q ср.м</a></li>
+					<li><a href="qaverage.jsp?month=1&cityId=<%=cityId%>">Прогноз q ср.м</a></li>
+                                        <li><a href="pprognoz.jsp?date=<%=dtf.format(localDate)%>&cityId=<%=cityId%>">Прогностический P</a></li>
+                                        <li><a href="pfact.jsp?date=<%=dtf.format(localDate)%>&cityId=<%=cityId%>">Фактический P</a></li>
 				</ul>
 			</nav>
 		</div>

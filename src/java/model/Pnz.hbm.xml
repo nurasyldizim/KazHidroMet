@@ -8,6 +8,9 @@
             <column name="pnzID" />
             <generator class="assigned" />
         </id>
+        <many-to-one name="city" class="model.City" fetch="select">
+            <column name="city_id" not-null="true" />
+        </many-to-one>
         <property name="pnzName" type="string">
             <column name="pnzName" length="45" not-null="true" />
         </property>

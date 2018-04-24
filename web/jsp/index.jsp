@@ -1,3 +1,8 @@
+<%@page import="model.Pnz"%>
+<%@page import="dao.PnzDao"%>
+<%@page import="model.City"%>
+<%@page import="java.util.List"%>
+<%@page import="dao.CityDao"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.net.URLEncoder"%>
@@ -16,10 +21,7 @@ and open the template in the editor.
         
 	</head>
 	<body>
-	<header><%
-                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                    LocalDate localDate = LocalDate.now();
-                %>
+	<header>
 		<div class="container text-center">
 			<div class="fh5co-navbar-brand">
 				<a class="fh5co-logo" href="">Qazgidromet</a>
@@ -27,11 +29,6 @@ and open the template in the editor.
 			<nav id="fh5co-main-nav" role="navigation">
 				<ul>
                                         <li><a href="" class="active">Главная</a></li>
-					<li><a href="jsp/pnzdata.jsp?pnzId=1&pnzName=ПНЗ1&month=1">Заполнения</a></li>
-					<li><a href="jsp/datamonth.jsp?month=1&name=<%=URLEncoder.encode("Январь", "UTF-8")%>">Q ср.м</a></li>
-					<li><a href="jsp/qaverage.jsp?month=1">Прогноз q ср.м</a></li>
-                                        <li><a href="jsp/pprognoz.jsp?date=<%=dtf.format(localDate)%>">Прогностический P</a></li>
-                                        <li><a href="jsp/pfact.jsp?date=<%=dtf.format(localDate)%>">Фактический P</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -46,13 +43,28 @@ and open the template in the editor.
                             <div class="desc">
                                     <h3>Параметр Р </h3>
                                     <p>– это интегральный показатель загрязнения воздуха в городе, который является частотной характеристикой и представляет собой отношение числа существенно повышенных концентраций примесей в воздухе, измеренных в течение дня, к общему числу измерений в течение этого же дня. </p>
+                                    <h3>Параметр Cи </h3>
+                                    <p>– наибольшая измеренная разовая концентрация примеси, деленная на ПДК. Она определяется из данных наблюдений на станции за одной примесью, или на всех станциях рассматриваемой территории за всеми примесями за месяц или за год. Обычно оценивается количество городов, в которых СИ > 5 или СИ > 10. </p>
                             </div>
                     </div>
                     <div class="col-md-6 col-sm-6 services-num">
                             <span class="number-holder">02</span>
                             <div class="desc">
-                                    <h3>Ручные пункты наблюдения в Алматы:</h3>
-                                    <p>№1 – ул. Амангельды, угол ул. Сатпаева <br>№12 – проспект Райымбека, угол ул. Наурызбай батыра<br>№16 – микрорайон Айнабулак-3<br>№25 – микрорайон Аксай-3, ул. Маргулана, угол ул. Момышулы<br>№26 – микрорайон Тастак-1, ГУ «Городская детская поликлиника №8»</p>
+                                    <h3>Выверите город</h3>
+      <ul style="list-style-type:disc">
+        <%
+            PnzDao pnzDao = new PnzDao();
+            CityDao cityDao = new CityDao();               
+            List<City> list = cityDao.listCitis();
+            for (City c : list) {
+                List<Pnz> list1 = pnzDao.listPnzs(c.getCityId());
+                if(list1.size()!=0){
+         %>
+         <li><a href="jsp/pnzdata.jsp?cityId=<%=c.getCityId() %>&pnzId=<%=list1.get(0).getPnzId() %>&pnzName=<%=list1.get(0).getPnzName() %>&month=1"><%=c.getCityName() %></a></li>
+          <%  }     
+          }%>
+          </ul>
+
                             </div>
                     </div>
             </div>

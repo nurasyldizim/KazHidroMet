@@ -4,42 +4,39 @@
  * and open the template in the editor.
  */
 package dao;
-import java.util.ArrayList;
-import model.Pnz;
 
-import java.util.List; 
-import org.hibernate.Criteria;
- 
-import org.hibernate.HibernateException; 
-import org.hibernate.Session; 
-import org.hibernate.Transaction;
+import java.util.ArrayList;
+import java.util.List;
+import model.City;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Restrictions;
 
 /**
  *
- * @author user-22112
+ * @author Nurasy Dizim
  */
-public class PnzDao {
-  SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();
+public class CityDao {
+      SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();
   Session session;
 
-   /* Method to  READ all the employees */
+   /* Method to  READ all the cities */
 
     /**
      *
      * @return
      */
     
-   public List<Pnz> listPnzs(int cityId){
-      List<Pnz> pnzData = new ArrayList<Pnz>();
+   public List<City> listCitis( ){
+      List<City> cityData = new ArrayList<City>();
       Session session = sessionFactory.openSession();
       Transaction tx = null;
       
       try {
          tx = session.beginTransaction();
-         pnzData = session.createQuery("FROM Pnz WHERE city_id = "+cityId+"").list(); 
+         cityData = session.createQuery("FROM City").list(); 
          tx.commit();
       } catch (HibernateException e) {
          if (tx!=null) tx.rollback();
@@ -47,8 +44,8 @@ public class PnzDao {
       } finally {
          session.close(); 
       }
-      return pnzData;
+      return cityData;
    }
-    
+   
+   
 }
-

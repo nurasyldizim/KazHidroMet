@@ -27,6 +27,7 @@
     </head>
     <header><%
                     request.setCharacterEncoding("UTF-8");
+                    int cityId = Integer.parseInt(request.getParameter("cityId"));
                     String month = request.getParameter("month");
                     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                     LocalDate localDate = LocalDate.now();
@@ -50,29 +51,29 @@
     <body>
                  <div class="month-picker">
   <fieldset class="month-picker-fieldset">
-    <input type="radio" name="month" value="jan" id="jan" onclick="selectMonth('datamonth.jsp?month=1&name=<%=URLEncoder.encode("Январь", "UTF-8")%>')" <% if(month.equals("1")){%>checked<%}%>>
+    <input type="radio" name="month" value="jan" id="jan" onclick="selectMonth('datamonth.jsp?month=1&name=<%=URLEncoder.encode("Январь", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("1")){%>checked<%}%>>
     <label for="jan" class="month-picker-label">Янв</label>
-    <input type="radio" name="month" value="feb" id="feb" onclick="selectMonth('datamonth.jsp?month=2&name=<%=URLEncoder.encode("Февраль", "UTF-8")%>')" <% if(month.equals("2")){%>checked<%}%>>
+    <input type="radio" name="month" value="feb" id="feb" onclick="selectMonth('datamonth.jsp?month=2&name=<%=URLEncoder.encode("Февраль", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("2")){%>checked<%}%>>
     <label for="feb" class="month-picker-label">Фев</label>
-    <input type="radio" name="month" value="mar" id="mar" onclick="selectMonth('datamonth.jsp?month=3&name=<%=URLEncoder.encode("Март", "UTF-8")%>')" <% if(month.equals("3")){%>checked<%}%>>
+    <input type="radio" name="month" value="mar" id="mar" onclick="selectMonth('datamonth.jsp?month=3&name=<%=URLEncoder.encode("Март", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("3")){%>checked<%}%>>
     <label for="mar" class="month-picker-label">Март</label>
-    <input type="radio" name="month" value="apr" id="apr" onclick="selectMonth('datamonth.jsp?month=4&name=<%=URLEncoder.encode("Апрель", "UTF-8")%>')" <% if(month.equals("4")){%>checked<%}%>>
+    <input type="radio" name="month" value="apr" id="apr" onclick="selectMonth('datamonth.jsp?month=4&name=<%=URLEncoder.encode("Апрель", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("4")){%>checked<%}%>>
     <label for="apr" class="month-picker-label">Апр</label>
-    <input type="radio" name="month" value="may" id="may" onclick="selectMonth('datamonth.jsp?month=5&name=<%=URLEncoder.encode("Май", "UTF-8")%>')" <% if(month.equals("5")){%>checked<%}%>>
+    <input type="radio" name="month" value="may" id="may" onclick="selectMonth('datamonth.jsp?month=5&name=<%=URLEncoder.encode("Май", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("5")){%>checked<%}%>>
     <label for="may" class="month-picker-label">Май</label>
-    <input type="radio" name="month" value="jun" id="jun" onclick="selectMonth('datamonth.jsp?month=6&name=<%=URLEncoder.encode("Июнь", "UTF-8")%>')" <% if(month.equals("6")){%>checked<%}%>>
+    <input type="radio" name="month" value="jun" id="jun" onclick="selectMonth('datamonth.jsp?month=6&name=<%=URLEncoder.encode("Июнь", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("6")){%>checked<%}%>>
     <label for="jun" class="month-picker-label">Июнь</label>
-    <input type="radio" name="month" value="jul" id="jul" onclick="selectMonth('datamonth.jsp?month=7&name=<%=URLEncoder.encode("Июль", "UTF-8")%>')" <% if(month.equals("7")){%>checked<%}%>>
+    <input type="radio" name="month" value="jul" id="jul" onclick="selectMonth('datamonth.jsp?month=7&name=<%=URLEncoder.encode("Июль", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("7")){%>checked<%}%>>
     <label for="jul" class="month-picker-label">Июль</label>
-    <input type="radio" name="month" value="aug" id="aug" onclick="selectMonth('datamonth.jsp?month=8&name=<%=URLEncoder.encode("Август", "UTF-8")%>')" <% if(month.equals("8")){%>checked<%}%>>
+    <input type="radio" name="month" value="aug" id="aug" onclick="selectMonth('datamonth.jsp?month=8&name=<%=URLEncoder.encode("Август", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("8")){%>checked<%}%>>
     <label for="aug" class="month-picker-label">Авг</label>
-    <input type="radio" name="month" value="sep" id="sep" onclick="selectMonth('datamonth.jsp?month=9&name=<%=URLEncoder.encode("Сентябрь", "UTF-8")%>')" <% if(month.equals("9")){%>checked<%}%>>
+    <input type="radio" name="month" value="sep" id="sep" onclick="selectMonth('datamonth.jsp?month=9&name=<%=URLEncoder.encode("Сентябрь", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("9")){%>checked<%}%>>
     <label for="sep" class="month-picker-label">Сен</label>
-    <input type="radio" name="month" value="oct" id="oct" onclick="selectMonth('datamonth.jsp?month=10&name=<%=URLEncoder.encode("Октябрь", "UTF-8")%>')" <% if(month.equals("10")){%>checked<%}%>>
+    <input type="radio" name="month" value="oct" id="oct" onclick="selectMonth('datamonth.jsp?month=10&name=<%=URLEncoder.encode("Октябрь", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("10")){%>checked<%}%>>
     <label for="oct" class="month-picker-label">Окт</label>
-    <input type="radio" name="month" value="nov" id="nov" onclick="selectMonth('datamonth.jsp?month=11&name=<%=URLEncoder.encode("Ноябрь", "UTF-8")%>')" <% if(month.equals("11")){%>checked<%}%>>
+    <input type="radio" name="month" value="nov" id="nov" onclick="selectMonth('datamonth.jsp?month=11&name=<%=URLEncoder.encode("Ноябрь", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("11")){%>checked<%}%>>
     <label for="nov" class="month-picker-label">Ноб</label>
-    <input type="radio" name="month" value="dec" id="dec" onclick="selectMonth('datamonth.jsp?month=12&name=<%=URLEncoder.encode("Декабрь", "UTF-8")%>')" <% if(month.equals("12")){%>checked<%}%>>
+    <input type="radio" name="month" value="dec" id="dec" onclick="selectMonth('datamonth.jsp?month=12&name=<%=URLEncoder.encode("Декабрь", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("12")){%>checked<%}%>>
     <label for="dec" class="month-picker-label">Дек</label>
   </fieldset>
 </div>
@@ -80,7 +81,7 @@
             String monthName = request.getParameter("name");
             PnzDataDao pnzDataDao = new PnzDataDao();
             PnzDao pnzDao = new PnzDao();
-            List<Pnz> list = pnzDao.listPnzs();
+            List<Pnz> list = pnzDao.listPnzs(cityId);
             for (Pnz p : list) {
                 String pnzName = p.getPnzName();
         %>
@@ -151,7 +152,7 @@
             <tr class="row100 head"><th></th><th>Взвешенные частицы(пыль)</th><th>Диоксид серы</th><th>Сульфаты растворимые</th><th>Оксид углерода</th><th>Диоксид азота</th><th>Оксид азота</th><th>Озон</th><th>Сероводород</th><th>Фенол</th><th>Фтористый водород</th><th>Хлор</th><th>Хлористый водород</th><th>Аммиак</th><th>Серная кислота и сульфаты</th><th>Формальдегид</th><th>Неорганические соединения мышьяк</th><th>Хром шестивалентный</th><th>Суммарные углеводороды</th></tr>   
             <%
                 for(int i = 2012; i<2026; i++){
-                    List pnzAvglistByYear =  pnzDataDaoAll.listAllPnzDatasByMonth(Integer.parseInt(month), i);
+                    List pnzAvglistByYear =  pnzDataDaoAll.listAllPnzDatasByMonth(Integer.parseInt(month), i, cityId);
                     Iterator iterAvgListByYear = pnzAvglistByYear.iterator();
                     Object[] objAvgByYear = (Object[]) iterAvgListByYear.next();
                     if (objAvgByYear[0]!=null){

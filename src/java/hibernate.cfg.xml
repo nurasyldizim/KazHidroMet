@@ -8,5 +8,6 @@
     <property name="hibernate.connection.username">root</property>
     <mapping resource="model/Pnz.hbm.xml"/>
     <mapping resource="model/PnzData.hbm.xml"/>
+    <mapping resource="model/City.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

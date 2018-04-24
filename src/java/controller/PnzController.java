@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+//This class not used*************************************8
 package controller;
 import java.util.ArrayList;
 import model.Pnz;

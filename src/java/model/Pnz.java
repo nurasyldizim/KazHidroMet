@@ -13,6 +13,7 @@ public class Pnz  implements java.io.Serializable {
 
      private int pnzId;
      private String pnzName;
+     private City city;
      private Set<PnzData> pnzDatas = new HashSet<PnzData>(0);
 
     /**
@@ -32,21 +33,33 @@ public class Pnz  implements java.io.Serializable {
     /**
      *
      * @param pnzId
+     * @param city
+     * @param pnzName
+     */
+    public Pnz(int pnzId, City city, String pnzName) {
+        this.pnzId = pnzId;
+        this.city=city;
+        this.pnzName = pnzName;
+    }
+/**
+     *
+     * @param pnzId
      * @param pnzName
      */
     public Pnz(int pnzId, String pnzName) {
         this.pnzId = pnzId;
         this.pnzName = pnzName;
     }
-
     /**
      *
      * @param pnzId
+     * @param city
      * @param pnzName
      * @param pnzDatas
      */
-    public Pnz(int pnzId, String pnzName, Set<PnzData> pnzDatas) {
+    public Pnz(int pnzId, City city, String pnzName, Set<PnzData> pnzDatas) {
        this.pnzId = pnzId;
+       this.city = city;
        this.pnzName = pnzName;
        this.pnzDatas = pnzDatas;
     }
@@ -65,6 +78,22 @@ public class Pnz  implements java.io.Serializable {
      */
     public void setPnzId(int pnzId) {
         this.pnzId = pnzId;
+    }
+    
+     /**
+     *
+     * @return
+     */
+    public City getCity() {
+        return this.city;
+    }
+    
+    /**
+     *
+     * @param city
+     */
+    public void setCity(City city) {
+        this.city = city;
     }
 
     /**

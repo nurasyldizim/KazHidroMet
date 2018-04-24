@@ -201,11 +201,11 @@ function calculateAvgAll(cell){
  }
  
   
-function refreshFunction() {
+function refreshFunction(cityId) {
     var pnzList = document.getElementById("pnzListId");
     var pnzId = pnzList.options[pnzList.selectedIndex].value;
     var pnzName = encodeURIComponent(pnzList.options[pnzList.selectedIndex].text);
-    location.href = "pnzdata.jsp?pnzId=" + pnzId +"&pnzName=" + pnzName + "&month=1";
+    location.href = "pnzdata.jsp?pnzId=" + pnzId +"&pnzName=" + pnzName + "&month=1" +"&cityId="+cityId;
     }
 
 function refreshFunctionMonth() {

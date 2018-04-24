@@ -15,10 +15,12 @@ import java.util.GregorianCalendar;
 import model.Pnz;
 
 import java.util.List; 
+import model.City;
 import model.PnzData;
  
 import org.hibernate.HibernateException; 
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session; 
 import org.hibernate.Transaction;
 import org.hibernate.SessionFactory;
@@ -303,15 +305,13 @@ public class PnzDataDao {
      * @param year
      * @return
      */
-    public List<PnzData> listAllPnzDatasByMonth(int month, int year ){
+    public List<PnzData> listAllPnzDatasByMonth(int month, int year, int cityId ){
       List<PnzData> pnzData = new ArrayList<PnzData>();
       Session session = sessionFactory.openSession();
       Transaction tx = null;
       try {
          tx = session.beginTransaction();
-         Query query = session.createQuery("SELECT avg(pnzdata.bsh), avg(pnzdata.ds), avg(pnzdata.sr), avg(pnzdata.ou), avg(pnzdata.do_), avg(pnzdata.oa), avg(pnzdata.ozon), avg(pnzdata.serovodorod), avg(pnzdata.fenol), avg(pnzdata.fv), avg(pnzdata.hlor), avg(pnzdata.hv), avg(pnzdata.ammiak), avg(pnzdata.skIs), avg(pnzdata.formaldigid), avg(pnzdata.nsm), avg(pnzdata.hromSh), avg(pnzdata.sumU) FROM PnzData pnzdata WHERE MONTH(pnzDateTime)= :month AND YEAR(pnzDateTime)= :year");
-         query.setParameter("month", month);
-         query.setParameter("year", year);
+         SQLQuery query = session.createSQLQuery("SELECT avg(pnzdata.bsh), avg(pnzdata.ds), avg(pnzdata.sr), avg(pnzdata.ou), avg(pnzdata.dO), avg(pnzdata.oa), avg(pnzdata.ozon), avg(pnzdata.serovodorod), avg(pnzdata.fenol), avg(pnzdata.fv), avg(pnzdata.hlor), avg(pnzdata.hv), avg(pnzdata.ammiak), avg(pnzdata.skIs), avg(pnzdata.formaldigid), avg(pnzdata.nsm), avg(pnzdata.hromSh), avg(pnzdata.sumU) FROM pnz_data pnzdata, Pnz p WHERE MONTH(pnzDateTime)= "+month+" AND YEAR(pnzDateTime)= "+year+" AND pnzdata.pnzID=p.pnzID AND p.city_id="+cityId+"");
          pnzData = query.list();
          tx.commit();
       } catch (HibernateException e) {

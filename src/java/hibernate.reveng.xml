@@ -4,4 +4,5 @@
   <schema-selection match-catalog="kazgidrodb"/>
   <table-filter match-name="pnz_data"/>
   <table-filter match-name="pnz"/>
+  <table-filter match-name="city"/>
 </hibernate-reverse-engineering>

@@ -28,6 +28,11 @@
         <script type="text/javascript" src="../js/jquery.js"></script>
     </head>
     <header><%
+                    request.setCharacterEncoding("UTF-8");
+                    String pnzName = request.getParameter("pnzName");
+                    String pnzId = request.getParameter("pnzId");
+                    int cityId = Integer.parseInt(request.getParameter("cityId"));
+                    String month = request.getParameter("month");
                     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                     LocalDate localDate = LocalDate.now();
                 %>
@@ -38,28 +43,22 @@
 			<nav id="fh5co-main-nav" role="navigation">
 				<ul>
                                     <li><a href="../">Главная</a></li>
-					<li><a href="pnzdata.jsp?pnzId=1&pnzName=ПНЗ1&month=1" class="active">Заполнения</a></li>
-					<li><a href="datamonth.jsp?month=1&name=<%=URLEncoder.encode("Январь", "UTF-8")%>">Q ср.м</a></li>
-					<li><a href="qaverage.jsp?month=1">Прогноз q ср.м</a></li>
-                                        <li><a href="pprognoz.jsp?date=<%=dtf.format(localDate)%>">Прогностический P</a></li>
-                                        <li><a href="pfact.jsp?date=<%=dtf.format(localDate)%>">Фактический P</a></li>
+					<li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=pnzName%>&month=1&cityId=<%=cityId%>" class="active">Заполнения</a></li>
+					<li><a href="datamonth.jsp?month=1&name=<%=URLEncoder.encode("Январь", "UTF-8")%>&cityId=<%=cityId%>">Q ср.м</a></li>
+					<li><a href="qaverage.jsp?month=1&cityId=<%=cityId%>">Прогноз q ср.м</a></li>
+                                        <li><a href="pprognoz.jsp?date=<%=dtf.format(localDate)%>&cityId=<%=cityId%>">Прогностический P</a></li>
+                                        <li><a href="pfact.jsp?date=<%=dtf.format(localDate)%>&cityId=<%=cityId%>">Фактический P</a></li>
 				</ul>
 			</nav>
 		</div>
 	</header>
     <body>
-        <%
-            request.setCharacterEncoding("UTF-8");
-            String pnzName = request.getParameter("pnzName");
-            String pnzId = request.getParameter("pnzId");
-            String month = request.getParameter("month");
-        %>
     <center>
-        <select class="class-select" id="pnzListId" onchange="refreshFunction()">
+        <select class="class-select" id="pnzListId" onchange="refreshFunction(<%=cityId %>)">
         <%
             PnzDataDao pnzDataDao = new PnzDataDao();               
             PnzDao pnzDao = new PnzDao();
-            List<Pnz> list = pnzDao.listPnzs();
+            List<Pnz> list = pnzDao.listPnzs(cityId);
             for (Pnz p : list) {
                 if(p.getPnzId()==Integer.parseInt(pnzId)){
          %>
@@ -110,29 +109,29 @@
   </div>
         <div class="month-picker">
   <fieldset class="month-picker-fieldset">
-    <input type="radio" name="month" value="jan" id="jan" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=1')" <% if(month.equals("1")){%>checked<%}%>>
+    <input type="radio" name="month" value="jan" id="jan" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=1&cityId=<%=cityId%>')" <% if(month.equals("1")){%>checked<%}%>>
     <label for="jan" class="month-picker-label">Янв</label>
-    <input type="radio" name="month" value="feb" id="feb" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=2')" <% if(month.equals("2")){%>checked<%}%>>
+    <input type="radio" name="month" value="feb" id="feb" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=2&cityId=<%=cityId%>')" <% if(month.equals("2")){%>checked<%}%>>
     <label for="feb" class="month-picker-label">Фев</label>
-    <input type="radio" name="month" value="mar" id="mar" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=3')" <% if(month.equals("3")){%>checked<%}%>>
+    <input type="radio" name="month" value="mar" id="mar" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=3&cityId=<%=cityId%>')" <% if(month.equals("3")){%>checked<%}%>>
     <label for="mar" class="month-picker-label">Март</label>
-    <input type="radio" name="month" value="apr" id="apr" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=4')" <% if(month.equals("4")){%>checked<%}%>>
+    <input type="radio" name="month" value="apr" id="apr" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=4&cityId=<%=cityId%>')" <% if(month.equals("4")){%>checked<%}%>>
     <label for="apr" class="month-picker-label">Апр</label>
-    <input type="radio" name="month" value="may" id="may" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=5')" <% if(month.equals("5")){%>checked<%}%>>
+    <input type="radio" name="month" value="may" id="may" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=5&cityId=<%=cityId%>')" <% if(month.equals("5")){%>checked<%}%>>
     <label for="may" class="month-picker-label">Май</label>
-    <input type="radio" name="month" value="jun" id="jun" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=6')" <% if(month.equals("6")){%>checked<%}%>>
+    <input type="radio" name="month" value="jun" id="jun" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=6&cityId=<%=cityId%>')" <% if(month.equals("6")){%>checked<%}%>>
     <label for="jun" class="month-picker-label">Июнь</label>
-    <input type="radio" name="month" value="jul" id="jul" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=7')" <% if(month.equals("7")){%>checked<%}%>>
+    <input type="radio" name="month" value="jul" id="jul" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=7&cityId=<%=cityId%>')" <% if(month.equals("7")){%>checked<%}%>>
     <label for="jul" class="month-picker-label">Июль</label>
-    <input type="radio" name="month" value="aug" id="aug" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=8')" <% if(month.equals("8")){%>checked<%}%>>
+    <input type="radio" name="month" value="aug" id="aug" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=8&cityId=<%=cityId%>')" <% if(month.equals("8")){%>checked<%}%>>
     <label for="aug" class="month-picker-label">Авг</label>
-    <input type="radio" name="month" value="sep" id="sep" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=9')" <% if(month.equals("9")){%>checked<%}%>>
+    <input type="radio" name="month" value="sep" id="sep" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=9&cityId=<%=cityId%>')" <% if(month.equals("9")){%>checked<%}%>>
     <label for="sep" class="month-picker-label">Сен</label>
-    <input type="radio" name="month" value="oct" id="oct" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=10')" <% if(month.equals("10")){%>checked<%}%>>
+    <input type="radio" name="month" value="oct" id="oct" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=10&cityId=<%=cityId%>')" <% if(month.equals("10")){%>checked<%}%>>
     <label for="oct" class="month-picker-label">Окт</label>
-    <input type="radio" name="month" value="nov" id="nov" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=11')" <% if(month.equals("11")){%>checked<%}%>>
+    <input type="radio" name="month" value="nov" id="nov" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=11&cityId=<%=cityId%>')" <% if(month.equals("11")){%>checked<%}%>>
     <label for="nov" class="month-picker-label">Ноб</label>
-    <input type="radio" name="month" value="dec" id="dec" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=12')" <% if(month.equals("12")){%>checked<%}%>>
+    <input type="radio" name="month" value="dec" id="dec" onclick="selectMonth('pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=URLEncoder.encode(pnzName, "UTF-8")%>&month=12&cityId=<%=cityId%>')" <% if(month.equals("12")){%>checked<%}%>>
     <label for="dec" class="month-picker-label">Дек</label>
   </fieldset>
 </div>
