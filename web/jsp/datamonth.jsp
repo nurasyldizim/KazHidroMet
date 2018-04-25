@@ -27,6 +27,8 @@
     </head>
     <header><%
                     request.setCharacterEncoding("UTF-8");
+                    String pnzName = request.getParameter("pnzName");
+                    String pnzId = request.getParameter("pnzId");
                     int cityId = Integer.parseInt(request.getParameter("cityId"));
                     String month = request.getParameter("month");
                     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -39,11 +41,11 @@
 			<nav id="fh5co-main-nav" role="navigation">
 				<ul>
                                     <li><a href="../">Главная</a></li>
-					<li><a href="pnzdata.jsp?pnzId=1&pnzName=ПНЗ1&month=1">Заполнения</a></li>
-					<li><a href="datamonth.jsp?month=1&name=<%=URLEncoder.encode("Январь", "UTF-8")%>" class="active">Q ср.м</a></li>
-					<li><a href="qaverage.jsp?month=1">Прогноз q ср.м</a></li>
-                                        <li><a href="pprognoz.jsp?date=<%=dtf.format(localDate)%>">Прогностический P</a></li>
-                                        <li><a href="pfact.jsp?date=<%=dtf.format(localDate)%>">Фактический P</a></li>
+					<li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=pnzName%>&month=1&cityId=<%=cityId%>" >Заполнения</a></li>
+					<li><a href="datamonth.jsp?pnzId=<%=pnzId%>&pnzName=<%=pnzName%>&month=1&name=<%=URLEncoder.encode("Январь", "UTF-8")%>&cityId=<%=cityId%>" class="active">Q ср.м</a></li>
+					<li><a href="qaverage.jsp?pnzId=<%=pnzId%>&pnzName=<%=pnzName%>&month=1&cityId=<%=cityId%>">Прогноз q ср.м</a></li>
+                                        <li><a href="pprognoz.jsp?pnzId=<%=pnzId%>&pnzName=<%=pnzName%>&date=<%=dtf.format(localDate)%>&cityId=<%=cityId%>">Прогностический P</a></li>
+                                        <li><a href="pfact.jsp?pnzId=<%=pnzId%>&pnzName=<%=pnzName%>&date=<%=dtf.format(localDate)%>&cityId=<%=cityId%>">Фактический P</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -51,29 +53,29 @@
     <body>
                  <div class="month-picker">
   <fieldset class="month-picker-fieldset">
-    <input type="radio" name="month" value="jan" id="jan" onclick="selectMonth('datamonth.jsp?month=1&name=<%=URLEncoder.encode("Январь", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("1")){%>checked<%}%>>
+    <input type="radio" name="month" value="jan" id="jan" onclick="selectMonth('datamonth.jsp?month=1&name=<%=URLEncoder.encode("Январь", "UTF-8")%>&cityId=<%=cityId %>&pnzId=<%=pnzId%>&pnzName=<%=pnzName%>')" <% if(month.equals("1")){%>checked<%}%>>
     <label for="jan" class="month-picker-label">Янв</label>
-    <input type="radio" name="month" value="feb" id="feb" onclick="selectMonth('datamonth.jsp?month=2&name=<%=URLEncoder.encode("Февраль", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("2")){%>checked<%}%>>
+    <input type="radio" name="month" value="feb" id="feb" onclick="selectMonth('datamonth.jsp?month=2&name=<%=URLEncoder.encode("Февраль", "UTF-8")%>&cityId=<%=cityId %>&pnzId=<%=pnzId%>&pnzName=<%=pnzName%>')" <% if(month.equals("2")){%>checked<%}%>>
     <label for="feb" class="month-picker-label">Фев</label>
-    <input type="radio" name="month" value="mar" id="mar" onclick="selectMonth('datamonth.jsp?month=3&name=<%=URLEncoder.encode("Март", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("3")){%>checked<%}%>>
+    <input type="radio" name="month" value="mar" id="mar" onclick="selectMonth('datamonth.jsp?month=3&name=<%=URLEncoder.encode("Март", "UTF-8")%>&cityId=<%=cityId %>&pnzId=<%=pnzId%>&pnzName=<%=pnzName%>')" <% if(month.equals("3")){%>checked<%}%>>
     <label for="mar" class="month-picker-label">Март</label>
-    <input type="radio" name="month" value="apr" id="apr" onclick="selectMonth('datamonth.jsp?month=4&name=<%=URLEncoder.encode("Апрель", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("4")){%>checked<%}%>>
+    <input type="radio" name="month" value="apr" id="apr" onclick="selectMonth('datamonth.jsp?month=4&name=<%=URLEncoder.encode("Апрель", "UTF-8")%>&cityId=<%=cityId %>&pnzId=<%=pnzId%>&pnzName=<%=pnzName%>')" <% if(month.equals("4")){%>checked<%}%>>
     <label for="apr" class="month-picker-label">Апр</label>
-    <input type="radio" name="month" value="may" id="may" onclick="selectMonth('datamonth.jsp?month=5&name=<%=URLEncoder.encode("Май", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("5")){%>checked<%}%>>
+    <input type="radio" name="month" value="may" id="may" onclick="selectMonth('datamonth.jsp?month=5&name=<%=URLEncoder.encode("Май", "UTF-8")%>&cityId=<%=cityId %>&pnzId=<%=pnzId%>&pnzName=<%=pnzName%>')" <% if(month.equals("5")){%>checked<%}%>>
     <label for="may" class="month-picker-label">Май</label>
-    <input type="radio" name="month" value="jun" id="jun" onclick="selectMonth('datamonth.jsp?month=6&name=<%=URLEncoder.encode("Июнь", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("6")){%>checked<%}%>>
+    <input type="radio" name="month" value="jun" id="jun" onclick="selectMonth('datamonth.jsp?month=6&name=<%=URLEncoder.encode("Июнь", "UTF-8")%>&cityId=<%=cityId %>&pnzId=<%=pnzId%>&pnzName=<%=pnzName%>')" <% if(month.equals("6")){%>checked<%}%>>
     <label for="jun" class="month-picker-label">Июнь</label>
-    <input type="radio" name="month" value="jul" id="jul" onclick="selectMonth('datamonth.jsp?month=7&name=<%=URLEncoder.encode("Июль", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("7")){%>checked<%}%>>
+    <input type="radio" name="month" value="jul" id="jul" onclick="selectMonth('datamonth.jsp?month=7&name=<%=URLEncoder.encode("Июль", "UTF-8")%>&cityId=<%=cityId %>&pnzId=<%=pnzId%>&pnzName=<%=pnzName%>')" <% if(month.equals("7")){%>checked<%}%>>
     <label for="jul" class="month-picker-label">Июль</label>
-    <input type="radio" name="month" value="aug" id="aug" onclick="selectMonth('datamonth.jsp?month=8&name=<%=URLEncoder.encode("Август", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("8")){%>checked<%}%>>
+    <input type="radio" name="month" value="aug" id="aug" onclick="selectMonth('datamonth.jsp?month=8&name=<%=URLEncoder.encode("Август", "UTF-8")%>&cityId=<%=cityId %>&pnzId=<%=pnzId%>&pnzName=<%=pnzName%>')" <% if(month.equals("8")){%>checked<%}%>>
     <label for="aug" class="month-picker-label">Авг</label>
-    <input type="radio" name="month" value="sep" id="sep" onclick="selectMonth('datamonth.jsp?month=9&name=<%=URLEncoder.encode("Сентябрь", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("9")){%>checked<%}%>>
+    <input type="radio" name="month" value="sep" id="sep" onclick="selectMonth('datamonth.jsp?month=9&name=<%=URLEncoder.encode("Сентябрь", "UTF-8")%>&cityId=<%=cityId %>&pnzId=<%=pnzId%>&pnzName=<%=pnzName%>')" <% if(month.equals("9")){%>checked<%}%>>
     <label for="sep" class="month-picker-label">Сен</label>
-    <input type="radio" name="month" value="oct" id="oct" onclick="selectMonth('datamonth.jsp?month=10&name=<%=URLEncoder.encode("Октябрь", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("10")){%>checked<%}%>>
+    <input type="radio" name="month" value="oct" id="oct" onclick="selectMonth('datamonth.jsp?month=10&name=<%=URLEncoder.encode("Октябрь", "UTF-8")%>&cityId=<%=cityId %>&pnzId=<%=pnzId%>&pnzName=<%=pnzName%>')" <% if(month.equals("10")){%>checked<%}%>>
     <label for="oct" class="month-picker-label">Окт</label>
-    <input type="radio" name="month" value="nov" id="nov" onclick="selectMonth('datamonth.jsp?month=11&name=<%=URLEncoder.encode("Ноябрь", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("11")){%>checked<%}%>>
+    <input type="radio" name="month" value="nov" id="nov" onclick="selectMonth('datamonth.jsp?month=11&name=<%=URLEncoder.encode("Ноябрь", "UTF-8")%>&cityId=<%=cityId %>&pnzId=<%=pnzId%>&pnzName=<%=pnzName%>')" <% if(month.equals("11")){%>checked<%}%>>
     <label for="nov" class="month-picker-label">Ноб</label>
-    <input type="radio" name="month" value="dec" id="dec" onclick="selectMonth('datamonth.jsp?month=12&name=<%=URLEncoder.encode("Декабрь", "UTF-8")%>&cityId=<%=cityId %>')" <% if(month.equals("12")){%>checked<%}%>>
+    <input type="radio" name="month" value="dec" id="dec" onclick="selectMonth('datamonth.jsp?month=12&name=<%=URLEncoder.encode("Декабрь", "UTF-8")%>&cityId=<%=cityId %>&pnzId=<%=pnzId%>&pnzName=<%=pnzName%>')" <% if(month.equals("12")){%>checked<%}%>>
     <label for="dec" class="month-picker-label">Дек</label>
   </fieldset>
 </div>
@@ -83,12 +85,12 @@
             PnzDao pnzDao = new PnzDao();
             List<Pnz> list = pnzDao.listPnzs(cityId);
             for (Pnz p : list) {
-                String pnzName = p.getPnzName();
+                String pnzNameTemp = p.getPnzName();
         %>
     <center><h3><%=monthName%></h3></center>
     <div class="table100 ver4 m-b-110">
-    <table id="table<%=pnzName%>" data-vertable="ver4" border="1">
-            <tr class="row100 head"><th><%=pnzName%></th><th>Взвешенные частицы(пыль)</th><th>Диоксид серы</th><th>Сульфаты растворимые</th><th>Оксид углерода</th><th>Диоксид азота</th><th>Оксид азота</th><th>Озон</th><th>Сероводород</th><th>Фенол</th><th>Фтористый водород</th><th>Хлор</th><th>Хлористый водород</th><th>Аммиак</th><th>Серная кислота и сульфаты</th><th>Формальдегид</th><th>Неорганические соединения мышьяк</th><th>Хром шестивалентный</th><th>Суммарные углеводороды</th></tr>   
+    <table id="table<%=pnzNameTemp%>" data-vertable="ver4" border="1">
+            <tr class="row100 head"><th><%=pnzNameTemp%></th><th>Взвешенные частицы(пыль)</th><th>Диоксид серы</th><th>Сульфаты растворимые</th><th>Оксид углерода</th><th>Диоксид азота</th><th>Оксид азота</th><th>Озон</th><th>Сероводород</th><th>Фенол</th><th>Фтористый водород</th><th>Хлор</th><th>Хлористый водород</th><th>Аммиак</th><th>Серная кислота и сульфаты</th><th>Формальдегид</th><th>Неорганические соединения мышьяк</th><th>Хром шестивалентный</th><th>Суммарные углеводороды</th></tr>   
             <%
                 for(int i = 2012; i<2026; i++){
                     List pnzAvglistByYear =  pnzDataDao.listPnzDatasByMonth(p.getPnzId(),Integer.parseInt(month), i);
@@ -120,24 +122,24 @@
             <%}}%>
             <tr class="row100">
                 <td>q ср.м</td>
-                <td id="1id<%=pnzName%>"><script>calculateAvg(1, "<%=pnzName%>");</script></td>
-                <td id="2id<%=pnzName%>"><script>calculateAvg(2, "<%=pnzName%>");</script></td>
-                <td id="3id<%=pnzName%>"><script>calculateAvg(3, "<%=pnzName%>");</script></td>
-                <td id="4id<%=pnzName%>"><script>calculateAvg(4, "<%=pnzName%>");</script></td>
-                <td id="5id<%=pnzName%>"><script>calculateAvg(5, "<%=pnzName%>");</script></td>
-                <td id="6id<%=pnzName%>"><script>calculateAvg(6, "<%=pnzName%>");</script></td>
-                <td id="7id<%=pnzName%>"><script>calculateAvg(7, "<%=pnzName%>");</script></td>
-                <td id="8id<%=pnzName%>"><script>calculateAvg(8, "<%=pnzName%>");</script></td>
-                <td id="9id<%=pnzName%>"><script>calculateAvg(9, "<%=pnzName%>");</script></td>
-                <td id="10id<%=pnzName%>"><script>calculateAvg(10, "<%=pnzName%>");</script></td>
-                <td id="11id<%=pnzName%>"><script>calculateAvg(11, "<%=pnzName%>");</script></td>
-                <td id="12id<%=pnzName%>"><script>calculateAvg(12, "<%=pnzName%>");</script></td>
-                <td id="13id<%=pnzName%>"><script>calculateAvg(13, "<%=pnzName%>");</script></td>
-                <td id="14id<%=pnzName%>"><script>calculateAvg(14, "<%=pnzName%>");</script></td>
-                <td id="15id<%=pnzName%>"><script>calculateAvg(15, "<%=pnzName%>");</script></td>
-                <td id="16id<%=pnzName%>"><script>calculateAvg(16, "<%=pnzName%>");</script></td>
-                <td id="17id<%=pnzName%>"><script>calculateAvg(17, "<%=pnzName%>");</script></td>
-                 <td id="18id<%=pnzName%>"><script>calculateAvg(18, "<%=pnzName%>");</script></td> 
+                <td id="1id<%=pnzNameTemp%>"><script>calculateAvg(1, "<%=pnzNameTemp%>");</script></td>
+                <td id="2id<%=pnzNameTemp%>"><script>calculateAvg(2, "<%=pnzNameTemp%>");</script></td>
+                <td id="3id<%=pnzNameTemp%>"><script>calculateAvg(3, "<%=pnzNameTemp%>");</script></td>
+                <td id="4id<%=pnzNameTemp%>"><script>calculateAvg(4, "<%=pnzNameTemp%>");</script></td>
+                <td id="5id<%=pnzNameTemp%>"><script>calculateAvg(5, "<%=pnzNameTemp%>");</script></td>
+                <td id="6id<%=pnzNameTemp%>"><script>calculateAvg(6, "<%=pnzNameTemp%>");</script></td>
+                <td id="7id<%=pnzNameTemp%>"><script>calculateAvg(7, "<%=pnzNameTemp%>");</script></td>
+                <td id="8id<%=pnzNameTemp%>"><script>calculateAvg(8, "<%=pnzNameTemp%>");</script></td>
+                <td id="9id<%=pnzNameTemp%>"><script>calculateAvg(9, "<%=pnzNameTemp%>");</script></td>
+                <td id="10id<%=pnzNameTemp%>"><script>calculateAvg(10, "<%=pnzNameTemp%>");</script></td>
+                <td id="11id<%=pnzNameTemp%>"><script>calculateAvg(11, "<%=pnzNameTemp%>");</script></td>
+                <td id="12id<%=pnzNameTemp%>"><script>calculateAvg(12, "<%=pnzNameTemp%>");</script></td>
+                <td id="13id<%=pnzNameTemp%>"><script>calculateAvg(13, "<%=pnzNameTemp%>");</script></td>
+                <td id="14id<%=pnzNameTemp%>"><script>calculateAvg(14, "<%=pnzNameTemp%>");</script></td>
+                <td id="15id<%=pnzNameTemp%>"><script>calculateAvg(15, "<%=pnzNameTemp%>");</script></td>
+                <td id="16id<%=pnzNameTemp%>"><script>calculateAvg(16, "<%=pnzNameTemp%>");</script></td>
+                <td id="17id<%=pnzNameTemp%>"><script>calculateAvg(17, "<%=pnzNameTemp%>");</script></td>
+                 <td id="18id<%=pnzNameTemp%>"><script>calculateAvg(18, "<%=pnzNameTemp%>");</script></td> 
             </tr>
             </table>
     </div>

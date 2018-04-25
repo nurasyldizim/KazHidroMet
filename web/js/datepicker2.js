@@ -30,7 +30,12 @@ $(function() {
 				$selected = $me.val(),
 				$parent = $me.parents('.date-picker');
 		$parent.find('.result').children('span').html($selected);
-                location.href = "pfact.jsp?date="+$selected;
+                var url_string = window.location.href;
+                var url = new URL(url_string);
+                var pnzName = url.searchParams.get("pnzName");
+                var pnzId = url.searchParams.get("pnzId");
+                var cityId= url.searchParams.get("cityId");
+                location.href = "pfact.jsp?date="+$selected+"&pnzName="+pnzName+"&pnzId="+pnzId+"&cityId="+cityId;
 	});
 });
 

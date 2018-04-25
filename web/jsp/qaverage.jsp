@@ -28,6 +28,9 @@
         <link rel="stylesheet" href="../css/style.css">
     </head>
     <header><%
+                    request.setCharacterEncoding("UTF-8");
+                    String pnzName = request.getParameter("pnzName");
+                    String pnzId = request.getParameter("pnzId");
                     int cityId = Integer.parseInt(request.getParameter("cityId"));
                     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                     LocalDate localDate = LocalDate.now();
@@ -39,18 +42,17 @@
 			<nav id="fh5co-main-nav" role="navigation">
 				<ul>
                                     <li><a href="../">Главная</a></li>
-					<li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=pnzName%>&month=1&cityId=<%=cityId%>" class="active">Заполнения</a></li>
-					<li><a href="datamonth.jsp?month=1&name=<%=URLEncoder.encode("Январь", "UTF-8")%>&cityId=<%=cityId%>">Q ср.м</a></li>
-					<li><a href="qaverage.jsp?month=1&cityId=<%=cityId%>">Прогноз q ср.м</a></li>
-                                        <li><a href="pprognoz.jsp?date=<%=dtf.format(localDate)%>&cityId=<%=cityId%>">Прогностический P</a></li>
-                                        <li><a href="pfact.jsp?date=<%=dtf.format(localDate)%>&cityId=<%=cityId%>">Фактический P</a></li>
+					<li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=pnzName%>&month=1&cityId=<%=cityId%>" >Заполнения</a></li>
+					<li><a href="datamonth.jsp?pnzId=<%=pnzId%>&pnzName=<%=pnzName%>&month=1&name=<%=URLEncoder.encode("Январь", "UTF-8")%>&cityId=<%=cityId%>">Q ср.м</a></li>
+					<li><a href="qaverage.jsp?pnzId=<%=pnzId%>&pnzName=<%=pnzName%>&month=1&cityId=<%=cityId%>" class="active">Прогноз q ср.м</a></li>
+                                        <li><a href="pprognoz.jsp?pnzId=<%=pnzId%>&pnzName=<%=pnzName%>&date=<%=dtf.format(localDate)%>&cityId=<%=cityId%>">Прогностический P</a></li>
+                                        <li><a href="pfact.jsp?pnzId=<%=pnzId%>&pnzName=<%=pnzName%>&date=<%=dtf.format(localDate)%>&cityId=<%=cityId%>">Фактический P</a></li>
 				</ul>
 			</nav>
 		</div>
 	</header>
     <body>
          <%
-            request.setCharacterEncoding("UTF-8");
             String month = request.getParameter("month");
             request.setAttribute("monthId", month);
             LinkedHashMap map = new LinkedHashMap();
@@ -69,7 +71,7 @@
     request.setAttribute("MyMap", map);
 %>
     <center>
-<select class="class-select" id="monthListId" onchange="refreshFunctionMonth()">
+<select class="class-select" id="monthListId" onchange="refreshFunctionMonth('<%=pnzId %>', '<%=pnzName %>', '<%=cityId%>')">
          <c:forEach items="${MyMap}" var="mapItem">
              <option value="${mapItem.key}" ${mapItem.key eq monthId ? "selected": ""}>${mapItem.value}</option>
          </c:forEach>
@@ -89,7 +91,7 @@
                 lastYear = lastYear-1;
             }
             PnzDataDao pnzDataDao = new PnzDataDao();
-            ArrayList<PnzData>[] qAvglist = pnzDataDao.qAvgPnzDatas(monthInt);
+            ArrayList<PnzData>[] qAvglist = pnzDataDao.qAvgPnzDatas(monthInt, cityId);
                 for (int i = 0; i<4; i++) {
                     Iterator iterQAvgList = qAvglist[i].iterator();
                     Object[] objQAvg = (Object[]) iterQAvgList.next();

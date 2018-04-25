@@ -208,10 +208,10 @@ function refreshFunction(cityId) {
     location.href = "pnzdata.jsp?pnzId=" + pnzId +"&pnzName=" + pnzName + "&month=1" +"&cityId="+cityId;
     }
 
-function refreshFunctionMonth() {
+function refreshFunctionMonth(pnzId, pnzName, cityId) {
     var monthList = document.getElementById("monthListId");
     var month = monthList.options[monthList.selectedIndex].value;
-    location.href = "qaverage.jsp?month="+month;
+    location.href = "qaverage.jsp?month="+month+"&pnzId="+pnzId+"&pnzName="+pnzName+"&cityId="+cityId;
     }
 
  

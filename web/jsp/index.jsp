@@ -53,6 +53,7 @@ and open the template in the editor.
                                     <h3>Выверите город</h3>
       <ul style="list-style-type:disc">
         <%
+            request.setCharacterEncoding("UTF-8");
             PnzDao pnzDao = new PnzDao();
             CityDao cityDao = new CityDao();               
             List<City> list = cityDao.listCitis();

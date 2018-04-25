@@ -44,10 +44,10 @@
 				<ul>
                                     <li><a href="../">Главная</a></li>
 					<li><a href="pnzdata.jsp?pnzId=<%=pnzId%>&pnzName=<%=pnzName%>&month=1&cityId=<%=cityId%>" class="active">Заполнения</a></li>
-					<li><a href="datamonth.jsp?month=1&name=<%=URLEncoder.encode("Январь", "UTF-8")%>&cityId=<%=cityId%>">Q ср.м</a></li>
-					<li><a href="qaverage.jsp?month=1&cityId=<%=cityId%>">Прогноз q ср.м</a></li>
-                                        <li><a href="pprognoz.jsp?date=<%=dtf.format(localDate)%>&cityId=<%=cityId%>">Прогностический P</a></li>
-                                        <li><a href="pfact.jsp?date=<%=dtf.format(localDate)%>&cityId=<%=cityId%>">Фактический P</a></li>
+					<li><a href="datamonth.jsp?pnzId=<%=pnzId%>&pnzName=<%=pnzName%>&month=1&name=<%=URLEncoder.encode("Январь", "UTF-8")%>&cityId=<%=cityId%>">Q ср.м</a></li>
+					<li><a href="qaverage.jsp?pnzId=<%=pnzId%>&pnzName=<%=pnzName%>&month=1&cityId=<%=cityId%>">Прогноз q ср.м</a></li>
+                                        <li><a href="pprognoz.jsp?pnzId=<%=pnzId%>&pnzName=<%=pnzName%>&date=<%=dtf.format(localDate)%>&cityId=<%=cityId%>">Прогностический P</a></li>
+                                        <li><a href="pfact.jsp?pnzId=<%=pnzId%>&pnzName=<%=pnzName%>&date=<%=dtf.format(localDate)%>&cityId=<%=cityId%>">Фактический P</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -81,6 +81,7 @@
                 <td style="display: none"><input type="hidden" id="pnzName" name="pnzName" value="<%=pnzName%>"></td>
                 <td style="display: none"><input type="hidden" id="pnzId" name="pnzId" value="<%=pnzId%>"></td>
                 <td style="display: none"><input type="hidden" id="month" name="month" value="<%=month%>"></td>
+                <td style="display: none"><input type="hidden" id="cityId" name="cityId" value="<%=cityId%>"></td>
                 <td><input type="datetime-local" min="2015-01-01 00:00" max="2030-01-01 00:00" step="3600"  name="pnzDateTime" required></td>
                 <td><input type="number" step="0.001" name="bsh"></td>
                 <td><input type="number" step="0.001" name="ds"></td>
@@ -159,6 +160,7 @@
                 <td style="display: none"><input type="hidden" id="pnzId" name="pnzId" value="<%=pnzId%>"></td>
                 <td style="display: none"><input type="hidden" id="month" name="month" value="<%=month%>"></td>
                 <td style="display:none"><input type="hidden" name="pnzDataId" value="<%=pd.getPnzDataId()%>"></td>
+                <td style="display:none"><input type="hidden" name="cityId" value="<%=cityId%>"></td>
                 <td><input style="width: 80px;" name="dateWithoutTime<%=pd.getPnzDataId()%>" type="datetime" value="<%=sdf.format(dateWithoutTime)%>"></td>
                 <td><input id="time" name="time<%=pd.getPnzDataId()%>" type="time" value="<%=time%>"></td>
                 <td><input name="bsh<%=pd.getPnzDataId()%>" value="<%=pd.getBsh()%>"></td>
@@ -179,8 +181,8 @@
                 <td><input name="nsm<%=pd.getPnzDataId()%>" value="<%=pd.getNsm()%>"></td>
                 <td><input name="hromSh<%=pd.getPnzDataId()%>" value="<%=pd.getHromSh()%>"></td>
                 <td><input name="sumU<%=pd.getPnzDataId()%>" value="<%=pd.getSumU()%>"></td>  
-                <td><input type="submit" name="ACTION" value="Изменить" onclick="getEditConfirmation(<%=pd.getPnzDataId()%>)"></td>
-                <td><input type="submit" name="ACTION" value="Удалить" onclick="getDeleteConfirmation(<%=pd.getPnzDataId()%>)"></td>
+                <td><input type="submit" name="ACTION" value="Edit" onclick="getEditConfirmation(<%=pd.getPnzDataId()%>)"></td>
+                <td><input type="submit" name="ACTION" value="Delete" onclick="getDeleteConfirmation(<%=pd.getPnzDataId()%>)"></td>
             </tr>
             <% }
             Object[] objMin = (Object[]) iterMin.next();
