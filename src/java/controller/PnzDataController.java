@@ -45,6 +45,7 @@ public class PnzDataController extends HttpServlet {
             Pnz pnz = new Pnz(pnzId,pnzName);
             DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm"); 
             Date pnzDateTime = (Date)formatter.parse(request.getParameter("pnzDateTime"));
+            double sdda;
             double bsh = Double.valueOf(request.getParameter("bsh"));
             double ds = Double.valueOf(request.getParameter("ds"));
             double sr = Double.valueOf(request.getParameter("sr"));
