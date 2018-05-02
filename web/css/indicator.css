@@ -100,7 +100,7 @@
 }
 
 .meter-range-item--1 {
-  border-color: #A51818;
+  border-color: #2696bf;
 }
 
 .meter-range-item--2 {
@@ -116,7 +116,7 @@
 }
 
 .meter-needle {
-  background-color: #A51818;
+  background-color: #2696bf;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
   height: 75px;
   margin: 0 -1px 0 0;

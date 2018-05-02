@@ -19,14 +19,14 @@ body {
 }
 
 a {
-  color: #F03861;
+  color: #2696bf;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
 }
 a:hover {
   text-decoration: none;
-  color: #F03861;
+  color: #2696bf;
 }
 a:focus, a:active {
   outline: none;
@@ -75,14 +75,14 @@ h1, h2, h3, h4, h5, h6 {
   transition: 0.3s;
 }
 .btn.btn-primary {
-  background: #F03861;
+  background: #2696bf;
   color: #fff;
   border: none !important;
   border: 2px solid transparent !important;
 }
 .btn.btn-primary:hover, .btn.btn-primary:active, .btn.btn-primary:focus {
   box-shadow: none;
-  background: #F03861;
+  background: #2696bf;
 }
 .btn:hover, .btn:active, .btn:focus {
   background: #393e46 !important;
@@ -111,7 +111,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: -15px;
   width: 20px;
   height: 3px;
-  background: #F03861;
+  background: #2696bf;
 }
 
 header, #fh5co-intro-section, #fh5co-services-section, #fh5co-featured-work-section,
@@ -140,7 +140,7 @@ header .fh5co-navbar-brand .fh5co-logo:after {
   right: -14px;
   width: 12px;
   height: 12px;
-  background: #F03861;
+  background: #2696bf;
   content: '';
 }
 header .fh5co-navbar-brand .fh5co-logo:hover {
@@ -176,7 +176,7 @@ header #fh5co-main-nav > ul li a.active:before {
   content: '';
   top: -5px;
   right: -7px;
-  background: #F03861;
+  background: #2696bf;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   -ms-border-radius: 2px;
@@ -372,7 +372,7 @@ header #fh5co-main-nav > ul li:first-child {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(240, 56, 97, 0.8);
+  background: rgb(38,150,191);
   opacity: 0;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
@@ -537,7 +537,7 @@ header #fh5co-main-nav > ul li:first-child {
   font-size: 60px;
   display: block;
   margin-bottom: 30px;
-  color: #F03861;
+  color: #2696bf;
 }
 
 .fhco-hero2 {
@@ -571,7 +571,7 @@ header #fh5co-main-nav > ul li:first-child {
   position: absolute;
   top: 0;
   left: 0;
-  background: #F03861;
+  background: #2696bf;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
@@ -607,7 +607,7 @@ header #fh5co-main-nav > ul li:first-child {
   position: absolute;
   top: 0;
   right: 0;
-  background: #F03861;
+  background: #2696bf;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
@@ -703,7 +703,7 @@ header #fh5co-main-nav > ul li:first-child {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(240, 56, 97, 0.9);
+  background: rgb(38,150,191);
   opacity: 0;
 }
 .fh5co-grid-work .work-holder .inner-overlay i {
@@ -822,10 +822,10 @@ header #fh5co-main-nav > ul li:first-child {
   top: .3em;
   left: 0;
   font-size: 22px;
-  color: #F03861;
+  color: #2696bf;
 }
 .contact-info li a {
-  color: #F03861;
+  color: #2696bf;
 }
 
 .form-control {
@@ -835,7 +835,7 @@ header #fh5co-main-nav > ul li:first-child {
   -o-box-shadow: none;
   box-shadow: none;
   border: none;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid #2696bf;
   font-size: 18px;
   font-weight: 300;
   -webkit-border-radius: 0px;
@@ -890,7 +890,7 @@ input {
 .class-select {
   -webkit-appearance: button;
   -webkit-border-radius: 2px;
-  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 1px 3px #2696bf;
   -webkit-padding-end: 20px;
   -webkit-padding-start: 2px;
   -webkit-user-select: none;
@@ -910,7 +910,7 @@ input {
 .class-select {
   color: #fff;
   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.1) 40%, rgba(255, 0, 0, 0.1));
-  background-color: rgba(255, 0, 0, 0.7);
+  background-color: #2696bf;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
@@ -963,11 +963,11 @@ th, td {
   line-height: 1.4;
   text-transform: uppercase;
 
-  background-color: #fa4251;
+  background-color: #2696bf;
 }
 
 .table100.ver4 .row100:hover td {
-  color: #fa4251;
+  color: #2696bf;
 }
 
 .table100.ver4 .hov-column-ver4 {
@@ -980,7 +980,7 @@ th, td {
 
 .table100.ver4 .row100 td:hover {
   background-color: #ffebed;
-  color: #fa4251;
+  color: #2696bf;
 }
 
 /*
@@ -996,10 +996,10 @@ th, td {
   height: 30px;
   display: inline-block;
   padding: 0 7px;
-  background: rgba(255, 0, 0, 0.4);
+  background: rgba(0, 0, 255, 0.14);
   border-radius: 5px;
-  -webkit-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.7), inset 0 2px 2px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.7), inset 0 2px 2px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+  -webkit-box-shadow: inset 0 0 0 1px rgba(0, 0, 255, 0.7), inset 0 2px 2px rgba(0, 0, 255, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 255, 0.7), inset 0 2px 2px rgba(0, 0, 255, 0.3), 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .month-picker-fieldset > input {
@@ -1025,7 +1025,7 @@ input:focus + .month-picker-label{
   padding: 0 7px;
   font-size: 12px;
   font-weight: 200;
-  color: rgba(255, 0, 0, 0.8);
+  color: #2696bf;
   text-transform: uppercase;
   text-shadow: 0 1px 1px black;
 }
@@ -1049,16 +1049,16 @@ input:focus + .month-picker-label{
   border-radius: 6px;
   opacity: 0;
   -webkit-box-shadow: 0 0 1px rgba(225, 0, 0, 0.2);
-  box-shadow: 0 0 1px rgba(225, 0, 0, 0.2);
+  box-shadow: 0 0 1px rgba(225, 0, 255, 0.2);
 }
 
 input:checked + .month-picker-label {
   color: white;
-  background: #fa4251;
-  background-image: -webkit-linear-gradient(top, #422e31, #db0f0f);
-  background-image: -moz-linear-gradient(top, #422e31, #db0f0f);
-  background-image: -o-linear-gradient(top, #422e31, #db0f0f);
-  background-image: linear-gradient(to bottom, #422e31, #db0f0f);
+  background: #2696bf;
+  background-image: -webkit-linear-gradient(top, #2696bf, #65c0ec);
+  background-image: -moz-linear-gradient(top, #2696bf, #65c0ec);
+  background-image: -o-linear-gradient(top, #2696bf, #65c0ec);
+  background-image: linear-gradient(to bottom, #2696bf, #65c0ec);
 }
 
 input:checked + .month-picker-label:before {

@@ -452,8 +452,8 @@
                 <h2>Диаграмма по ПНЗ</h2>
                 <h5 id="optionName"></h5>
                 <div id="bar-chart"></div>
+                <div id="png"></div>
             </div>
-
     </body>
     <footer>
 		<div id="footer" class="fh5co-border-line">

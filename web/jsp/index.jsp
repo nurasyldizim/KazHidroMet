@@ -51,7 +51,7 @@ and open the template in the editor.
                             <span class="number-holder">02</span>
                             <div class="desc">
                                     <h3>Выверите город</h3>
-      <ul style="list-style-type:disc">
+      <ul style="list-style-type:disc; width: 300px; height: 300px; overflow: auto; border: 1px solid #ddd;">
         <%
             request.setCharacterEncoding("UTF-8");
             PnzDao pnzDao = new PnzDao();

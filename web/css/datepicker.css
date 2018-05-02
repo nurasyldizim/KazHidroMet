@@ -25,13 +25,13 @@
   line-height: 50px;
   font-size: 16px;
   padding: 0 10px;
-  color: red;
+  color: #2696bf;
   box-sizing: border-box;
 }
 .date-picker .input button {
   width: 50px;
   height: 50px;
-  background-color: #ef4f4f;
+  background-color: #65c0ec;
   color: white;
   line-height: 50px;
   border: 0;
@@ -39,7 +39,7 @@
   padding: 0;
 }
 .date-picker .input button:hover {
-  background-color: red;
+  background-color: #2696bf;
 }
 .date-picker .input button:focus {
   outline: 0;
@@ -47,7 +47,7 @@
 .date-picker .calendar {
   position: relative;
   width: 100%;
-  background: #fff;
+  background: #2696bf;
   border-radius: 0px;
   overflow: hidden;
 }
@@ -58,7 +58,7 @@
 .date-picker .ui-datepicker-header {
   height: 100%;
   line-height: 50px;
-  background: #ef4f4f;
+  background: #65c0ec;
   color: #fff;
   margin-bottom: 10px;
 }
@@ -112,7 +112,7 @@
 .date-picker .ui-datepicker-calendar thead tr th span {
   display: block;
   width: 100%;
-  color: #ef4f4f;;
+  color: #65c0ec;;
   margin-bottom: 5px;
   font-size: 13px;
 }
@@ -130,7 +130,7 @@
   color: #701616;
 }
 .date-picker .ui-state-active {
-  color: #ef4f4f;;
+  color: #65c0ec;;
   background-color: rgba(131, 146, 167, 0.12);
   font-weight: 600;
 }
@@ -142,5 +142,5 @@
   max-height: 400px;
 }
 .date-picker.open .input button {
-  background: #ef4f4f;
+  background: #65c0ec;
 }

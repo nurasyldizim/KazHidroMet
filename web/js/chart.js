@@ -131,5 +131,8 @@ var table = document.getElementById("table"),rows = parseInt(table.rows.length);
   var barChart = new google.visualization.ColumnChart(document.getElementById('bar-chart'));
   //barChart.draw(barZeroData, barOptions);
   barChart.draw(barData, barOptions);
-  
+  google.visualization.events.addListener(chart, 'ready', function() {
+            console.log(chart.getChart().getImageURI());
+                document.getElementById('png').innerHTML = '<a href="' + chart.getChart().getImageURI() + '">Printable version</a>';
+        });
 }
